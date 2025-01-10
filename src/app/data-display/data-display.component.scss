@@ -155,9 +155,9 @@
                 flex-direction: row;
                 gap: 8px;
                 height: 100%;
-                flex: 1;
+                width: 100%;
                 justify-content: flex-start;
-                align-items: flex-start;
+                align-items: center;
                 background-color: red;
                 flex-wrap: wrap;
 
@@ -173,15 +173,19 @@
                         cursor: pointer;
                     }
                 }
+
                 >.location-for {
                     position: relative;
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(49%, 1fr));
-                    grid-template-rows: auto auto;
-                    width: 250px;
+                    display: inline-grid;
+                    grid-template-columns: auto auto auto;
+
+                    row-gap: 0px;
+                    column-gap: 8px;
                     >h5 {
+                        cursor: pointer;
                         margin-top: 2px !important;
                         margin-bottom: 2px !important;
+                        width: 127px;
                     }
                 }
             }
