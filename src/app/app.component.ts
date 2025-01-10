@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DataDisplayComponent } from './data-display/data-display.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet, FormsModule, ReactiveFormsModule, DataDisplayComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
