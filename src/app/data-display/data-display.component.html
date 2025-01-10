@@ -1,5 +1,7 @@
 <div class="wrapper">
-  <div *ngFor="let post of data; trackBy: trackById" class="dataCollector">
+  <div class="wrapper">
+    <div
+      *ngFor="let post of data; trackBy: trackById" class="dataCollector">
     <div class="top-row">
       <img [src]="post.portraitWikiUrl" alt="{{ post.name }}" class="portrait">
       <div class="gapper-number">
@@ -17,14 +19,22 @@
         <h5 *ngFor="let trait of post.traits">{{trait}}</h5>
       </div>
       <div class="gapper-stats">
-
+        <div *ngFor="let stat of post.stats" class="stat">
+          <div ngClass="{{stat.statName}}circle">
+            <h6 ngClass={{stat.statName}}>{{ stat.statName | titlecase }}</h6>
+            <h5>{{ stat.statValue }}</h5>
+          </div>
+        </div>
       </div>
     </div>
     <div class="bot-row">
-      <div class="gapper-location" *ngIf="post.hasLocation">
+      <div class="gapper-location" *ngIf="post.hasLocation && post.locations">
         <div class="location-headline"><h5>Locations</h5></div>
         <div class="location-for">
-          <h5 *ngFor="let loc of post.locations">{{ loc.location }}</h5>
+          <h5 *ngFor="let loc of post.locations | slice:0:7 ">{{ loc.location }}</h5>
+          <div *ngIf="post.locations.length > 8" class="more-locations">
+            <h5>... and more</h5>
+          </div>
         </div>
       </div>
       <div *ngIf="!post.hasLocation">
