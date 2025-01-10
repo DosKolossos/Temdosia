@@ -140,11 +140,15 @@
             }
 
 
-                
+
         }
+
         >.bot-row {
             display: flex;
             flex: 1;
+            justify-content: flex-start;
+            width: 100%;
+
             >.gapper-location {
                 position: relative;
                 display: flex;
@@ -155,6 +159,7 @@
                 justify-content: flex-start;
                 align-items: flex-start;
                 background-color: red;
+                flex-wrap: wrap;
 
                 >.location-headline {
                     display: flex;
@@ -168,13 +173,20 @@
                         cursor: pointer;
                     }
                 }
-
-            }
                 >.location-for {
-                    display: flex;
-                    flex-wrap: wrap;
-                    flex: 1;
+                    position: relative;
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(49%, 1fr));
+                    grid-template-rows: auto auto;
+                    width: 250px;
+                    >h5 {
+                        margin-top: 2px !important;
+                        margin-bottom: 2px !important;
+                    }
                 }
+            }
+
+
         }
 
     }
