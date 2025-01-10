@@ -1,93 +1,180 @@
-
-
 .wrapper {
     display: flex;
     width: 100%;
     gap: 12px;
     flex-wrap: wrap;
+
     >.dataCollector {
-        gap: 24px;
         display: flex;
-        height: 55px;
+        height: 200px;
         align-items: center;
-        border: 5px solid black;
         border-radius: 4px 30px 30px 4px;
+        border: 10px solid rgb(113, 255, 85);
+        // border: 5px solid black;
+        // height: 55px;
         background-color: rgb(240, 240, 240);
-        width: 557px;
+        flex-direction: column;
+
         &:hover {
             transition: 0.9s ease-in-out;
             height: 200px;
             align-items: flex-start;
+
             border: 10px solid rgb(113, 255, 85);
-            >.portrait {
-                transition: 0.9s ease-in-out;
-                left: -8px;
-                top: -8px;
-                height: 100px;
-                width: 100px;
-                border: 10px solid rgb(113, 255, 85);
-                background-color: rgb(255, 255, 239);
+
+            >.top-row {
+                >.portrait {
+                    transition: 0.6s ease-out;
+                    height: 100px;
+                    width: 100px;
+                    border: 5px solid rgb(0, 0, 0);
+                    background-color: rgb(255, 255, 239);
+                    left: 0px;
+                    top: 24px;
+                }
             }
-        }
-        &:not(:hover) {
-            transition: 0.5s;
-            >.portrait {
-                transition: 0.5s ease-in-out;
-            }
-        }
-        img {
-            position: relative;
-            right: 5px;
-            display: flex;
-            width: 55px;
-            height: 55px;
-            border: solid black 5px;
-            border-radius: 4px;   
+
+            // >.mid-row {
+            //     display: flex;
+            // }
 
         }
-        >.gapper-number {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 20px;
-            h3 {
-                cursor: default;
+
+        &:not(:hover) {
+            transition: 0.5s;
+
+            >.top-row {
+                >.portrait {
+                    transition: 0.5s ease-in-out;
+                }
             }
         }
-        >.gapper-name {
+
+        >.top-row {
+            position: relative;
             display: flex;
-            justify-content: center;
+            gap: 24px;
             align-items: center;
-            margin-left: 8px;
+            justify-content: center;
+            width: 557px;
             height: 55px;
-            width: 240px;
-            h2 {
-                cursor: default;
-                margin: 0 0 0 8px;
+
+            .portrait {
+                position: relative;
+                display: flex;
+                // right: 16px;
+                // width: 55px;
+                // height: 55px;
+                border: solid black 5px;
+                border-radius: 4px;
+
+                // untendrunter löschen
+                height: 100px;
+                width: 100px;
+                left: 0px;
+                top: 24px;
+                // obendrüber löschen
+            }
+
+            >.gapper-number {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 20px;
+
+                h3 {
+                    cursor: default;
+                }
+            }
+
+            >.gapper-name {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-left: 8px;
+                height: 55px;
+                width: 240px;
+
+                h2 {
+                    cursor: default;
+                    margin: 0 0 0 8px;
+                }
+            }
+
+            >.gapper-types {
+                display: flex;
+                gap: 8px;
+                width: 130px;
+                justify-content: flex-end;
+                align-items: center;
+                scale: 0.5;
+
+                >img {
+                    border: none;
+                }
             }
         }
-        >.gapper-types {
+
+        >.mid-row {
             display: flex;
-            gap: 0px;
-            width: 130px;
-            justify-content: flex-end;
-            >img {
-                scale: 0.8;
-                border: none;
+            width: 100%;
+            height: 50px;
+            position: relative;
+
+            >.gapper-traits {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                left: 110px;
+                width: calc(50%);
+                justify-content: flex-start;
+                align-items: flex-start;
+                background-color: aquamarine;
+
+                >h5 {
+                    margin: 0;
+                    cursor: pointer;
+                    margin-left: 8px;
+                }
             }
+
+
+                
         }
-        >.gapper-traits {
+        >.bot-row {
             display: flex;
-            gap: 0;
-            flex-direction: column;
-            width: 150px;
-            height: 55px;
-            justify-content: center;
-            align-items: center;
-            >h4 {
-                margin: 0;
-                cursor: default;
+            flex: 1;
+            >.gapper-location {
+                position: relative;
+                display: flex;
+                flex-direction: row;
+                gap: 8px;
+                height: 100%;
+                flex: 1;
+                justify-content: flex-start;
+                align-items: flex-start;
+                background-color: red;
+
+                >.location-headline {
+                    display: flex;
+                    align-items: center;
+                    width: 60px;
+                    height: 100%;
+                    background-color: bisque;
+
+                    >h5 {
+                        margin: 0;
+                        cursor: pointer;
+                    }
+                }
+
             }
+                >.location-for {
+                    display: flex;
+                    flex-wrap: wrap;
+                    flex: 1;
+                }
         }
 
     }

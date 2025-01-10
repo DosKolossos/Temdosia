@@ -1,14 +1,35 @@
-  <div class="wrapper">
-    <div *ngFor="let post of data; trackBy: trackById" class="dataCollector">
+<div class="wrapper">
+  <div *ngFor="let post of data; trackBy: trackById" class="dataCollector">
+    <div class="top-row">
       <img [src]="post.portraitWikiUrl" alt="{{ post.name }}" class="portrait">
-      <div class="gapper-number"><h3>#{{ post.number }}</h3></div>
-      <div class="gapper-name"><h2>{{ post.name }}</h2></div>
+      <div class="gapper-number">
+        <h3>#{{ post.number }}</h3>
+      </div>
+      <div class="gapper-name">
+        <h2>{{ post.name }}</h2>
+      </div>
       <div class="gapper-types">
         <img *ngFor="let icon of post.typeIcons" [src]="icon" alt="Type Icon" class="type-icon">
       </div>
-      <!-- <div class="gapper-traits">
-        <h4 *ngFor="let trait of post.traits">{{trait}}</h4>
-      </div> -->
+    </div>
+    <div class="mid-row">
+      <div class="gapper-traits">
+        <h5 *ngFor="let trait of post.traits">{{trait}}</h5>
+      </div>
+      <div class="gapper-stats">
+
+      </div>
+    </div>
+    <div class="bot-row">
+      <div class="gapper-location" *ngIf="post.hasLocation">
+        <div class="location-headline"><h5>Locations</h5></div>
+        <div class="location-for">
+          <h5 *ngFor="let loc of post.locations">{{ loc.location }}</h5>
+        </div>
+      </div>
+      <div *ngIf="!post.hasLocation">
+        <h5>No locations available</h5>
+      </div>
     </div>
   </div>
-  
+</div>
