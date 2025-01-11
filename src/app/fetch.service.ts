@@ -12,6 +12,7 @@ export class FetchService {
   BASE_URL = 'https://temtem-api.mael.tech';
   ICON_BASE_URL = `${this.BASE_URL}/images/icons/types`;
 
+
   fetchData(): Observable<Temtem[]> {
     return this.httpClient.get<Temtem[]>(`${this.BASE_URL}/api/temtems`).pipe(
       map((temtemsData) =>
@@ -23,10 +24,13 @@ export class FetchService {
           hasLocation: !!temtem.locations && temtem.locations.length > 0,
           stats: Object.entries(temtem.stats || {}).map(([key, value]) => ({
             statName: key,
-            statValue: Number(value), // Sicherstellen, dass statValue als Zahl interpretiert wird
+            statValue: Number(value),
           })),
+          evolutionTree: temtem.evolution?.evolutionTree || [], // EvolutionTree abgreifen
+          evolves: temtem.evolution?.evolves || false, // Prüfen, ob es sich überhaupt entwickelt
         }))
       )
     );
   }
+  
 }

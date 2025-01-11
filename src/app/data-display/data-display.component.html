@@ -14,7 +14,7 @@
         <img *ngFor="let icon of post.typeIcons" [src]="icon" alt="Type Icon" class="type-icon">
       </div>
     </div>
-    <div class="mid-row">
+    <div class="mid-row fade-in-normal">
       <div class="gapper-traits">
         <h5 *ngFor="let trait of post.traits">{{trait}}</h5>
       </div>
@@ -27,18 +27,48 @@
         </div>
       </div>
     </div>
-    <div class="bot-row">
+    <div class="bot-row fade-in-normal">
       <div class="gapper-location" *ngIf="post.hasLocation && post.locations">
         <div class="location-headline"><h5>Locations</h5></div>
         <div class="location-for">
-          <h5 *ngFor="let loc of post.locations | slice:0:7 ">{{ loc.location }}</h5>
-          <div *ngIf="post.locations.length > 8" class="more-locations">
+          <h5 *ngFor="let loc of post.locations | slice:0:3 ">{{ loc.location }}</h5>
+          <div *ngIf="post.locations.length > 4" class="more-locations">
             <h5>... and more</h5>
           </div>
         </div>
       </div>
-      <div *ngIf="!post.hasLocation">
+      <div *ngIf="!post.hasLocation" class="no-location">
         <h5>No locations available</h5>
+      </div>
+      <!-- <div class="gapper-evolution-line">
+        <div class="evolution-column">
+          <img [src]="post.portraitWikiUrl" alt="{{ post.name }}" class="portrait">
+          <span>{{ post.name }}</span>
+        </div>
+        <div class="evolution-column">
+
+        </div>
+        <div class="evolution-column"></div>
+        <div class="evolution-column"></div>
+      </div> -->
+      <div class="gapper-evolution-line">
+        <div
+          *ngFor="let evo of post.evolutionTree"
+          class="evolution-column"
+        >
+          <img
+            [src]="evo?.portraitWikiUrl"
+            alt="{{ evo?.name }}"
+            class="portrait"
+          />
+          <span>{{ evo?.name }}</span>
+        </div>
+        <div
+          *ngIf="!post.evolutionTree || post.evolutionTree.length === 0"
+          class="no-evolution"
+        >
+          <h5>No evolution available</h5>
+        </div>
       </div>
     </div>
   </div>
