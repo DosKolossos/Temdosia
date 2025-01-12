@@ -52,24 +52,28 @@
         <div class="evolution-column"></div>
       </div> -->
       <div class="gapper-evolution-line">
-        <div
-          *ngFor="let evo of post.evolutionTree"
-          class="evolution-column"
-        >
-          <img
-            [src]="evo?.portraitWikiUrl"
-            alt="{{ evo?.name }}"
-            class="portrait"
-          />
-          <span>{{ evo?.name }}</span>
+        <!-- Prüfen, ob das Temtem eine Evolution hat -->
+        <div *ngIf="post.evolution?.evolutionTree.length > 0; else noEvolution">
+          <!-- EvolutionTree anzeigen -->
+          <div *ngFor="let evo of post.evolution.evolutionTree" class="evolution-column">
+            <img
+              [src]="evo.portraitWikiUrl || 'https://via.placeholder.com/50'"
+              alt="{{ evo.name }}"
+              class="portrait"
+            />
+            <span>{{ evo.name }}</span>
+          </div>
         </div>
-        <div
-          *ngIf="!post.evolutionTree || post.evolutionTree.length === 0"
-          class="no-evolution"
-        >
-          <h5>No evolution available</h5>
-        </div>
+        
+        <!-- Fallback: Keine Evolution -->
+        <ng-template #noEvolution>
+          <div class="no-evolution">
+            <h5>No evolution available</h5>
+          </div>
+        </ng-template>
       </div>
+      
+      
     </div>
   </div>
 </div>
