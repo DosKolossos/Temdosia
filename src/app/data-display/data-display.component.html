@@ -42,9 +42,11 @@
       </div>
       <div class="gapper-evolution-line">
         @if (post.evolution?.evolutionTree) {
-          <h1>post.evolution?.evolutionTree = true</h1>
+          @for (evo of post.evolution?.evolutionTree; track evo.name ){
+            <h5>Moin</h5>
+          }
         } @else if (!post.evolution?.evolutionTree) {
-          <h1>post.evolution?.evolutionTree = false</h1>
+          <h1>keine Evolution</h1>
 
         }
       

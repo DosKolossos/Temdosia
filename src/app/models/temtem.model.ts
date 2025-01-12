@@ -29,5 +29,4 @@ export interface Temtem {
   hasLocation?: boolean;
   stats: { statName: string; statValue: number }[];
   evolution?: Evolution,
-
 }
