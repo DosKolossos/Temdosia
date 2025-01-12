@@ -40,39 +40,13 @@
       <div *ngIf="!post.hasLocation" class="no-location">
         <h5>No locations available</h5>
       </div>
-      <!-- <div class="gapper-evolution-line">
-        <div class="evolution-column">
-          <img [src]="post.portraitWikiUrl" alt="{{ post.name }}" class="portrait">
-          <span>{{ post.name }}</span>
-        </div>
-        <div class="evolution-column">
-
-        </div>
-        <div class="evolution-column"></div>
-        <div class="evolution-column"></div>
-      </div> -->
       <div class="gapper-evolution-line">
-        <!-- Prüfen, ob das Temtem eine Evolution hat -->
-        <div *ngIf="post.evolution?.evolutionTree.length > 0; else noEvolution">
-          <!-- EvolutionTree anzeigen -->
-          <div *ngFor="let evo of post.evolution.evolutionTree" class="evolution-column">
-            <img
-              [src]="evo.portraitWikiUrl || 'https://via.placeholder.com/50'"
-              alt="{{ evo.name }}"
-              class="portrait"
-            />
-            <span>{{ evo.name }}</span>
-          </div>
-        </div>
-        
-        <!-- Fallback: Keine Evolution -->
-        <ng-template #noEvolution>
-          <div class="no-evolution">
-            <h5>No evolution available</h5>
-          </div>
-        </ng-template>
-      </div>
-      
+        @if (post.evolution?.evolutionTree) {
+          <h1>post.evolution?.evolutionTree = true</h1>
+        } @else if (!post.evolution?.evolutionTree) {
+          <h1>post.evolution?.evolutionTree = false</h1>
+
+        }
       
     </div>
   </div>

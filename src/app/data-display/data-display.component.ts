@@ -12,22 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
   templateUrl: './data-display.component.html',
   styleUrl: './data-display.component.scss',
 })
-// export class DataDisplayComponent implements OnInit {
-//   newFetch = inject(FetchService);
-//   data: Temtem[] = [];
 
-//   ngOnInit(): void {
-//     this.newFetch.fetchData().subscribe((temtems: Temtem[]) => {
-//       this.data = temtems;
-//       console.log(this.data);
-      
-//     });
-//   }
-
-//   trackById(index: number, item: Temtem): number {
-//     return item.number;
-//   }
-// }
 export class DataDisplayComponent implements OnInit {
   newFetch = inject(FetchService);
   data: Temtem[] = [];

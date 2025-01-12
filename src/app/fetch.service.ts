@@ -21,13 +21,10 @@ export class FetchService {
           typeIcons: temtem.types.map(
             (typeName) => `${this.ICON_BASE_URL}/${typeName}.png`
           ),
-          hasLocation: !!temtem.locations && temtem.locations.length > 0,
           stats: Object.entries(temtem.stats || {}).map(([key, value]) => ({
             statName: key,
             statValue: Number(value),
           })),
-          evolutionTree: temtem.evolution?.evolutionTree || [], // EvolutionTree abgreifen
-          evolves: temtem.evolution?.evolves || false, // Prüfen, ob es sich überhaupt entwickelt
         }))
       )
     );
