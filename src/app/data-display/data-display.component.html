@@ -1,55 +1,97 @@
 <div class="wrapper">
   <div class="wrapper">
-    <div
-      *ngFor="let post of data; trackBy: trackById" class="dataCollector">
-    <div class="top-row">
-      <img [src]="post.portraitWikiUrl" alt="{{ post.name }}" class="portrait">
-      <div class="gapper-number">
-        <h3>#{{ post.number }}</h3>
-      </div>
-      <div class="gapper-name">
-        <h2>{{ post.name }}</h2>
-      </div>
-      <div class="gapper-types">
-        <img *ngFor="let icon of post.typeIcons" [src]="icon" alt="Type Icon" class="type-icon">
-      </div>
-    </div>
-    <div class="mid-row fade-in-normal">
-      <div class="gapper-traits">
-        <h5 *ngFor="let trait of post.traits">{{trait}}</h5>
-      </div>
-      <div class="gapper-stats">
-        <div *ngFor="let stat of post.stats" class="stat">
-          <div ngClass="{{stat.statName}}circle">
-            <h6 ngClass={{stat.statName}}>{{ stat.statName | titlecase }}</h6>
-            <h5>{{ stat.statValue }}</h5>
-          </div>
+    <div *ngFor="let post of data; trackBy: trackById" class="dataCollector">
+      <div class="top-row">
+        <img [src]="post.portraitWikiUrl" alt="{{ post.name }}" class="portrait">
+        <div class="gapper-number">
+          <h3>#{{ post.number }}</h3>
         </div>
-      </div>
-    </div>
-    <div class="bot-row fade-in-normal">
-      <div class="gapper-location" *ngIf="post.hasLocation && post.locations">
-        <div class="location-headline"><h5>Locations</h5></div>
-        <div class="location-for">
-          <h5 *ngFor="let loc of post.locations | slice:0:3 ">{{ loc.location }}</h5>
-          <div *ngIf="post.locations.length > 4" class="more-locations">
-            <h5>... and more</h5>
-          </div>
+        <div class="gapper-name">
+          <h2>{{ post.name }}</h2>
         </div>
-      </div>
-      <div *ngIf="!post.hasLocation" class="no-location">
-        <h5>No locations available</h5>
-      </div>
-      <div class="gapper-evolution-line">
-        @if (post.evolution?.evolutionTree) {
-          @for (evo of post.evolution?.evolutionTree; track evo.name ){
-            <h5>Moin</h5>
-          }
-        } @else if (!post.evolution?.evolutionTree) {
-          <h1>keine Evolution</h1>
-
+        @if (post.types[1]) {
+        <div class="gapper-types right20">
+          <img *ngFor="let icon of post.typeIcons" [src]="icon" alt="Type Icon" class="type-icon">
+        </div>
         }
-      
+
+        @else {
+        <div class="gapper-types left20">
+          <img *ngFor="let icon of post.typeIcons" [src]="icon" alt="Type Icon" class="type-icon">
+        </div>
+        }
+
+
+      </div>
+      <div class="mid-row fade-in-normal">
+        <div class="gapper-traits">
+          <h5 *ngFor="let trait of post.traits">{{trait}}</h5>
+        </div>
+        <div class="gapper-stats">
+          <div *ngFor="let stat of post.stats" class="stat">
+            <div ngClass="{{stat.statName}}circle">
+              <h6 ngClass={{stat.statName}}>{{ stat.statName | titlecase }}</h6>
+              <h5 ngClass="stat{{stat.statValue}} total{{stat.statValue}}">{{ stat.statValue }}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bot-row fade-in-normal">
+
+        @if (!post.hasLocation) {
+          <div class="gapper-location">
+            <div class="no-location">
+              <h5>No locations available</h5>
+            </div>
+          </div>
+          }
+        @else if (post.locations) {
+        <div class="gapper-location">
+          <div class="location-headline">
+            <h5>Locations</h5>
+          </div>
+          <div class="column">
+
+            <div *ngFor="let loc of post.locations | slice:0:3" class="location-for">
+
+              {{ loc.location }}
+
+
+            </div>
+            <div *ngIf="post.locations.length > 3" class="more-locations">
+              <h5>... and more</h5>
+            </div>
+          </div>
+        </div>
+        } 
+
+
+        <div class="gapper-evolution-line">
+          @if (post.evolution?.evolutionTree) {
+          @for (evo of post.evolution?.evolutionTree; track evo.name ){
+          <div class="evolution-wrapper">
+            <div class="column">
+              <img [src]="getPortraitUrl(evo.number)" alt="{{ evo.name }}">
+              <h3>{{evo.name}}</h3>
+              @if (evo.level){
+              <h4>+{{evo.level}} Lv</h4>
+              } @else if (!evo.level){
+
+              <h4>Base</h4>
+              }
+            </div>
+          </div>
+          }
+          } @else if (!post.evolution?.evolutionTree) {
+          <div class="evolution-wrapper">
+            <div class="column">
+              <img [src]="post.portraitWikiUrl" alt="{{ post.name }}" srcset="">
+
+              <h4>Base</h4>
+            </div>
+          </div>
+          }
+
+        </div>
+      </div>
     </div>
-  </div>
-</div>

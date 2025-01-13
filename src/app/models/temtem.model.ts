@@ -29,4 +29,9 @@ export interface Temtem {
   hasLocation?: boolean;
   stats: { statName: string; statValue: number }[];
   evolution?: Evolution,
+  getImage?: getImage;
+}
+
+export interface getImage {
+  evoURL?: string;
 }

@@ -9,7 +9,8 @@
         align-items: center;
         border-radius: 4px 30px 30px 4px;
         border: 10px solid #1ad3d4;
-        height: 55px;
+        // height: 55px;
+        height: 300px;
         background-color: rgb(240, 240, 240);
         flex-direction: column;
 
@@ -21,6 +22,7 @@
             border: 10px solid rgb(113, 255, 85);
 
             >.top-row {
+
                 >.portrait {
                     transition: 0.6s ease-out;
                     height: 100px;
@@ -55,61 +57,70 @@
         >.top-row {
             position: relative;
             display: flex;
-            gap: 24px;
             align-items: center;
             justify-content: center;
             width: 557px;
-            height: 55px;
+            height: 69px;
+
+            >.left20 {
+                position: relative;
+                left: 20px !important;
+            }
+
+            >.right20 {
+                position: relative;
+                right: 20px !important;
+            }
 
             .portrait {
                 position: relative;
                 display: flex;
-                right: 16px;
-                width: 55px;
-                height: 55px;
+                // right: 16px;
+                width: 100px;
+                height: 100px;
+                top: 20px;
+                // width: 55px;
+                // height: 55px;
                 border: solid black 5px;
                 border-radius: 4px;
-
-                // untendrunter löschen
-                // height: 100px;
-                // width: 100px;
-                // left: 0px;
-                // top: 24px;
-                // obendrüber löschen
             }
 
             >.gapper-number {
                 display: flex;
-                justify-content: center;
+                justify-content: flex-start;
+                position: relative;
+                left: 5px;
                 align-items: center;
-                width: 20px;
+                min-width: 135px;
 
                 h3 {
                     cursor: default;
+                    font-size: xx-large;
                 }
             }
 
             >.gapper-name {
                 display: flex;
-                justify-content: center;
+                justify-content: flex-start;
                 align-items: center;
-                margin-left: 8px;
+                // margin-left: 8px;
                 height: 55px;
-                width: 240px;
+                min-width: 195px;
 
                 h2 {
                     cursor: default;
-                    margin: 0 0 0 8px;
+                    margin: 0 0 0 0px;
                 }
             }
 
             >.gapper-types {
+                position: relative;
                 display: flex;
-                gap: 8px;
                 width: 130px;
-                justify-content: flex-end;
+                justify-content: center;
                 align-items: center;
                 scale: 0.5;
+                left: 9px;
 
                 >img {
                     border: none;
@@ -118,53 +129,53 @@
         }
 
         >.mid-row {
-            display: none;
-            opacity: 0;
+            display: flex;
+            opacity: 1;
             width: 100%;
             height: 50px;
             position: relative;
+            left: 115px;
+            gap: 10px;
 
             >.gapper-traits {
                 position: relative;
                 display: flex;
                 flex-direction: column;
                 gap: 8px;
-                left: 110px;
-                width: calc(50%);
+                width: 120px;
                 justify-content: flex-start;
                 align-items: flex-start;
 
                 >h5 {
                     margin: 0;
                     cursor: pointer;
-                    margin-left: 8px;
+                    margin-left: 1px;
                 }
             }
 
             >.gapper-stats {
                 display: flex;
-                align-items: center;
+                align-items: flex-start;
+                justify-content: flex-start;
                 position: relative;
-                width: fit-content;
+                gap: 4px;
 
                 >.stat {
                     display: flex;
                     position: relative;
                     flex-direction: column;
                     align-items: center;
-                    border: 2px solid black;
-                    width: 34px;
+                    justify-content: flex-start;
+                    width: 30px;
 
                     >.totalcircle {
                         display: flex;
                         z-index: 10;
-                        position: absolute;
-                        top: 150px;
-                        right: 24px;
-                        height: 70px;
-                        width: 70px;
-                        background-color: orange;
-                        border-radius: 50%;
+                        position: relative;
+                        left: 20px;
+                        bottom: 4px;
+                        height: 45px;
+                        width: 45px;
                         display: inline-block;
 
                         h5 {
@@ -173,10 +184,8 @@
                             position: relative;
                             justify-content: center;
                             margin: 0;
-                            font-size: 60px;
-                            bottom: 30px;
-                            color: white;
-                            -webkit-text-stroke: 3px black;
+                            font-size: 32px;
+                            bottom: 8px;
                         }
 
                         h6 {
@@ -184,12 +193,9 @@
                             justify-content: center;
                             position: relative;
                             margin: 0;
-                            font-size: 20px;
-                            bottom: 8px;
-                            color: white;
-                            -webkit-text-stroke: 1px black;
+                            font-size: 14px;
+                            color: black;
                         }
-
                     }
 
                     >.totalheight {
@@ -207,13 +213,16 @@
                         align-items: center;
                         flex-direction: column;
 
+
                         h5 {
                             margin: 0;
+                            font-size: x-large;
 
                         }
 
                         h6 {
                             margin: 0;
+                            font-size: 10px;
                         }
                     }
 
@@ -224,8 +233,8 @@
         }
 
         >.bot-row {
-            display: none;
-            opacity: 0;
+            display: flex;
+            opacity: 1;
             flex: 1;
             justify-content: flex-start;
             width: 100%;
@@ -237,10 +246,10 @@
                 gap: 8px;
                 height: 100%;
                 width: fit-content;
+                min-width: 239.09px;
                 justify-content: flex-start;
                 align-items: center;
                 flex-wrap: wrap;
-
                 >.location-headline {
                     display: flex;
                     align-items: center;
@@ -254,13 +263,12 @@
                     }
                 }
 
-                >.location-for {
-                    position: relative;
-                    display: inline-grid;
-                    grid-template-columns: auto;
-                    row-gap: 8px;
-                    column-gap: 8px;
-                    .more-locations {
+                >.column {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1;
+                    gap: 8px;
+                    >.more-locations {
                         display: flex;
                         align-items: center;
 
@@ -272,42 +280,85 @@
                             width: 150px;
                         }
                     }
+                    >.location-for {
+                        display: flex;
+                        flex-direction: column;
+                        position: relative;
+                        font-weight: bold;
 
-                    >h5 {
-                        cursor: pointer;
-                        margin-top: 2px !important;
-                        margin-bottom: 2px !important;
-                        width: 150px;
+
+
+                        >h5 {
+                            cursor: pointer;
+                            margin-top: 2px !important;
+                            margin-bottom: 2px !important;
+                            width: 150px;
+                        }
                     }
+                }
+                >.no-location {
+                    display: flex;
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    justify-content: center;
+                    align-items: center;
                 }
             }
 
-            >.no-location {
-                display: flex;
-                position: relative;
-                width: 50%;
-                height: 100%;
-                justify-content: center;
-                align-items: center;
-                background-color: red;
-            }
+
+
             >.gapper-evolution-line {
                 display: flex;
                 position: relative;
                 flex-direction: row;
-                background-color: greenyellow;
                 align-items: center;
-                gap: 8px;
+                justify-content: center;
+                gap: 4px;
                 flex: 1;
                 height: 100%;
-                >.evolution-column {
+
+                >.evolution-wrapper {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    width: 75px;
+                    justify-content: center;
+                    width: 30%;
                     height: 100%;
-                    border: 2px black solid;
-                    background-color: cadetblue;
+
+                    // border: 2px black solid;
+                    >.column {
+                        display: flex;
+                        position: relative;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 8px;
+
+                        >img {
+                            width: 40px;
+                            height: auto;
+                            border: solid 2px black;
+                            border-radius: 30px;
+
+                            &:hover {
+                                background-color: white;
+                                transition: 1s ease-in;
+                            }
+
+                            &:not(:hover) {
+                                transition: 1s ease-out;
+
+                            }
+                        }
+
+                        >h3 {
+                            margin: 0;
+                        }
+
+                        >h4 {
+                            margin: 0;
+                        }
+                    }
                 }
             }
         }
@@ -334,4 +385,220 @@
 
 .fade-in-normal {
     animation: fade-in-normal 2s ease-in 1s 1 normal none;
+}
+
+.stat74,
+.stat90,
+.stat84,
+.stat85,
+.stat82,
+.stat81,
+.stat76,
+.stat93,
+.stat77,
+.stat79,
+.stat75,
+.stat78,
+.stat110,
+.stat95,
+.stat87,
+.stat91,
+.stat89,
+.stat80,
+.stat88,
+.stat83,
+.stat86,
+.stat92,
+.stat100,
+.stat96,
+.stat125,
+.stat105,
+.stat111,
+.stat101,
+.stat103,
+.total476,
+.total477,
+.total481,
+.total482,
+.total483,
+.total496 {
+    color: greenyellow;
+    -webkit-text-stroke: black 0.5px;
+}
+
+.stat65,
+.stat72,
+.stat66,
+.stat64,
+.stat67,
+.stat73,
+.stat70,
+.stat71,
+.stat68,
+.stat69,
+.total450,
+.total451,
+.total452,
+.total453,
+.total454,
+.total456,
+.total457,
+.total458,
+.total459,
+.total460,
+.total461,
+.total462,
+.total463,
+.total464,
+.total465,
+.total467,
+.total468,
+.total469,
+.total470,
+.total471,
+.total472,
+.total474 {
+    color: #4DD0E1;
+    -webkit-text-stroke: black 0.5px;
+}
+
+.total428,
+.total429,
+.total431,
+.total432,
+.total433,
+.total439,
+.total442,
+.total443,
+.total444,
+.total445,
+.total447,
+.total448,
+.total449,
+.stat44,
+.stat50,
+.stat49,
+.stat52,
+.stat63,
+.stat57,
+.stat60,
+.stat59,
+.stat58,
+.stat62,
+.stat54,
+.stat56,
+.stat55,
+.stat48,
+.stat61,
+.stat51,
+.stat45,
+.stat47,
+.stat53,
+.stat46 {
+    color: #FFD54F;
+    -webkit-text-stroke: black 0.5px;
+}
+
+.total375,
+.total377,
+.total382,
+.total383,
+.total384,
+.total388,
+.total391,
+.total394,
+.total405,
+.total409,
+.total410,
+.total411,
+.total418,
+.total423,
+.total424,
+.stat44,
+.stat50,
+.stat49,
+.stat52,
+.stat48,
+.stat51,
+.stat45,
+.stat47,
+.stat53,
+.stat46 {
+    color: #FFB74D;
+    -webkit-text-stroke: black 0.5px;
+}
+
+.total224,
+.total253,
+.total263,
+.total292,
+.total302,
+.total304,
+.total306,
+.total310,
+.total312,
+.total315,
+.total317,
+.total318,
+.total320,
+.total321,
+.total328,
+.total329,
+.total330,
+.total332,
+.total333,
+.total335,
+.total336,
+.total339,
+.total340,
+.total342,
+.total346,
+.total348,
+.total349,
+.total350,
+.total351,
+.total352,
+.total353,
+.total355,
+.total356,
+.total357,
+.total358,
+.total359,
+.total362,
+.total363,
+.total364,
+.total370,
+.total372,
+.total373,
+.total374,
+.stat35,
+.stat32,
+.stat31,
+.stat42,
+.stat38,
+.stat39,
+.stat40,
+.stat18,
+.stat36,
+.stat41,
+.stat43,
+.stat30,
+.stat37,
+.stat22,
+.stat27,
+.stat34,
+.stat20,
+.stat24,
+.stat29,
+.stat23,
+.stat33,
+.stat10,
+.stat25,
+.stat26,
+.stat21,
+.stat12,
+.stat28 {
+    color: #F44336;
+    -webkit-text-stroke: black 0.5px;
+
 }
