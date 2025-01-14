@@ -68,18 +68,18 @@
       </ng-template>
 
 
-        <div class="gapper-evolution-line">
+        <div class="gapper-evolution-line class{{post.name | lowercase}}{{post.number}}">
           @if (post.evolution?.evolutionTree) {
           @for (evo of post.evolution?.evolutionTree; track evo.name ){
-          <div class="evolution-wrapper">
+          <div class="evolution-wrapper stage-{{evo.stage}}">
             <div class="column">
-              <img [src]="getPortraitUrl(evo.number)" alt="{{ evo.name }}">
-              <h3>{{evo.name}}</h3>
+              <img [src]="getPortraitUrl(evo.number)" alt="{{ evo.name }}" class="{{post.name}}{{evo.stage}}">
+              <h3 class="name{{post.name}}{{post.number}}">{{evo.name}}</h3>
               @if (evo.level){
               <h4>+{{evo.level}} @if (evo.level == 1000) {TV} @else {Lv}</h4>
               } @else if (!evo.level){
 
-              <h4>Base</h4>
+              <h4 class="evolevel{{post.name}}{{post.number}}">Base</h4>
               }
             </div>
           </div>
@@ -88,12 +88,14 @@
           <div class="evolution-wrapper">
             <div class="column">
               <img [src]="post.portraitWikiUrl" alt="{{ post.name }}" srcset="">
-
+              <h3>{{post.name}}</h3>
               <h4>Base</h4>
             </div>
           </div>
           }
 
         </div>
+        
+        
       </div>
     </div>

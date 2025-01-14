@@ -1,0 +1,44 @@
+.header-wrapper {
+    display: flex;
+    height: 100px;
+    width: 100%;
+    position: relative;
+    max-width: 1440px;
+    justify-content: center;
+    
+    >.navbar {
+        position: relative;
+        height: 100px;
+        display: flex;
+        flex-direction: row;
+        max-width: 50%;
+        align-items: flex-end;
+        justify-content: center;
+
+        >div {
+            display: flex;
+            padding: 4px;
+            min-width: 80px;
+            justify-content: center;
+            height: fit-content;
+            background-color: #f27000;
+            // padding-right: 20px;
+            cursor: pointer;
+
+            &:hover {
+                transition: 1s;
+                background-color: #f7b072;
+            }
+            &:not(:hover) {
+                transition: 0.5s;
+            }
+        }
+        >input {
+            display: flex;
+            position: relative;
+            width: 100px;
+            left: 10px;
+        }
+
+    }
+}

@@ -37,5 +37,6 @@ export class DataDisplayComponent implements OnInit {
     const temtem = this.data.find((t) => t.number === number);
     return temtem ? temtem.portraitWikiUrl : '';
   }
+  
 
 }
