@@ -1,5 +1,6 @@
 .header-wrapper {
     display: flex;
+    position: sticky;
     height: 100px;
     width: 100%;
     position: relative;
@@ -41,4 +42,13 @@
         }
 
     }
+}
+
+.search-results {
+    display: fixed;
+    width: max-content;
+    height: max-content;
+    z-index: 999;
+    
+
 }

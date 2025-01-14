@@ -1,7 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Rubik';
     background-color: rgb(41, 41, 41);
     margin: 0;
     display: block;
 }
+
+@font-face {
+    font-family: "Rubik";
+    src: 
+      local("Rubik"),
+      url("../src/assets/fonts/Rubik-VariableFont_wght.ttf") format("truetype-variations"),
+      url("../src/assets/fonts/Rubik-Italic-VariableFont_wght.ttf") format("woff2-variations");
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+  

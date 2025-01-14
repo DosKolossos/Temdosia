@@ -4,6 +4,17 @@
         <div>Temtem</div>
         <div>Ranks</div>
         <div>Locations</div>
-        <input type="text" placeholder="Search...">
+        <input type="text" placeholder="Search..." (input)="onSearch($event)" />
     </div>
-</div>
+    <div class="search-results" *ngIf="searchResults.length > 0">
+        <h3>Search Results:</h3>
+        <ul>
+          <li *ngFor="let result of searchResults">
+            <h4>{{ result.name }}</h4>
+            <p>{{ result.type }}</p>
+            <p *ngIf="result.location">Location: {{ result.location }}</p>
+            <p *ngIf="result.technique">Technique: {{ result.technique }}</p>
+            <p *ngIf="result.trait">Trait: {{ result.trait }}</p>
+          </li>
+        </ul>
+      </div>
