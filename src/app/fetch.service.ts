@@ -25,6 +25,7 @@ export class FetchService {
             statName: key,
             statValue: Number(value),
           })),
+          hasLocation: !!temtem.locations && temtem.locations.length > 0, // Setzt hasLocation basierend auf dem locations-Array
         }))
       )
     );

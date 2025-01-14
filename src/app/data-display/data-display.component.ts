@@ -1,14 +1,14 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { FetchService } from '../fetch.service';
-import { Temtem, getImage } from '../models/temtem.model'; // Importiere das Temtem-Interface
+import { Temtem } from '../models/temtem.model'; // Importiere das Temtem-Interface
 import { HttpClientModule } from '@angular/common/http';
 
 
 @Component({
   selector: 'app-data-display',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, NgIf],
   templateUrl: './data-display.component.html',
   styleUrl: './data-display.component.scss',
 })
@@ -18,6 +18,7 @@ export class DataDisplayComponent implements OnInit {
   data: Temtem[] = [];
 
   ngOnInit(): void {
+    
     this.newFetch.fetchData().subscribe((temtems: Temtem[]) => {
       this.data = temtems;
       // Logge alle Stat-Daten

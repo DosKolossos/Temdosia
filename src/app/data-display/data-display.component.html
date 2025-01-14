@@ -37,33 +37,35 @@
         </div>
       </div>
       <div class="bot-row fade-in-normal">
-
-        @if (!post.hasLocation) {
-          <div class="gapper-location">
+        
+          <div *ngIf="!post.hasLocation || !post.locations?.length; else locationTrue" class="gapper-location">
             <div class="no-location">
               <h5>No locations available</h5>
             </div>
           </div>
-          }
-        @else if (post.locations) {
+          
+        <ng-template #locationTrue>
         <div class="gapper-location">
           <div class="location-headline">
             <h5>Locations</h5>
           </div>
           <div class="column">
 
-            <div *ngFor="let loc of post.locations | slice:0:3" class="location-for">
+            <div *ngFor="let loc of post.locations?.slice(0, 3)" class="location-for">
 
               {{ loc.location }}
 
 
             </div>
-            <div *ngIf="post.locations.length > 3" class="more-locations">
-              <h5>... and more</h5>
-            </div>
+            
+              <div *ngIf="post.locations && post.locations.length > 3" class="more-locations">
+                <h5>... and more</h5>
+              </div>
+            
+
           </div>
         </div>
-        } 
+      </ng-template>
 
 
         <div class="gapper-evolution-line">
@@ -74,7 +76,7 @@
               <img [src]="getPortraitUrl(evo.number)" alt="{{ evo.name }}">
               <h3>{{evo.name}}</h3>
               @if (evo.level){
-              <h4>+{{evo.level}} Lv</h4>
+              <h4>+{{evo.level}} @if (evo.level == 1000) {TV} @else {Lv}</h4>
               } @else if (!evo.level){
 
               <h4>Base</h4>
