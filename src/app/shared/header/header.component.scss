@@ -45,10 +45,13 @@
 }
 
 .search-results {
-    display: fixed;
-    width: max-content;
+    display: flex;
+    position: absolute;
+    top: 120px;
+    justify-content: center;
+    width: 600px;
     height: max-content;
     z-index: 999;
-    
+    background-color: #f27000;
 
 }

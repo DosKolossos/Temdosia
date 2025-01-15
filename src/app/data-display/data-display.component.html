@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper" (click)="closeSearchResults()">
   <div class="wrapper">
     <div *ngFor="let post of data; trackBy: trackById" class="dataCollector">
       <div class="top-row">
@@ -98,4 +98,16 @@
         
         
       </div>
+    </div>
+
+    <div *ngIf="searchResults.length > 0">
+      <h3>Search Results:</h3>
+      <ul>
+        <li *ngFor="let result of searchResults">
+          <h4>{{ result.name }}</h4>
+          <p>{{ result.type }}</p>
+          <p *ngIf="result.location">Location: {{ result.location }}</p>
+          <p *ngIf="result.trait">Trait: {{ result.trait }}</p>
+        </li>
+      </ul>
     </div>

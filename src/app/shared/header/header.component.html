@@ -1,4 +1,4 @@
-<div class="header-wrapper">
+<div class="header-wrapper" (click)="closeSearchResults()">
     <div class="navbar">
         <div>Home</div>
         <div>Temtem</div>
@@ -6,7 +6,8 @@
         <div>Locations</div>
         <input type="text" placeholder="Search..." (input)="onSearch($event)" />
     </div>
-    <div class="search-results" *ngIf="searchResults.length > 0">
+</div>
+    <div class="search-results" *ngIf="searchResults.length > 0" >
         <h3>Search Results:</h3>
         <ul>
           <li *ngFor="let result of searchResults">
