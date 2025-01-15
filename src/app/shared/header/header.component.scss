@@ -89,8 +89,20 @@
                 >img {
                     height: 32px;
                     width: 32px;
+                    border-radius: 30px;
+                    border: solid 2px black;
+                    background-color: whitesmoke;
+                }
+                >.type {
+                    display: flex;
+                    align-items: center;
+                    >img {
+                        height: 24px;
+                        width: 24px;
+                    }
                 }
             }
+
         }
     }
 }

@@ -34,7 +34,6 @@ export class DataDisplayComponent implements OnInit {
       });
     });
     this.sharedService.searchResults$.subscribe((results) => {
-      console.log('Empfangene Suchergebnisse im DataDisplayComponent:', results);
       this.searchResults = results;
     });
   }

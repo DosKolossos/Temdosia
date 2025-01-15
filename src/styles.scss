@@ -17,3 +17,29 @@ body {
     font-style: normal;
   }
   
+  /* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  // * {
+  //   scrollbar-width: 10px;
+  //   scrollbar-color: #f27000 #292929;
+  //   border-radius: 30px;
+  // }
+
+  /* Chrome, Edge, and Safari */
+  ::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 30px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #292929;
+    border-radius: 30px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #f27000;
+    border-radius: 30px;
+    border: 1px solid;
+    overflow: hidden;
+
+  }

@@ -15,8 +15,14 @@ export class HeaderComponent implements OnInit {
 constructor(private sharedService: SharedService){}
 
   data: Temtem[] = []; // Hier sind alle Temtem-Daten
-  searchResults: { name: string; type: string; location?: string; technique?: string; trait?: string; icon: string}[] = [];
-  // searchResults: any[] = []; // Hier die fehlende Eigenschaft hinzufügen
+  searchResults: {
+    name: string;
+    types: { name: string; icon: string }[]; // Typen mit Namen und Icons
+    location?: string;
+    technique?: string;
+    trait?: string;
+    icon: string; // Haupt-Icon des Temtems
+  }[] = [];
 
   fetchService = inject(FetchService); // Inject FetchService
 
@@ -42,7 +48,10 @@ constructor(private sharedService: SharedService){}
         )
         .map((temtem) => ({
           name: temtem.name,
-          type: temtem.types.join(', '),
+          types: temtem.types.map((type, index) => ({
+            name: type,
+            icon: temtem.typeIcons?.[index] || '' // Typ-Icon zuweisen
+          })),
           location: temtem.locations?.map((loc) => loc.location).join(', '),
           trait: temtem.traits.join(', '),
           icon: temtem.portraitWikiUrl // Icon-URL hinzufügen

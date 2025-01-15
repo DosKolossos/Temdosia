@@ -1,19 +1,25 @@
 <div class="header-wrapper" (click)="closeSearchResults()">
-    <div class="navbar">
-        <div>Home</div>
-        <div>Temtem</div>
-        <div>Ranks</div>
-        <div>Locations</div>
-        <input type="text" placeholder="Search..." (input)="onSearch($event)" />
-    </div>
+  <div class="navbar">
+    <div>Home</div>
+    <div>Temtem</div>
+    <div>Ranks</div>
+    <div>Locations</div>
+    <input type="text" placeholder="Search..." (input)="onSearch($event)" />
+  </div>
 </div>
-    <div class="search-results" *ngIf="searchResults.length > 0" >
-        <h3>Search Results:</h3>
-        <div class="search-results-entrys">
-          <div class="single-entry" *ngFor="let result of searchResults">
-            <div class="single-element"><img [src]="result.icon" alt="{{ result.name }}" class="result-icon">{{ result.name }}</div>
-            <div class="single-element">{{ result.type }}</div>
-            <div class="single-element">{{ result.trait }}</div>
-          </div>
-        </div>
+<div class="search-results" *ngIf="searchResults.length > 0">
+  <h3>Search Results:</h3>
+  <div class="search-results-entrys">
+    <div class="single-entry" *ngFor="let result of searchResults">
+      <div class="single-element"><img [src]="result.icon" alt="{{ result.name }}" class="result-icon">{{ result.name }}
       </div>
+      <div class="single-element">
+        <span *ngFor="let type of result.types" class="type">
+          {{ type.name }}
+          <img [src]="type.icon" alt="{{ type.name }} icon" class="type-icon">
+        </span>
+      </div>
+      <div class="single-element">{{ result.trait }}</div>
+    </div>
+  </div>
+</div>
