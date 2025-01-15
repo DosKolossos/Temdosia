@@ -9,13 +9,11 @@
 </div>
     <div class="search-results" *ngIf="searchResults.length > 0" >
         <h3>Search Results:</h3>
-        <ul>
-          <li *ngFor="let result of searchResults">
-            <h4>{{ result.name }}</h4>
-            <p>{{ result.type }}</p>
-            <p *ngIf="result.location">Location: {{ result.location }}</p>
-            <p *ngIf="result.technique">Technique: {{ result.technique }}</p>
-            <p *ngIf="result.trait">Trait: {{ result.trait }}</p>
-          </li>
-        </ul>
+        <div class="search-results-entrys">
+          <div class="single-entry" *ngFor="let result of searchResults">
+            <div class="single-element"><img [src]="result.icon" alt="{{ result.name }}" class="result-icon">{{ result.name }}</div>
+            <div class="single-element">{{ result.type }}</div>
+            <div class="single-element">{{ result.trait }}</div>
+          </div>
+        </div>
       </div>
