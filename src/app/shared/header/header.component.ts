@@ -22,6 +22,7 @@ constructor(private sharedService: SharedService){}
     location?: string;
     technique?: string;
     trait?: string;
+    number: number;
     icon: string; // Haupt-Icon des Temtems
   }[] = [];
 
@@ -47,7 +48,7 @@ constructor(private sharedService: SharedService){}
           temtem.name.toLowerCase().includes(input) || // Name durchsuchen
           temtem.types.some((type) => type.toLowerCase().includes(input)) || // Typen durchsuchen
           temtem.traits.some((trait) => trait.toLowerCase().includes(input)) || // Traits durchsuchen
-          temtem.locations?.some((loc) => loc.location.toLowerCase().includes(input)) // Locations durchsuchen
+          temtem.locations?.some((loc) => loc.location.toLowerCase().includes(input))// Locations durchsuchen
         )
         .map((temtem) => ({
           name: temtem.name,
@@ -57,7 +58,8 @@ constructor(private sharedService: SharedService){}
           })),
           location: temtem.locations?.map((loc) => loc.location).join(', '),
           trait: temtem.traits.join(', '),
-          icon: temtem.portraitWikiUrl // Icon-URL hinzufügen
+          icon: temtem.portraitWikiUrl, // Icon-URL hinzufügen
+          number: temtem.number,
         }));
       
       this.sharedService.updateSearchResults(filteredResults); // Ergebnisse an SharedService weitergeben
@@ -67,8 +69,10 @@ constructor(private sharedService: SharedService){}
     }
   }
 
-  onTemtemClick(temtemName: string): void {
-    this.fetchService.getTemtemByName(temtemName).subscribe({
+  onTemtemClick(number: number): void {
+    console.log(number);
+    
+    this.fetchService.getTemtemByName(number).subscribe({
       next: (temtem) => {
         console.log('Temtem gefunden:', temtem);
       },
@@ -77,8 +81,7 @@ constructor(private sharedService: SharedService){}
       }
     });
   }
-  
-  
+    
     closeSearchResults(): void {
       this.sharedService.clearSearchResults();
     }

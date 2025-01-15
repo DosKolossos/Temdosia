@@ -1,7 +1,7 @@
 <div class="wrapper" (click)="closeSearchResults()">
   <div class="wrapper">
-    <div *ngFor="let post of data; trackBy: trackById" class="dataCollector">
-      <div class="top-row">
+    <div *ngFor="let post of data; let i = index; trackBy: trackById" class="dataCollector">
+      <div class="top-row" (mouseenter)="scroll300px(i)">
         <img [src]="post.portraitWikiUrl" alt="{{ post.name }}" class="portrait">
         <div class="gapper-number">
           <h3>#{{ post.number }}</h3>

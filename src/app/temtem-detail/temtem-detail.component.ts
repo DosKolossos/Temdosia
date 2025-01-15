@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Temtem } from '../models/temtem.model'; // Dein Temtem-Interface
-import { FetchService } from '../fetch.service'; // Datenservice
+import { Temtem } from '../models/temtem.model';
+import { FetchService } from '../fetch.service'; 
 import { CommonModule } from '@angular/common';
 
 
@@ -14,7 +14,6 @@ import { CommonModule } from '@angular/common';
 })
 export class TemtemDetailComponent implements OnInit {
   temtem: Temtem | null = null;
-  // temtem: any;
   errorMessage: string | null = null;
 
   constructor(
@@ -24,18 +23,11 @@ export class TemtemDetailComponent implements OnInit {
 
   ) {}
 
-  // ngOnInit(): void {
-  //   const name = this.route.snapshot.paramMap.get('name');
-  //   if (name) {
-  //     this.fetchService.getTemtemByName(name).subscribe((data) => {
-  //       this.temtem = data;
-  //     });
-  //   }
-  // }
   ngOnInit(): void {
     const name = this.route.snapshot.paramMap.get('name');
+    const number = Number(name)
     if (name) {
-      this.fetchService.getTemtemByName(name).subscribe({
+      this.fetchService.getTemtemByName(number).subscribe({
         next: (data) => {
           this.temtem = data;
           this.errorMessage = null;

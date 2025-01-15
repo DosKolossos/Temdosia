@@ -17,9 +17,9 @@ export class FetchService {
   constructor(private http: HttpClient) {}
 
 
-  getTemtemByName(name: string): Observable<Temtem> {
-    const normalizedName = name.trim().toLowerCase();
-    return this.http.get<Temtem>(`${this.apiUrl}/${normalizedName}`).pipe(
+  getTemtemByName(name: number): Observable<Temtem> {
+
+    return this.http.get<Temtem>(`${this.apiUrl}/${name}`).pipe(
       catchError((error) => {
         console.error(`Temtem ${name} not found:`, error);
         return throwError(() => new Error(`Temtem ${name} not found`));

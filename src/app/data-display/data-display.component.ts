@@ -52,5 +52,15 @@ export class DataDisplayComponent implements OnInit {
     return temtem ? temtem.portraitWikiUrl : '';
   }
 
-
+  scroll300px(index: number): void {
+    const totalItems = this.data.length; // Anzahl der Temtems
+    if (index >= totalItems - 3) { // Prüfen, ob es eines der letzten drei Temtems ist
+      setTimeout(() => {
+        window.scrollBy({
+          top: 300, // Scrollt 300px nach unten
+          behavior: 'smooth', // Weicher Scroll-Effekt
+        });
+      }, 1000); // Verzögerung, um sicherzustellen, dass die volle Höhe erreicht ist
+    }
+  }
 }
