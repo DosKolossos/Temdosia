@@ -66,6 +66,17 @@ constructor(private sharedService: SharedService){}
       this.sharedService.clearSearchResults();
     }
   }
+
+  onTemtemClick(temtemName: string): void {
+    this.fetchService.getTemtemByName(temtemName).subscribe({
+      next: (temtem) => {
+        console.log('Temtem gefunden:', temtem);
+      },
+      error: (err) => {
+        console.error('Fehler beim Abrufen des Temtems:', err);
+      }
+    });
+  }
   
   
     closeSearchResults(): void {

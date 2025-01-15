@@ -1,5 +1,10 @@
 
-  <p>Temtem-detail works!</p>
+<div *ngIf="errorMessage; else temtemContent">
+  <h1>{{ errorMessage }}</h1>
+  <p>Redirecting to Temtem list...</p>
+</div>
+
+<ng-template #temtemContent>
   <div *ngIf="temtem; else loading">
     <h1>{{ temtem.name }}</h1>
     <img [src]="temtem.portraitWikiUrl" alt="{{ temtem.name }}">
@@ -9,5 +14,9 @@
   <ng-template #loading>
     <p>Loading...</p>
   </ng-template>
+</ng-template>
   
+  
+
+
   

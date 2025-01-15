@@ -44,6 +44,14 @@ body {
 
   }
 
+  router-outlet {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    top: 110px;
+    margin-left: 4px;
+  }
+
   app-data-display {
     display: flex;
     position: relative;

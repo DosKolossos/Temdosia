@@ -1,8 +1,9 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { Temtem } from './models/temtem.model'; // Importiere das Temtem-Interface
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,14 +12,22 @@ export class FetchService {
   httpClient = inject(HttpClient);
   BASE_URL = 'https://temtem-api.mael.tech';
   ICON_BASE_URL = `${this.BASE_URL}/images/icons/types`;
-  private apiUrl = 'https://temtem-api.mael.tech/api/temtems'; // Passe die URL an
+  private apiUrl = 'https://temtem-api.mael.tech/api/temtems';
 
   constructor(private http: HttpClient) {}
 
 
   getTemtemByName(name: string): Observable<Temtem> {
-    return this.http.get<Temtem>(`${this.apiUrl}/${name}`);
+    const normalizedName = name.trim().toLowerCase();
+    return this.http.get<Temtem>(`${this.apiUrl}/${normalizedName}`).pipe(
+      catchError((error) => {
+        console.error(`Temtem ${name} not found:`, error);
+        return throwError(() => new Error(`Temtem ${name} not found`));
+      })
+    );
   }
+  
+  
 
   fetchData(): Observable<Temtem[]> {
     return this.httpClient.get<Temtem[]>(`${this.BASE_URL}/api/temtems`).pipe(
