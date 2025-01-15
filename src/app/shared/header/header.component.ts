@@ -3,13 +3,14 @@ import { Temtem } from '../../models/temtem.model';
 import { CommonModule } from '@angular/common';
 import { FetchService } from '../../fetch.service';
 import { SharedService } from '../../shared/shared.service';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule, RouterLink]
 })
 export class HeaderComponent implements OnInit {
 constructor(private sharedService: SharedService){}

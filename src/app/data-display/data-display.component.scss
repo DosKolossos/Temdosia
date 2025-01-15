@@ -598,11 +598,11 @@
 
 }
 
-.stage-2,
-.stage-4,
-.stage-6,
-.stage-8,
-.stage-10 {
+.tuwaistage-2,
+.tuwaistage-4,
+.tuwaistage-6,
+.tuwaistage-8,
+.tuwaistage-10 {
     display: none !important;
 
 }
@@ -610,4 +610,10 @@
 .nameTuwai130,
 .evolevelTuwai130 {
     display: none;
+}
+
+#deepestPoint {
+    bottom: 0;
+    display: none;
+    position: absolute;
 }

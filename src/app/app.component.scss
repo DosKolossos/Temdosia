@@ -7,15 +7,16 @@ app-header {
     background-size: cover;
     background-position: center;
     border: black solid 2px;
+    top: 0;
     width: 100%;
     z-index: 100;
     margin: 0;
 }
 
-app-data-display {
-    display: flex;
-    position: relative;
-    justify-content: center;
-    top: 110px;
-    margin-left: 4px;
-}
+// app-data-display {
+//     display: flex;
+//     position: relative;
+//     justify-content: center;
+//     top: 110px;
+//     margin-left: 4px;
+// }

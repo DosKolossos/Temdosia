@@ -16,8 +16,10 @@
         align-items: flex-end;
         justify-content: center;
 
-        >div {
+        >a {
             display: flex;
+            text-decoration: none;
+            color: black;
             padding: 4px;
             min-width: 80px;
             justify-content: center;
@@ -35,7 +37,7 @@
             }
         }
         >input {
-            display: flex;
+            display: flex; 
             position: relative;
             width: 100px;
             left: 10px;
@@ -66,43 +68,52 @@
         gap: 4px;
         position: relative;
         padding: 4px;
-        >.single-entry {
-            display: flex;
-            flex-direction: row;
-            gap: 20px;
-            cursor: pointer;
-            padding-left: 4px;
-            border-radius: 8px;
-            &:hover {
-                transition: 0.5s;
-                background-color: #f7b072;
-                transform: scale(1.1);
-            }
-            &:not(:hover){
-                transition: 1s;
-            }
-            >.single-element {
-                display: flex;
-                align-items: center;
-                width: 33%;
-                gap: 2px;
-                >img {
-                    height: 32px;
-                    width: 32px;
-                    border-radius: 30px;
-                    border: solid 2px black;
-                    background-color: whitesmoke;
-                }
-                >.type {
+        >div {
+            >a {
+                text-decoration: none;
+                color: black;
+                font-weight: bold;
+                >.single-entry {
                     display: flex;
-                    align-items: center;
-                    >img {
-                        height: 24px;
-                        width: 24px;
+                    flex-direction: row;
+                    gap: 20px;
+                    cursor: pointer;
+                    padding-left: 4px;
+                    border-radius: 8px;
+                    &:hover {
+                        transition: 0.5s;
+                        background-color: #f7b072;
+                        transform: scale(1.1);
                     }
+                    &:not(:hover){
+                        transition: 1s;
+                    }
+                    >.single-element {
+                            display: flex;
+                            align-items: center;
+                            width: 33%;
+                            gap: 2px;
+                            >img {
+                                height: 32px;
+                                width: 32px;
+                                border-radius: 30px;
+                                border: solid 2px black;
+                                background-color: whitesmoke;
+                            }
+                            >.type {
+                                display: flex;
+                                align-items: center;
+                                >img {
+                                    height: 24px;
+                                    width: 24px;
+                                }
+                            }
+                        }
+                    
+        
                 }
             }
-
         }
+        
     }
 }

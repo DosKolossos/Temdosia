@@ -71,7 +71,7 @@
         <div class="gapper-evolution-line class{{post.name | lowercase}}{{post.number}}">
           @if (post.evolution?.evolutionTree) {
           @for (evo of post.evolution?.evolutionTree; track evo.name ){
-          <div class="evolution-wrapper stage-{{evo.stage}}">
+          <div class="evolution-wrapper {{post.name | lowercase}}stage-{{evo.stage}}">
             <div class="column">
               <img [src]="getPortraitUrl(evo.number)" alt="{{ evo.name }}" class="{{post.name}}{{evo.stage}}">
               <h3 class="name{{post.name}}{{post.number}}">{{evo.name}}</h3>
@@ -99,3 +99,4 @@
         
       </div>
     </div>
+    <div id="deepestPoint"></div>

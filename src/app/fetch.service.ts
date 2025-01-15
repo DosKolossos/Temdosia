@@ -11,7 +11,14 @@ export class FetchService {
   httpClient = inject(HttpClient);
   BASE_URL = 'https://temtem-api.mael.tech';
   ICON_BASE_URL = `${this.BASE_URL}/images/icons/types`;
+  private apiUrl = 'https://temtem-api.mael.tech/api/temtems'; // Passe die URL an
 
+  constructor(private http: HttpClient) {}
+
+
+  getTemtemByName(name: string): Observable<Temtem> {
+    return this.http.get<Temtem>(`${this.apiUrl}/${name}`);
+  }
 
   fetchData(): Observable<Temtem[]> {
     return this.httpClient.get<Temtem[]>(`${this.BASE_URL}/api/temtems`).pipe(

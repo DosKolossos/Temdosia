@@ -1,27 +1,30 @@
 <div class="header-wrapper" (click)="closeSearchResults()">
   <div class="navbar">
-    <div>Home</div>
-    <div>Temtem</div>
-    <div>Ranks</div>
-    <div>Locations</div>
+    <a [routerLink]="['/']">Home</a>
+    <a [routerLink]="['/temtem']">Temtem</a>
+    <a [routerLink]="['/ranks']">Ranks</a>
+    <a [routerLink]="['/locations']">Locations</a>
     <input type="text" placeholder="Search..." (input)="onSearch($event)" />
   </div>
 </div>
-
 <div class="search-results" *ngIf="searchResults.length > 0">
   <h3>Search Results:</h3>
   <div class="search-results-entrys">
-    <div class="single-entry" *ngFor="let result of searchResults | slice:0:10">
-      <div class="single-element">
-        <img [src]="result.icon" alt="{{ result.name }}" class="result-icon">{{ result.name }}
-      </div>
-      <div class="single-element">
-        <span *ngFor="let type of result.types" class="type">
-          {{ type.name }}
-          <img [src]="type.icon" alt="{{ type.name }} icon" class="type-icon">
-        </span>
-      </div>
-      <div class="single-element">{{ result.trait }}</div>
+    <div *ngFor="let result of searchResults | slice: 0:10">
+      <a [routerLink]="['/temtem', result.name]" (click)="closeSearchResults()">
+        <div class="single-entry">
+          <div class="single-element">
+            <img [src]="result.icon" alt="{{ result.name }}" class="result-icon">{{ result.name }}
+          </div>
+          <div class="single-element">
+            <span *ngFor="let type of result.types" class="type">
+              {{ type.name }}
+              <img [src]="type.icon" alt="{{ type.name }} icon" class="type-icon">
+            </span>
+          </div>
+          <div class="single-element">{{ result.trait }}</div>
+        </div>
+      </a>
     </div>
     <div class="more-results" *ngIf="searchResults.length > 10">
       <h4>... and more</h4>
