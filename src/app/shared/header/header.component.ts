@@ -34,6 +34,8 @@ constructor(private sharedService: SharedService){}
       this.searchResults = results;
     });
   }
+
+  
   onSearch(event: Event): void {
     const input = (event.target as HTMLInputElement).value.toLowerCase(); // Eingabe als String
   
@@ -56,7 +58,7 @@ constructor(private sharedService: SharedService){}
           trait: temtem.traits.join(', '),
           icon: temtem.portraitWikiUrl // Icon-URL hinzufügen
         }));
-    
+      
       this.sharedService.updateSearchResults(filteredResults); // Ergebnisse an SharedService weitergeben
     } else {
       // Wenn weniger als 3 Zeichen eingegeben wurden, leere die Suchergebnisse
