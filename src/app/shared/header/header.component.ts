@@ -13,8 +13,8 @@ import { Router, RouterLink } from '@angular/router';
   imports: [CommonModule, RouterLink]
 })
 export class HeaderComponent implements OnInit {
-constructor(private sharedService: SharedService){}
 
+  constructor(private sharedService: SharedService, private router: Router) { }
   data: Temtem[] = []; // Hier sind alle Temtem-Daten
   searchResults: {
     name: string;
@@ -27,7 +27,7 @@ constructor(private sharedService: SharedService){}
   }[] = [];
 
   fetchService = inject(FetchService); // Inject FetchService
-
+  
   ngOnInit(): void {
     this.fetchService.fetchData().subscribe((temtems) => {
       this.data = temtems; // Daten in der Komponente speichern
@@ -37,10 +37,10 @@ constructor(private sharedService: SharedService){}
     });
   }
 
-  
+
   onSearch(event: Event): void {
     const input = (event.target as HTMLInputElement).value.toLowerCase(); // Eingabe als String
-  
+
     // Starte die Suche nur, wenn die Eingabe mehr als 2 Zeichen hat
     if (input.length > 2) {
       const filteredResults = this.data
@@ -61,7 +61,7 @@ constructor(private sharedService: SharedService){}
           icon: temtem.portraitWikiUrl, // Icon-URL hinzufügen
           number: temtem.number,
         }));
-      
+
       this.sharedService.updateSearchResults(filteredResults); // Ergebnisse an SharedService weitergeben
     } else {
       // Wenn weniger als 3 Zeichen eingegeben wurden, leere die Suchergebnisse
@@ -69,10 +69,10 @@ constructor(private sharedService: SharedService){}
     }
   }
 
-  onTemtemClick(number: number): void {
-    console.log(number);
-    
-    this.fetchService.getTemtemByName(number).subscribe({
+  onTemtemClick(name: string): void {
+    console.log(name);
+
+    this.fetchService.getTemtemByName(name).subscribe({
       next: (temtem) => {
         console.log('Temtem gefunden:', temtem);
       },
@@ -81,10 +81,16 @@ constructor(private sharedService: SharedService){}
       }
     });
   }
-    
-    closeSearchResults(): void {
-      this.sharedService.clearSearchResults();
-    }
+
+  closeSearchResults(): void {
+    this.sharedService.clearSearchResults();
+  }
+
+
+  goTo(name: string): void {
+    this.sharedService.clearSearchResults();
+ 
+  }
 }
 
 

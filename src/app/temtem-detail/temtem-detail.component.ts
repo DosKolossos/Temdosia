@@ -24,28 +24,39 @@ export class TemtemDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const name = this.route.snapshot.paramMap.get('name');
-    const number = Number(name)
-    if (name) {
-      this.fetchService.getTemtemByName(number).subscribe({
-        next: (data) => {
-          this.temtem = data;
-          this.errorMessage = null;
-        },
-        error: (err) => {
-          this.errorMessage = 'Temtem not found!';
-          console.error(err);
-          setTimeout(() => {
-            this.router.navigate(['/temtem']); // Zurück zur Übersicht nach 3 Sekunden
-          }, 3000);
-        },
-      });
-    }
+    this.route.paramMap.subscribe((params) => {
+      const param = params.get('name'); // Hole den Namen aus der URL
+      if (param) {
+        this.fetchTemtem(param);
+      } else {
+        this.handleError('Invalid parameter.');
+      }
+    });
   }
 
-  getLocations(): string {
-    return this.temtem?.locations?.map((loc) => loc.location).join(', ') || '';
+  private fetchTemtem(name: string): void {
+    this.fetchService.getTemtemByName(name).subscribe({
+      next: (data) => {
+        this.temtem = data;
+        this.errorMessage = null;
+      },
+      error: (err) => {
+        console.error('Fehler beim Abrufen des Temtems:', err);
+        this.handleError('Temtem not found.');
+      },
+    });
   }
+    private handleError(message: string): void {
+      this.errorMessage = message;
+      setTimeout(() => {
+        this.router.navigate(['/temtem']); // Zurück zur Übersicht nach 3 Sekunden
+      }, 3000);
+    }
+  
+
+    getLocations(): string {
+      return this.temtem?.locations?.map((loc) => loc.location).join(', ') || '';
+    }
   
 
 }

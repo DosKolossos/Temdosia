@@ -11,7 +11,7 @@
   <h3>Search Results:</h3>
   <div class="search-results-entrys">
     <div *ngFor="let result of searchResults | slice: 0:10">
-      <a [routerLink]="['/temtem', result.number]" (click)="closeSearchResults()">
+      <a (click)="goTo(result.name)">
         <div class="single-entry">
           <div class="single-element">
             <img [src]="result.icon" alt="{{ result.name }}" class="result-icon">{{ result.name }}
