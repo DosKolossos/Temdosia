@@ -88,8 +88,9 @@ export class HeaderComponent implements OnInit {
 
 
   goTo(name: string): void {
+    console.log(name)
     this.sharedService.clearSearchResults();
- 
+    this.router.navigate(['/temtem', name]);
   }
 }
 

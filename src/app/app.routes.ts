@@ -6,7 +6,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 export const routes: Routes = [
   { path: 'temtem', component: DataDisplayComponent }, // Neue Route
-  { path: 'temtem/:name', component: TemtemDetailComponent },
+  { path: ':name', component: TemtemDetailComponent },
   { path: 'home', component: HomeComponent }, // Füge die Home-Route hinzu
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Optionale Startseite
   { path: '**', component: NotFoundComponent }
