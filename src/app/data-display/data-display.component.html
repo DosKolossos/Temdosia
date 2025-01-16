@@ -2,13 +2,17 @@
   <div class="wrapper">
     <div *ngFor="let post of data; let i = index; trackBy: trackById" class="dataCollector">
       <div class="top-row" (mouseenter)="scroll300px(i)">
+
         <img [src]="post.portraitWikiUrl" alt="{{ post.name }}" class="portrait">
+
         <div class="gapper-number">
           <h3>#{{ post.number }}</h3>
         </div>
-        <div class="gapper-name">
-          <h2>{{ post.name }}</h2>
-        </div>
+        <a (click)="goTo(post.name)">
+          <div class="gapper-name">
+            <h2>{{ post.name }}</h2>
+          </div>
+        </a>
         @if (post.types[1]) {
         <div class="gapper-types right20">
           <img *ngFor="let icon of post.typeIcons" [src]="icon" alt="Type Icon" class="type-icon">
@@ -37,35 +41,35 @@
         </div>
       </div>
       <div class="bot-row fade-in-normal">
-        
-          <div *ngIf="!post.hasLocation || !post.locations?.length; else locationTrue" class="gapper-location">
-            <div class="no-location">
-              <h5>No locations available</h5>
-            </div>
+
+        <div *ngIf="!post.hasLocation || !post.locations?.length; else locationTrue" class="gapper-location">
+          <div class="no-location">
+            <h5>No locations available</h5>
           </div>
-          
+        </div>
+
         <ng-template #locationTrue>
-        <div class="gapper-location">
-          <div class="location-headline">
-            <h5>Locations</h5>
-          </div>
-          <div class="column">
-
-            <div *ngFor="let loc of post.locations?.slice(0, 3)" class="location-for">
-
-              {{ loc.location }}
-
-
+          <div class="gapper-location">
+            <div class="location-headline">
+              <h5>Locations</h5>
             </div>
-            
+            <div class="column">
+
+              <div *ngFor="let loc of post.locations?.slice(0, 3)" class="location-for">
+
+                {{ loc.location }}
+
+
+              </div>
+
               <div *ngIf="post.locations && post.locations.length > 3" class="more-locations">
                 <h5>... and more</h5>
               </div>
-            
 
+
+            </div>
           </div>
-        </div>
-      </ng-template>
+        </ng-template>
 
 
         <div class="gapper-evolution-line class{{post.name | lowercase}}{{post.number}}">
@@ -95,8 +99,8 @@
           }
 
         </div>
-        
-        
+
+
       </div>
     </div>
     <div id="deepestPoint"></div>

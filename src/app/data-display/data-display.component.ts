@@ -5,12 +5,13 @@ import { Temtem } from '../models/temtem.model'; // Importiere das Temtem-Interf
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from '../shared/header/header.component';
 import { SharedService } from '../shared/shared.service';
+import { Router, RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-data-display',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, NgIf, HeaderComponent],
+  imports: [CommonModule, HttpClientModule, NgIf, HeaderComponent, RouterLink],
   templateUrl: './data-display.component.html',
   styleUrl: './data-display.component.scss',
 })
@@ -18,7 +19,7 @@ import { SharedService } from '../shared/shared.service';
 export class DataDisplayComponent implements OnInit {
   searchResults: any[] = [];
 
-  constructor(private sharedService: SharedService) { }
+  constructor(private sharedService: SharedService, private router: Router) { }
   newFetch = inject(FetchService);
   data: Temtem[] = [];
 
@@ -62,5 +63,10 @@ export class DataDisplayComponent implements OnInit {
         });
       }, 1000); // Verzögerung, um sicherzustellen, dass die volle Höhe erreicht ist
     }
+  }
+  goTo(name: string): void {
+    console.log(name)
+    this.sharedService.clearSearchResults();
+    this.router.navigate(['/', name]);
   }
 }
