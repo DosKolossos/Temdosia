@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
   }[] = [];
 
   fetchService = inject(FetchService); // Inject FetchService
-  
+
   ngOnInit(): void {
     this.fetchService.fetchData().subscribe((temtems) => {
       this.data = temtems; // Daten in der Komponente speichern
@@ -52,10 +52,10 @@ export class HeaderComponent implements OnInit {
         )
         .map((temtem) => ({
           name: temtem.name,
-          types: temtem.types.map((type, index) => ({
-            name: type,
-            icon: temtem.typeIcons?.[index] || '' // Typ-Icon zuweisen
-          })),
+          types: [
+            { name: temtem.types[0], icon: temtem.type1icon },
+            temtem.types[1] ? { name: temtem.types[1], icon: temtem.type2icon } : null
+          ].filter((type) => type !== null), // Nur existierende Typen beibehalten
           location: temtem.locations?.map((loc) => loc.location).join(', '),
           trait: temtem.traits.join(', '),
           icon: temtem.portraitWikiUrl, // Icon-URL hinzufügen
@@ -90,7 +90,7 @@ export class HeaderComponent implements OnInit {
   goTo(name: string): void {
     console.log(name)
     this.sharedService.clearSearchResults();
-    this.router.navigate(['/temtem', name]);
+    this.router.navigate(['/', name]);
   }
 }
 

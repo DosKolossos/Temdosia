@@ -23,7 +23,8 @@ export interface Temtem {
   name: string;
   types: string[];
   portraitWikiUrl: string;
-  typeIcons?: string[];
+  type1icon: string[];
+  type2icon: string[];
   traits: string[];
   locations?: { location: string }[];
   hasLocation?: boolean;

@@ -8,13 +8,31 @@
   <div *ngIf="temtem; else loading">
     <h1>{{ temtem.name }}</h1>
     <img [src]="temtem.portraitWikiUrl" alt="{{ temtem.name }}">
-    <p>Types: {{ temtem.types.join(', ') }}</p>
+    <p>Types:</p>
+    <div>
+      <img *ngIf="temtem.type1icon" [src]="temtem.type1icon" alt="Type Icon 1">
+      <img *ngIf="temtem.type2icon" [src]="temtem.type2icon" alt="Type Icon 2">
+    </div>
     <p *ngIf="temtem.traits">Traits: {{ temtem.traits.join(', ') }}</p>
-    <p *ngIf="temtem.locations">Locations: {{ getLocations() }}</p>  </div>
+    <p *ngIf="temtem.locations">Locations: {{ getLocations() }}</p> 
+    <p *ngIf="temtem.evolution?.evolutionTree; else noEvoTree">
+      EvoTree:
+    </p>
+    <ng-template #noEvoTree>No EvoTree</ng-template>
+
+    <div *ngIf="temtem.evolution?.evolutionTree">
+      <ul>
+        <li *ngFor="let evo of temtem.evolution?.evolutionTree">
+          <strong>{{ evo.name }}</strong> - Stage: {{ evo.stage }}, +{{ evo.level }} levels
+        </li>
+      </ul>
+    </div>   
+    
+
+    </div>
   <ng-template #loading>
     <p>Loading...</p>
   </ng-template>
-</ng-template>
   
   
 

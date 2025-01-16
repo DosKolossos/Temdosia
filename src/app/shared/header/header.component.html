@@ -19,7 +19,7 @@
           <div class="single-element">
             <span *ngFor="let type of result.types" class="type">
               {{ type.name }}
-              <img [src]="type.icon" alt="{{ type.name }} icon" class="type-icon">
+              <img [src]="type.icon" alt="{{ type.name }} icon" class="type-icon" />
             </span>
           </div>
           <div class="single-element">{{ result.trait }}</div>

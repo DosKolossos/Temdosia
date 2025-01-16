@@ -31,7 +31,7 @@ export class TemtemDetailComponent implements OnInit {
       } else {
         this.handleError('Invalid parameter.');
       }
-    });
+    });        
   }
 
   private fetchTemtem(name: string): void {
@@ -57,6 +57,6 @@ export class TemtemDetailComponent implements OnInit {
     getLocations(): string {
       return this.temtem?.locations?.map((loc) => loc.location).join(', ') || '';
     }
-  
+
 
 }

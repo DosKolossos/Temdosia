@@ -8,22 +8,17 @@
         <div class="gapper-number">
           <h3>#{{ post.number }}</h3>
         </div>
-        <a (click)="goTo(post.name)">
-          <div class="gapper-name">
-            <h2>{{ post.name }}</h2>
-          </div>
-        </a>
-        @if (post.types[1]) {
-        <div class="gapper-types right20">
-          <img *ngFor="let icon of post.typeIcons" [src]="icon" alt="Type Icon" class="type-icon">
-        </div>
-        }
 
-        @else {
-        <div class="gapper-types left20">
-          <img *ngFor="let icon of post.typeIcons" [src]="icon" alt="Type Icon" class="type-icon">
+        <div class="gapper-name">
+          <a (click)="goTo(post.name)">
+            <h2>{{ post.name }}</h2>
+          </a>
         </div>
-        }
+
+        <div class="gapper-types" [ngClass]="{ 'right30': post.types.length > 1, 'left20': post.types.length <= 1 }">
+          <img *ngIf="post.type1icon" [src]="post.type1icon" alt="{{ post.types[0] }} Icon" class="type-icon">
+          <img *ngIf="post.type2icon" [src]="post.type2icon" alt="{{ post.types[1] }} Icon" class="type-icon">
+        </div>
 
 
       </div>
