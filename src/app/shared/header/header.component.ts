@@ -34,6 +34,7 @@ export class HeaderComponent implements OnInit {
     });
     this.sharedService.searchResults$.subscribe((results) => {
       this.searchResults = results;
+      
     });
   }
 

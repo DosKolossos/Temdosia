@@ -1,4 +1,3 @@
-
 <div *ngIf="errorMessage; else temtemContent">
   <h1>{{ errorMessage }}</h1>
   <p>Redirecting to Temtem list...</p>
@@ -14,27 +13,24 @@
       <img *ngIf="temtem.type2icon" [src]="temtem.type2icon" alt="Type Icon 2">
     </div>
     <p *ngIf="temtem.traits">Traits: {{ temtem.traits.join(', ') }}</p>
-    <p *ngIf="temtem.locations">Locations: {{ getLocations() }}</p> 
-    <p *ngIf="temtem.evolution?.evolutionTree; else noEvoTree">
-      EvoTree:
-    </p>
-    <ng-template #noEvoTree>No EvoTree</ng-template>
+    <p *ngIf="temtem.locations">Locations: {{ getLocations() }}</p>
 
-    <div *ngIf="temtem.evolution?.evolutionTree">
+    <div *ngIf="temtem.evolution?.evolutionTree as evoTree">
       <ul>
-        <li *ngFor="let evo of temtem.evolution?.evolutionTree">
-          <strong>{{ evo.name }}</strong> - Stage: {{ evo.stage }}, +{{ evo.level }} levels
+        <li *ngFor="let evo of evoTree; track evoTree">
+          <strong>{{ evo.name }}</strong> - 
+          @if (evo.level) {
+            +{{ evo.level }} levels
+          } @else if (evo.level == 0) 
+          {Base}
+          <img [src]="getPortraitUrl(evo.number)" alt="{{ evo.name }}">
         </li>
       </ul>
-    </div>   
-    
-
     </div>
+    <p *ngIf="!temtem.evolution?.evolutionTree">No EvoTree</p>
+
+
+  </div>
   <ng-template #loading>
     <p>Loading...</p>
   </ng-template>
-  
-  
-
-
-  
