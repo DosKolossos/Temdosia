@@ -17,19 +17,24 @@
 
     <div *ngIf="temtem.evolution?.evolutionTree as evoTree">
       <ul>
-        <li *ngFor="let evo of evoTree; track evoTree">
-          <strong>{{ evo.name }}</strong> - 
+        <div *ngFor="let evo of evoTree">
+        <li>
+          <strong>{{ evo.name }}</strong> -
           @if (evo.level) {
-            +{{ evo.level }} levels
-          } @else if (evo.level == 0) 
+          +{{ evo.level }} levels
+          } @else if (evo.level == 0)
           {Base}
           <img [src]="getPortraitUrl(evo.number)" alt="{{ evo.name }}">
         </li>
+      </div>
       </ul>
     </div>
     <p *ngIf="!temtem.evolution?.evolutionTree">No EvoTree</p>
 
 
+    <div *ngFor="let stat of getStats()">
+      <span>{{ stat.statName | titlecase }}: {{ stat.statValue }}</span>
+    </div>
   </div>
   <ng-template #loading>
     <p>Loading...</p>

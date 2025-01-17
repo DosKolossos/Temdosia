@@ -28,7 +28,6 @@ export class TemtemDetailComponent implements OnInit {
     this.fetchService.fetchData().subscribe({
       next: (temtems) => {
         this.data = temtems;
-        console.log('Geladene Daten:', this.data); // Logge alle Temtems
       },
       error: (err) => {
         console.error('Fehler beim Laden der Temtems:', err);
@@ -47,15 +46,8 @@ export class TemtemDetailComponent implements OnInit {
   
     // Methode zur Suche des Portrait-URLs basierend auf der Nummer
     getPortraitUrl(number: number): string {
-      console.log('Daten in getPortraitUrl:', this.data); // Logge die gesamte Datenliste
-      console.log('Gesuchte Nummer:', number); // Logge die Nummer, nach der gesucht wird
     
       const temtem = this.data.find((t) => Number(t.number) === Number(number));
-      if (temtem) {
-        console.log('Gefundenes Temtem:', temtem); // Logge das gefundene Temtem
-      } else {
-        console.log('Kein Temtem gefunden für Nummer:', number); // Logge, wenn nichts gefunden wird
-      }
     
       return temtem ? temtem.portraitWikiUrl : 'assets/default-placeholder.png'; // Fallback auf Standardbild
     }
@@ -67,9 +59,7 @@ export class TemtemDetailComponent implements OnInit {
         next: (data) => {
           this.temtem = data;
           this.errorMessage = null;
-          console.log('Gefundenes Temtem:', this.temtem); // Logge die gesamte Temtem-Daten
           if (this.temtem?.evolution?.evolutionTree) {
-            console.log('EvoTree:', this.temtem.evolution.evolutionTree); // Logge den EvoTree
           }
         },
         error: (err) => {
@@ -90,6 +80,13 @@ export class TemtemDetailComponent implements OnInit {
     getLocations(): string {
       return this.temtem?.locations?.map((loc) => loc.location).join(', ') || '';
     }
-
+    getStats(): { statName: string; statValue: number }[] {
+      if (!this.temtem?.stats) return [];
+    
+      return Object.entries(this.temtem.stats).map(([statName, statValue]) => ({
+        statName,
+        statValue: Number(statValue),
+      }));
+    }
 
 }
