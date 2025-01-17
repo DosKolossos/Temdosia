@@ -31,9 +31,13 @@
     </div>
     <p *ngIf="!temtem.evolution?.evolutionTree">No EvoTree</p>
 
-
+    Stats:
     <div *ngFor="let stat of getStats()">
       <span>{{ stat.statName | titlecase }}: {{ stat.statValue }}</span>
+    </div>
+    TVs:
+    <div *ngFor="let tv of getTvs()">
+      <span>{{ tv.statValue }}</span>
     </div>
   </div>
   <ng-template #loading>

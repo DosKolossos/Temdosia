@@ -29,6 +29,7 @@ export interface Temtem {
   locations?: { location: string }[];
   hasLocation?: boolean;
   stats: { statName: string; statValue: number }[];
+  tvYields: { statName: string; statValue: number }[];
   evolution?: Evolution,
   getImage?: getImage;
 }

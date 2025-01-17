@@ -88,5 +88,13 @@ export class TemtemDetailComponent implements OnInit {
         statValue: Number(statValue),
       }));
     }
+    getTvs(): { statName: string; statValue: number }[] {
+      if (!this.temtem?.stats) return [];
+    
+      return Object.entries(this.temtem.tvYields).map(([statName, statValue]) => ({
+        statName,
+        statValue: Number(statValue),
+      }));
+    }
 
 }
