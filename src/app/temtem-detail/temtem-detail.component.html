@@ -40,6 +40,31 @@
       <span>{{ tv.statValue }}</span>
     </div>
   </div>
+
+  <h3>Techniques:</h3>
+  <div *ngIf="getTechniques().length > 0; else noTechniques">
+    <ul>
+      <li *ngFor="let technique of getTechniques()">
+        <strong>{{ technique.name }}</strong> 
+        <br>
+        <span>Type: {{ technique.type }}</span> |
+        <span>Class: {{ technique.class }}</span> |
+        <span>Damage: {{ technique.damage }}</span> |
+        <span>Stamina Cost: {{ technique.staminaCost }}</span> |
+        <span>Hold: {{ technique.hold }}</span> |
+        <span>Priority: {{ technique.priority }}</span> 
+        <br>
+        <span *ngIf="technique.synergy && technique.synergy !== 'None'">Synergy: {{ technique.synergy }}</span>
+        <p>Description: {{ technique.description }}</p>
+        <p>Effect: {{ technique.effectText }}</p>
+        <a [href]="technique.wikiUrl" target="_blank">More Info</a>
+      </li>
+    </ul>
+  </div>
+  <ng-template #noTechniques>
+    <p>No techniques available.</p>
+  </ng-template>
+  
   <ng-template #loading>
     <p>Loading...</p>
   </ng-template>

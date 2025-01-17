@@ -30,10 +30,26 @@ export interface Temtem {
   hasLocation?: boolean;
   stats: { statName: string; statValue: number }[];
   tvYields: { statName: string; statValue: number }[];
-  evolution?: Evolution,
-  getImage?: getImage;
+  techniques: Technique[];
+  evolution?: Evolution;
 }
 
 export interface getImage {
   evoURL?: string;
+}
+
+export interface Technique {
+  name: string;
+  source: string;
+  number: number;
+  type: string;
+  class: string;
+  damage: number;
+  staminaCost: number;
+  hold: number;
+  priority: string;
+  synergy: string;
+  description: string;
+  effectText: string;
+  wikiUrl: string;
 }

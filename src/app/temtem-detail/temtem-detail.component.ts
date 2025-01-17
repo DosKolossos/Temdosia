@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Temtem } from '../models/temtem.model';
+import { Temtem, Technique } from '../models/temtem.model';
 import { FetchService } from '../fetch.service'; 
 import { CommonModule } from '@angular/common';
 
@@ -96,5 +96,7 @@ export class TemtemDetailComponent implements OnInit {
         statValue: Number(statValue),
       }));
     }
-
+    getTechniques(): Technique[] {
+      return this.temtem?.techniques || [];
+    }
 }
