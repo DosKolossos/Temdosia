@@ -18,14 +18,36 @@
 
 
           <span *ngFor="let trivia of temtem.trivia">- {{trivia}}</span>
-          <div class="navi">
-            <h2>Navigation</h2>
-            <a href="/">EvoTree</a>
-            <a href="/">Locations</a>
-            <a href="/">Stats</a>
-            <a href="/">Techniques</a>
-            <a href="/">Matchups</a>
+
+          <div class="nav-evo-tree">
+            <div class="navi">
+              <h3>Navigation</h3>
+              <a href="/">EvoTree</a>
+              <a href="/">Locations</a>
+              <a href="/">Stats</a>
+              <a href="/">Techniques</a>
+              <a href="/">Matchups</a>
+            </div>
+            <div class="evo-tree">
+              <div *ngIf="temtem.evolution?.evolutionTree as evoTree" class="evo-tree-details">
+                
+                  <div *ngFor="let evo of evoTree" class="evo-wrapper">
+                    <img [src]="getPortraitUrl(evo.number)" alt="{{ evo.name }}" class="temtem-evo-image">
+                      <strong>{{ evo.name }}</strong>
+                      @if (evo.level) {
+                      +{{ evo.level }} levels
+                      } @else if (evo.level == 0)
+                      {Base}
+                      
+                    
+                  </div>
+                
+              </div>
+              <div class="no-evo-tree" *ngIf="!temtem.evolution?.evolutionTree">No EvoTree</div>
+            </div>
+            
           </div>
+
         </div>
         <div class="topright">
           <h2>{{ temtem.name }}</h2>
@@ -65,21 +87,7 @@
       </div> -->
 
 
-      <!-- <div *ngIf="temtem.evolution?.evolutionTree as evoTree">
-        <ul>
-          <div *ngFor="let evo of evoTree">
-            <li>
-              <strong>{{ evo.name }}</strong> -
-              @if (evo.level) {
-              +{{ evo.level }} levels
-              } @else if (evo.level == 0)
-              {Base}
-              <img [src]="getPortraitUrl(evo.number)" alt="{{ evo.name }}">
-            </li>
-          </div>
-        </ul>
-      </div>
-      <p *ngIf="!temtem.evolution?.evolutionTree">No EvoTree</p> -->
+
 
       <!-- Stats:
       <div *ngFor="let stat of getStats()">
