@@ -32,7 +32,7 @@
               <div *ngIf="temtem.evolution?.evolutionTree as evoTree" class="evo-tree-details">
                 
                   <div *ngFor="let evo of evoTree" class="evo-wrapper">
-                    <img [src]="getPortraitUrl(evo.number)" alt="{{ evo.name }}" class="temtem-evo-image">
+                    <img src="https://temtem-api.mael.tech/{{getPortraitUrl(evo.number)}}" alt="{{ evo.name }}" class="temtem-evo-image">
                       <strong>{{ evo.name }}</strong>
                       @if (evo.level) {
                       +{{ evo.level }} levels
@@ -51,7 +51,7 @@
         </div>
         <div class="topright">
           <h2>{{ temtem.name }}</h2>
-          <img [src]="temtem.portraitWikiUrl" alt="{{ temtem.name }}" class="profile-pic">
+          <img src="https://temtem-api.mael.tech/{{temtem.icon}}" alt="{{ temtem.name }}" class="profile-pic">
           <p>Types:</p>
           <div>
             <img *ngIf="temtem.type1icon" [src]="temtem.type1icon" alt="Type Icon 1" class="type-icon-top">

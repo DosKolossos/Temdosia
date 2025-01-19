@@ -22,6 +22,7 @@ export interface Temtem {
   number: number;
   name: string;
   types: string[];
+  icon: string;
   portraitWikiUrl: string;
   type1icon: string[];
   type2icon: string[];

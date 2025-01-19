@@ -50,7 +50,7 @@ export class DataDisplayComponent implements OnInit {
   // Methode zur Suche des Portrait-URLs basierend auf der Nummer
   getPortraitUrl(number: number): string {
     const temtem = this.data.find((t) => t.number === number);
-    return temtem ? temtem.portraitWikiUrl : '';
+    return temtem ? temtem.icon : '';
   }
 
   scroll300px(index: number): void {

@@ -59,7 +59,7 @@ export class HeaderComponent implements OnInit {
           ].filter((type) => type !== null), // Nur existierende Typen beibehalten
           location: temtem.locations?.map((loc) => loc.location).join(', '),
           trait: temtem.traits.join(', '),
-          icon: temtem.portraitWikiUrl, // Icon-URL hinzufügen
+          icon: "https://temtem-api.mael.tech/"+temtem.icon, // Icon-URL hinzufügen
           number: temtem.number,
         }));
 

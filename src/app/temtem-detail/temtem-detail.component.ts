@@ -49,7 +49,7 @@ export class TemtemDetailComponent implements OnInit {
     
       const temtem = this.data.find((t) => Number(t.number) === Number(number));
     
-      return temtem ? temtem.portraitWikiUrl : 'assets/default-placeholder.png'; // Fallback auf Standardbild
+      return temtem ? temtem.icon : 'assets/default-placeholder.png'; // Fallback auf Standardbild
     }
     
     hasLocations(): boolean {

@@ -3,7 +3,7 @@
     <div *ngFor="let post of data; let i = index; trackBy: trackById" class="dataCollector">
       <div class="top-row" (mouseenter)="scroll300px(i)">
 
-        <img [src]="post.portraitWikiUrl" alt="{{ post.name }}" class="portrait">
+        <img src="https://temtem-api.mael.tech/{{post.icon}}" alt="{{ post.name }}" class="portrait">
 
         <div class="gapper-number">
           <h3>#{{ post.number }}</h3>
@@ -72,7 +72,7 @@
           @for (evo of post.evolution?.evolutionTree; track evo.name ){
           <div class="evolution-wrapper {{post.name | lowercase}}stage-{{evo.stage}}">
             <div class="column">
-              <img [src]="getPortraitUrl(evo.number)" alt="{{ evo.name }}" class="{{post.name}}{{evo.stage}}">
+              <img src="https://temtem-api.mael.tech/{{getPortraitUrl(evo.number)}}" alt="{{ evo.name }}" class="{{post.name}}{{evo.stage}}">
               <h3 class="name{{post.name}}{{post.number}}">{{evo.name}}</h3>
               @if (evo.level){
               <h4>+{{evo.level}} @if (evo.level == 1000) {TV} @else {Lv}</h4>
@@ -86,7 +86,7 @@
           } @else if (!post.evolution?.evolutionTree) {
           <div class="evolution-wrapper">
             <div class="column">
-              <img [src]="post.portraitWikiUrl" alt="{{ post.name }}" srcset="">
+              <img [src]="post.icon" alt="{{ post.name }}" srcset="">
               <h3>{{post.name}}</h3>
               <h4>Base</h4>
             </div>
