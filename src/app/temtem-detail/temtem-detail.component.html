@@ -1,62 +1,99 @@
-<div *ngIf="errorMessage; else temtemContent">
-  <h1>{{ errorMessage }}</h1>
-  <p>Redirecting to Temtem list...</p>
-</div>
+<div class="content-wrapper">
+  <div *ngIf="errorMessage; else temtemContent">
+    <h1>{{ errorMessage }}</h1>
+    <p>Redirecting to Temtem list...</p>
+  </div>
 
-<ng-template #temtemContent>
-  <div *ngIf="temtem; else loading">
-    <h1>{{ temtem.name }}</h1>
-    <img [src]="temtem.portraitWikiUrl" alt="{{ temtem.name }}">
-    <p>Types:</p>
-    <div>
-      <img *ngIf="temtem.type1icon" [src]="temtem.type1icon" alt="Type Icon 1">
-      <img *ngIf="temtem.type2icon" [src]="temtem.type2icon" alt="Type Icon 2">
-    </div>
-    <p *ngIf="temtem.traits">Traits: {{ temtem.traits.join(', ') }}</p>
+  <ng-template #temtemContent>
+    <div *ngIf="temtem; else loading" id="content">
+      <div class="toplane">
+        <div class="topleft">
+          <h1>{{ temtem.name }}</h1>
+          <p>
+            {{ temtem.name }} is a
+            <a href="/">{{temtem.types[0]}} <img src="{{temtem.type1icon}}" class="p-icon" alt=""></a>
+            <a href="/" *ngIf="temtem.types[1]">{{temtem.types[1]}}<img src="{{temtem.type2icon}}" class="p-icon"
+                alt=""></a>-Temtem.
+          </p>
 
-    <!-- <p *ngIf="temtem.locations">
+
+          <span *ngFor="let trivia of temtem.trivia">- {{trivia}}</span>
+          <div class="navi">
+            <h2>Navigation</h2>
+            <a href="/">EvoTree</a>
+            <a href="/">Locations</a>
+            <a href="/">Stats</a>
+            <a href="/">Techniques</a>
+            <a href="/">Matchups</a>
+          </div>
+        </div>
+        <div class="topright">
+          <h2>{{ temtem.name }}</h2>
+          <img [src]="temtem.portraitWikiUrl" alt="{{ temtem.name }}" class="profile-pic">
+          <p>Types:</p>
+          <div>
+            <img *ngIf="temtem.type1icon" [src]="temtem.type1icon" alt="Type Icon 1" class="type-icon-top">
+            <img *ngIf="temtem.type2icon" [src]="temtem.type2icon" alt="Type Icon 2" class="type-icon-top">
+          </div>
+          <div class="top-right-traits">
+            <p>Traits:</p>
+            <div class="trait-wrapper">
+              <a *ngIf="temtem.traits" href="/">{{ temtem.traits[0]}}</a>
+              <a *ngIf="temtem.traits" href="/">{{ temtem.traits[1]}}</a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- <p *ngIf="temtem.locations">
       <p *ngFor="let loc of temtem.locations">
         {{loc.location}}->{{loc.island}}
       </p> -->
 
-      <div *ngIf="temtem.locations">
+      <!-- <div *ngIf="temtem.locations">
         <div *ngFor="let group of getGroupedLocations()">
           <h3>{{ group.island }}</h3>
           <ul>
             <li *ngFor="let location of group.locations">-> {{ location }}</li>
           </ul>
         </div>
+      </div> -->
+
+
+      <!-- <div *ngIf="temtem.evolution?.evolutionTree as evoTree">
+        <ul>
+          <div *ngFor="let evo of evoTree">
+            <li>
+              <strong>{{ evo.name }}</strong> -
+              @if (evo.level) {
+              +{{ evo.level }} levels
+              } @else if (evo.level == 0)
+              {Base}
+              <img [src]="getPortraitUrl(evo.number)" alt="{{ evo.name }}">
+            </li>
+          </div>
+        </ul>
       </div>
-      
+      <p *ngIf="!temtem.evolution?.evolutionTree">No EvoTree</p> -->
 
-    <div *ngIf="temtem.evolution?.evolutionTree as evoTree">
-      <ul>
-        <div *ngFor="let evo of evoTree">
-          <li>
-            <strong>{{ evo.name }}</strong> -
-            @if (evo.level) {
-            +{{ evo.level }} levels
-            } @else if (evo.level == 0)
-            {Base}
-            <img [src]="getPortraitUrl(evo.number)" alt="{{ evo.name }}">
-          </li>
-        </div>
-      </ul>
-    </div>
-    <p *ngIf="!temtem.evolution?.evolutionTree">No EvoTree</p>
+      <!-- Stats:
+      <div *ngFor="let stat of getStats()">
+        <span>{{ stat.statName | titlecase }}: {{ stat.statValue }}</span>
+      </div>
+      TVs:
+      <div *ngFor="let tv of getTvs()">
+        <span>{{ tv.statValue }}</span>
+      </div> -->
 
-    Stats:
-    <div *ngFor="let stat of getStats()">
-      <span>{{ stat.statName | titlecase }}: {{ stat.statValue }}</span>
-    </div>
-    TVs:
-    <div *ngFor="let tv of getTvs()">
-      <span>{{ tv.statValue }}</span>
-    </div>
-  </div>
+    </div><!--  div für Zeile 8 -->
 
-  <!-- <h3>Techniques:</h3> -->
-  <!-- <div *ngIf="getTechniques().length > 0; else noTechniques">
+    <!-- <h3>Techniques:</h3> -->
+    <!-- <div *ngIf="getTechniques().length > 0; else noTechniques">
     <ul>
       <li *ngFor="let technique of getTechniques()">
         <strong>{{ technique.name }}</strong> 
@@ -74,44 +111,41 @@
       </li>
     </ul>
   </div> -->
-  <!-- <ng-template #noTechniques>
+    <!-- <ng-template #noTechniques>
     <p>No techniques available.</p>
   </ng-template> -->
-  <!-- <div class="trivia-wrapper" *ngFor="let text of getTrivia()">
+    <!-- <div class="trivia-wrapper" *ngFor="let text of getTrivia()">
     <h3>{{temtem?.trivia}}</h3>
   </div> 
 
   <div class="tempedia-entry">
     <h3>{{temtem?.gameDescription}}</h3>
   </div> -->
-  <div class="matchup-wrapper" *ngIf="temtem?.matchUps">
-    <h3>Type Matchups</h3>
-    <table>
-      <thead>
-        <tr>
-          <th *ngFor="let type of getAllTypes()" class="type-row">
-            <img
-              [src]="'//temtem-api.mael.tech/images/icons/types/' + type + '.png'"
-              alt="{{ type }}"
-              class="type-icon"
-            />
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td *ngFor="let type of getAllTypes()" [class]="getClassForMultiplier(getMultiplierForType(type))">
-            {{ getMultiplierForType(type) }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
-  
-  
-  
+    <!-- <div class="matchup-wrapper" *ngIf="temtem?.matchUps">
+      <h3>Type Matchups</h3>
+      <table>
+        <thead>
+          <tr>
+            <th *ngFor="let type of getAllTypes()" class="type-row">
+              <img [src]="'//temtem-api.mael.tech/images/icons/types/' + type + '.png'" alt="{{ type }}"
+                class="type-icon" />
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td *ngFor="let type of getAllTypes()" [class]="getClassForMultiplier(getMultiplierForType(type))">
+              {{ getMultiplierForType(type) }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div> -->
 
-  <ng-template #loading>
-    <p>Loading...</p>
-  </ng-template>
+
+
+
+
+    <ng-template #loading>
+      <p>Loading...</p>
+    </ng-template>

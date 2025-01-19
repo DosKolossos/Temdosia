@@ -3,7 +3,163 @@ h1,
 div,
 h2,
 h3 {
-    color: white !important;
+    color: black !important;
+}
+
+.content-wrapper {
+    display: flex;
+    background-color: lightgrey;
+    max-width: 1440px;
+    min-width: 900px;
+    height: 100vh;
+    border-radius: 30px;
+    border: 10px black solid;
+    justify-content: space-between;
+
+    >#content {
+        display: flex;
+        flex-direction: column;
+        border-radius: 16px;
+        width: 100%;
+
+        >.toplane {
+            display: flex;
+            top: 0px;
+            width: fit-content;
+            position: relative;
+            align-items: start;
+            justify-content: space-between;
+            flex-direction: row;
+            width: 100%;
+
+            .topleft {
+                display: flex;
+                position: relative;
+                justify-content: start;
+                align-items: start;
+                flex-direction: column;
+                background-color: aqua;
+                flex: 1;
+
+                >.second-type {
+                    display: flex;
+                    align-items: center;
+                    gap: 4px;
+                    >a {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        text-decoration: none;
+                        cursor: pointer;
+                        color: black;
+
+                        >.p-icon {
+                            height: 20px;
+                            width: auto;
+                            cursor: pointer;
+                        }
+                    }
+
+
+                }
+
+                >p {
+                    display: flex;
+                    align-items: center;
+                    gap: 2px;
+
+                    >a {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        text-decoration: none;
+                        cursor: pointer;
+                        color: black;
+
+                        >.p-icon {
+                            height: 20px;
+                            width: auto;
+                            cursor: pointer;
+                        }
+                    }
+
+                }
+
+                >.navi {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: start;
+                    background-color: greenyellow;
+                    >a {
+                        text-decoration: none;
+                        margin: 4px;
+                        color: black;
+                    }
+                }
+            }
+
+            .topright {
+                display: flex;
+                flex-direction: column;
+                top: 50px;
+                align-items: center;
+                position: relative;
+                justify-content: end;
+                background-color: antiquewhite;
+
+                >p,
+                h2 {
+                    font-size: larger;
+                    margin: 8px;
+                }
+
+                >.profile-pic {
+                    height: 120px;
+                    width: 120px;
+                    border-radius: 30px;
+                    border: 8px solid black;
+                    background-color: white;
+                }
+
+                >div {
+                    >.type-icon-top {
+                        width: 40px;
+                        height: 40px;
+                    }
+                }
+
+                >.top-right-traits {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    >p {
+                        font-size: larger;
+                        margin: 8px;
+                    }
+
+                    >.trait-wrapper {
+                        display: flex;
+
+                        justify-content: start;
+                        flex-direction: column;
+
+                        >a {
+                            display: flex;
+                            justify-content: left;
+                            text-decoration: none;
+                            color: black;
+                        }
+                    }
+
+                }
+            }
+
+        }
+
+
+    }
+
 }
 
 .matchup-wrapper {
@@ -16,7 +172,7 @@ h3 {
         th,
         td {
             padding: 10px;
-            border: 1px solid #ddd;
+            border: 1px solid black;
         }
 
         .type-icon {
@@ -30,16 +186,17 @@ h3 {
 
 @mixin boldblack {
     color: black;
-    font-weight: bold;
+    font-weight: 700;
+    font-size: 16px;
 }
 
 .x_1 {
-    background-color: lightgreen;
+    background-color: silver;
     @include boldblack();
 }
 
 .x_2 {
-    background-color: lightcoral;
+    background-color: rgb(72, 214, 108);
     @include boldblack();
 
 }
@@ -50,7 +207,7 @@ h3 {
 
 }
 
-._1_4_x {
+.x_1_4 {
     background-color: darkred;
     @include boldblack();
 
@@ -63,7 +220,7 @@ h3 {
 }
 
 .type-row {
-    background-color: rgba($color: rgb(242,112,0), $alpha: 0.5);
+    background-color: rgba($color: rgb(242, 112, 0), $alpha: 0.5);
     width: 32px;
     position: relative;
     height: 32px;
