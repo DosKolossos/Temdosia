@@ -52,6 +52,9 @@ export class TemtemDetailComponent implements OnInit {
       return temtem ? temtem.portraitWikiUrl : 'assets/default-placeholder.png'; // Fallback auf Standardbild
     }
     
+    hasLocations(): boolean {
+      return !!this.temtem?.locations && this.temtem.locations.length > 0;
+    }
     
 
     private fetchTemtem(name: string): void {
@@ -104,8 +107,25 @@ export class TemtemDetailComponent implements OnInit {
     //   return this.temtem?.gameDescription;
     // }
 
+    // getGroupedLocations(): { island: string; locations: string[] }[] {
+    //   if (!this.temtem?.locations) return [];
+    
+    //   const grouped = this.temtem.locations.reduce((acc, loc) => {
+    //     const islandGroup = acc.find(group => group.island === loc.island);
+    //     if (islandGroup) {
+    //       islandGroup.locations.push(loc.location);
+    //     } else {
+    //       acc.push({ island: loc.island, locations: [loc.location] });
+    //     }
+    //     return acc;
+    //   }, [] as { island: string; locations: string[] }[]);
+    
+    //   return grouped;
+    // }
     getGroupedLocations(): { island: string; locations: string[] }[] {
       if (!this.temtem?.locations) return [];
+      
+      console.log('Locations:', this.temtem.locations);
     
       const grouped = this.temtem.locations.reduce((acc, loc) => {
         const islandGroup = acc.find(group => group.island === loc.island);
@@ -117,8 +137,10 @@ export class TemtemDetailComponent implements OnInit {
         return acc;
       }, [] as { island: string; locations: string[] }[]);
     
+      console.log('Grouped Locations:', grouped);
       return grouped;
     }
+    
 
     getMatchups(): { multiplier: string; types: string[] }[] {
       if (!this.temtem?.matchUps) return [];

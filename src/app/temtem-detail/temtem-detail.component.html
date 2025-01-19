@@ -69,22 +69,22 @@
         </div>
 
       </div>
+      <div class="midlane">
 
-
-
-      <!-- <p *ngIf="temtem.locations">
-      <p *ngFor="let loc of temtem.locations">
-        {{loc.location}}->{{loc.island}}
-      </p> -->
-
-      <!-- <div *ngIf="temtem.locations">
+      <h2>Locations</h2>
+      <div *ngIf="hasLocations(); else noLocation" class="location-wrapper">
         <div *ngFor="let group of getGroupedLocations()">
-          <h3>{{ group.island }}</h3>
+          <h4>{{ group.island }}</h4>
           <ul>
             <li *ngFor="let location of group.locations">-> {{ location }}</li>
           </ul>
         </div>
-      </div> -->
+      </div>
+      <ng-template #noLocation>No location</ng-template>
+      </div>
+
+
+
 
 
 
