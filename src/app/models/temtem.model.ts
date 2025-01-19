@@ -26,12 +26,19 @@ export interface Temtem {
   type1icon: string[];
   type2icon: string[];
   traits: string[];
-  locations?: { location: string }[];
+  locations?: Locations[];
   hasLocation?: boolean;
   stats: { statName: string; statValue: number }[];
   tvYields: { statName: string; statValue: number }[];
   techniques: Technique[];
   evolution?: Evolution;
+  gameDescription?: string;
+  trivia?: string[];
+  matchUps: { [key: string]: string[] }; // MatchUps als Objekt mit Schlüssel und Array
+}
+export interface Locations {
+  location: string;
+  island: string;
 }
 
 export interface getImage {

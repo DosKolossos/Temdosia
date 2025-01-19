@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Temtem, Technique } from '../models/temtem.model';
+import { Temtem, Technique, Locations } from '../models/temtem.model';
 import { FetchService } from '../fetch.service'; 
 import { CommonModule } from '@angular/common';
 
@@ -76,10 +76,6 @@ export class TemtemDetailComponent implements OnInit {
       }, 3000);
     }
   
-
-    getLocations(): string {
-      return this.temtem?.locations?.map((loc) => loc.location).join(', ') || '';
-    }
     getStats(): { statName: string; statValue: number }[] {
       if (!this.temtem?.stats) return [];
     
@@ -96,7 +92,81 @@ export class TemtemDetailComponent implements OnInit {
         statValue: Number(statValue),
       }));
     }
-    getTechniques(): Technique[] {
-      return this.temtem?.techniques || [];
+    // getTechniques(): Technique[] {
+    //   return this.temtem?.techniques || [];
+    // }
+
+    // getTrivia(): string[] {
+    //   return this.temtem?.trivia || [];
+    // }
+
+    // getTempediaEntry(): string[] {
+    //   return this.temtem?.gameDescription;
+    // }
+
+    getGroupedLocations(): { island: string; locations: string[] }[] {
+      if (!this.temtem?.locations) return [];
+    
+      const grouped = this.temtem.locations.reduce((acc, loc) => {
+        const islandGroup = acc.find(group => group.island === loc.island);
+        if (islandGroup) {
+          islandGroup.locations.push(loc.location);
+        } else {
+          acc.push({ island: loc.island, locations: [loc.location] });
+        }
+        return acc;
+      }, [] as { island: string; locations: string[] }[]);
+    
+      return grouped;
     }
+
+    getMatchups(): { multiplier: string; types: string[] }[] {
+      if (!this.temtem?.matchUps) return [];
+    
+      return Object.entries(this.temtem.matchUps).map(([multiplier, types]) => ({
+        multiplier,
+        types,
+      }));
+    }
+    private typeOrder: string[] = [
+      'Neutral',
+      'Wind',
+      'Earth',
+      'Water',
+      'Fire',
+      'Nature',
+      'Electric',
+      'Mental',
+      'Digital',
+      'Melee',
+      'Crystal',
+      'Toxic',
+    ];
+    
+    getAllTypes(): string[] {
+      if (!this.temtem?.matchUps) return [];
+      // Extrahiere alle Typen und sortiere nach der festen Reihenfolge
+      const allTypes = Object.values(this.temtem.matchUps)
+        .flat()
+        .filter((type, index, self) => self.indexOf(type) === index); // Entferne Duplikate
+    
+      return this.typeOrder.filter((type) => allTypes.includes(type)); // Nur Typen in der gewünschten Reihenfolge
+    }
+    
+    getClassForMultiplier(multiplier: string): string {
+      // Ersetze ungültige Zeichen durch Unterstriche oder andere erlaubte Zeichen
+      return multiplier.replace(/[^\w]/g, '_'); // Erlaubt nur Buchstaben, Zahlen und Unterstriche
+    }
+    
+    getMultiplierForType(type: string): string {
+      if (!this.temtem?.matchUps) return '';
+      // Finde den Multiplikator für den Typ
+      for (const [multiplier, types] of Object.entries(this.temtem.matchUps)) {
+        if (types.includes(type)) {
+          return multiplier;
+        }
+      }
+      return 'x 1'; // Standardwert, falls kein Match gefunden wird
+    }
+    
 }

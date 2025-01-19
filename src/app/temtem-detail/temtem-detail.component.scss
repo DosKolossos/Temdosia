@@ -1,3 +1,70 @@
-p, h1, div {
+p,
+h1,
+div,
+h2,
+h3 {
     color: white !important;
+}
+
+.matchup-wrapper {
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+        text-align: center;
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .type-icon {
+            height: 40px;
+            width: 40px;
+        }
+
+    }
+
+}
+
+@mixin boldblack {
+    color: black;
+    font-weight: bold;
+}
+
+.x_1 {
+    background-color: lightgreen;
+    @include boldblack();
+}
+
+.x_2 {
+    background-color: lightcoral;
+    @include boldblack();
+
+}
+
+.x_1_2 {
+    background-color: rgb(248, 94, 94);
+    @include boldblack();
+
+}
+
+._1_4_x {
+    background-color: darkred;
+    @include boldblack();
+
+}
+
+.x_4 {
+    background-color: rgb(23, 212, 70);
+    @include boldblack();
+
+}
+
+.type-row {
+    background-color: rgba($color: rgb(242,112,0), $alpha: 0.5);
+    width: 32px;
+    position: relative;
+    height: 32px;
 }
