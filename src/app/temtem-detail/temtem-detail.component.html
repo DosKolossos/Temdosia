@@ -85,6 +85,26 @@
           </div>
         </div>
         <ng-template #noLocation>No location</ng-template>
+        <div class="matchup-wrapper" *ngIf="temtem?.matchUps">
+          <h2>Type Matchups</h2>
+          <table>
+            <thead>
+              <tr>
+                <th *ngFor="let type of getAllTypes()" class="type-row">
+                  <img [src]="'//temtem-api.mael.tech/images/icons/types/' + type + '.png'" alt="{{ type }}"
+                    class="type-icon" />
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td *ngFor="let type of getAllTypes()" [class]="getClassForMultiplier(getMultiplierForType(type))">
+                  {{ getMultiplierForType(type) }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
 
@@ -133,26 +153,7 @@
   <div class="tempedia-entry">
     <h3>{{temtem?.gameDescription}}</h3>
   </div> -->
-    <!-- <div class="matchup-wrapper" *ngIf="temtem?.matchUps">
-      <h3>Type Matchups</h3>
-      <table>
-        <thead>
-          <tr>
-            <th *ngFor="let type of getAllTypes()" class="type-row">
-              <img [src]="'//temtem-api.mael.tech/images/icons/types/' + type + '.png'" alt="{{ type }}"
-                class="type-icon" />
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td *ngFor="let type of getAllTypes()" [class]="getClassForMultiplier(getMultiplierForType(type))">
-              {{ getMultiplierForType(type) }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div> -->
+
 
 
 

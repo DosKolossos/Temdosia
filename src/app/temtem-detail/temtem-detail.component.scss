@@ -19,12 +19,14 @@ h3 {
     border: 10px black solid;
     justify-content: space-between;
     position: absolute;
+
     >#content {
         display: flex;
         flex-direction: column;
         border-radius: 16px;
         width: 100%;
         height: max-content;
+
         >.toplane {
             display: flex;
             top: 0px;
@@ -51,6 +53,7 @@ h3 {
                     display: flex;
                     align-items: center;
                     gap: 4px;
+
                     >a {
                         display: flex;
                         flex-direction: row;
@@ -90,6 +93,7 @@ h3 {
                     }
 
                 }
+
                 >.nav-evo-tree {
                     display: flex;
                     flex-direction: row;
@@ -97,6 +101,7 @@ h3 {
                     width: 100%;
                     justify-content: space-around;
                     padding: 30px 0 30px 0;
+
                     >.navi {
                         display: flex;
                         position: relative;
@@ -106,23 +111,28 @@ h3 {
                         align-items: start;
                         height: fit-content;
                         z-index: 1;
+
                         >h3 {
                             margin-top: 0px;
                         }
+
                         >a {
                             text-decoration: none;
                             margin: 4px;
                             color: black;
                         }
                     }
+
                     >.evo-tree {
                         display: flex;
+
                         >.evo-tree-details {
                             display: grid;
                             grid-template-columns: repeat(4, 1fr);
                             justify-content: center;
                             align-items: center;
                             gap: 40px;
+
                             >.evo-wrapper {
                                 display: flex;
                                 flex-direction: column;
@@ -133,6 +143,7 @@ h3 {
                                 max-width: 96.41px;
                                 max-height: 165px;
                                 overflow: visible;
+
                                 >.temtem-evo-image {
                                     width: 70px;
                                     height: auto;
@@ -140,16 +151,19 @@ h3 {
                                     border: black solid 3px;
                                     background-color: white;
                                 }
+
                                 >p {
                                     display: flex;
+
                                     >span {
                                         display: flex;
                                         text-align: center;
-                                        
+
                                     }
                                 }
                             }
                         }
+
                         >.no-evo-tree {
                             display: flex;
                             align-items: center;
@@ -169,10 +183,11 @@ h3 {
                 align-items: center;
                 position: relative;
                 justify-content: end;
-                border: solid 5px rgb(242,112,0);
+                border: solid 5px rgb(242, 112, 0);
                 border-radius: 16px;
                 background-color: lightblue;
                 padding-bottom: 10px;
+
                 >p,
                 h2 {
                     font-size: larger;
@@ -224,54 +239,62 @@ h3 {
             }
 
         }
+
         >.midlane {
             display: flex;
             width: 100%;
             // background-color: lightcoral;
-            height: 200px;
+            height: fit-content;
             flex-direction: column;
             padding: 50px 0 50px 0;
+
             #noLocation {
                 display: flex;
             }
+
             >h2 {
                 margin: 0 0 30px 0;
                 padding-left: 12px;
             }
+
             >.location-wrapper {
-                // display: grid;
-                // grid-template-columns: repeat(6, 1fr);
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 position: relative;
                 width: 100%;
-                // padding: 12px 0 12px 0;
+
                 >.border {
                     display: flex;
                     padding: 12px 0 12px 0;
                     width: fit-content;
                     @include orange-border;
+
                     >.location-entry {
                         display: flex;
                         flex-direction: column;
                         align-items: center;
                         min-width: 175px;
                         cursor: pointer;
+
                         &:hover {
                             transition: 0.3s;
                             transform: scale(1.2);
+
                             >h4 {
-                               color: #9c4c05;
+                                color: #9c4c05;
                             }
+
                             >.location-text {
                                 color: #f27000 !important;
                             }
                         }
-                        &:not(:hover){
+
+                        &:not(:hover) {
                             transition: 0.3s;
-    
+
                         }
+
                         >h4 {
                             margin-top: 0;
                         }
@@ -280,33 +303,65 @@ h3 {
 
 
             }
+
+            .matchup-wrapper {
+                padding-left: 12px;
+                display: flex;
+                flex-direction: column;
+
+                >h2 {
+                    margin-top: 30px;
+                }
+
+                table {
+                    // width: 100%;
+                    border-collapse: collapse;
+                    margin-top: 1rem;
+                    text-align: center;
+                    width: max-content;
+                    thead {
+                        tr {
+                            display: flex;
+                            border: 0.5px black solid;
+                            >.type-row {
+                                position: relative;
+                                background-color: rgba($color: rgb(242, 112, 0), $alpha: 0.5);
+                                width: 44px !important;
+                                height: 44px;
+                                border: 1px black solid;
+                                .type-icon {
+                                    height: 44px;
+                                    width: 44px;
+                                }
+                            }
+                        }
+                    }
+
+                    tbody {
+                        tr {
+                            display: flex;
+                            border: 0.5px black solid;
+
+                            td {
+                                display: flex;
+                                justify-content: center;
+                                border: 1px black solid;
+
+                                width: 44px;
+                            }
+                        }
+                    }
+
+                }
+
+            }
         }
 
     }
 
 }
 
-.matchup-wrapper {
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 1rem;
-        text-align: center;
 
-        th,
-        td {
-            padding: 10px;
-            border: 1px solid black;
-        }
-
-        .type-icon {
-            height: 40px;
-            width: 40px;
-        }
-
-    }
-
-}
 
 @mixin boldblack {
     color: black;
@@ -341,11 +396,4 @@ h3 {
     background-color: rgb(23, 212, 70);
     @include boldblack();
 
-}
-
-.type-row {
-    background-color: rgba($color: rgb(242, 112, 0), $alpha: 0.5);
-    width: 32px;
-    position: relative;
-    height: 32px;
 }
