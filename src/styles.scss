@@ -6,6 +6,11 @@ body {
   display: block;
 }
 
+@mixin orange-border {
+  border: #f27000 solid 5px;
+  border-radius: 16px;
+}
+
 @font-face {
   font-family: "Rubik";
   src:

@@ -28,42 +28,18 @@
               <a href="/">Techniques</a>
               <a href="/">Matchups</a>
             </div>
-            <!-- <div class="evo-tree">
-              <div *ngIf="temtem.evolution?.evolutionTree as evoTree" class="evo-tree-details">
-                
-                  <div *ngFor="let evo of evoTree" class="evo-wrapper">
-                    <img src="https://temtem-api.mael.tech/{{getPortraitUrl(evo.number)}}" alt="{{ evo.name }}" class="temtem-evo-image">
-                      <strong>{{ evo.name }}</strong>
-                      @if (evo.level) {
-                      +{{ evo.level }} levels
-                      } @else if (evo.type == "special"){
-                        {{evo.from | json}}
-                        @if (evo.stage == 0) {
-                        } @else  {Base}
-                      }
-                      
-                    
-                  </div>
-                
-              </div>
-              <div class="no-evo-tree" *ngIf="!temtem.evolution?.evolutionTree">No EvoTree</div>
-            </div> -->
             <div class="evo-tree">
               <div *ngIf="temtem.evolution?.evolutionTree as evoTree" class="evo-tree-details">
                 <div *ngFor="let evo of evoTree" class="evo-wrapper">
-                  <img 
-                    [src]="getPortraitUrl(evo.number)" 
-                    alt="{{ evo.name }}" 
-                    class="temtem-evo-image"
-                  />
+                  <img [src]="getPortraitUrl(evo.number)" alt="{{ evo.name }}" class="temtem-evo-image" />
                   <strong>{{ evo.name }}</strong>
-                  
+
                   <!-- Fall: Level-basierte Evolution -->
                   <p *ngIf="evo.type === 'levels'">
                     <span *ngIf="evo.level && evo.level > 0">+{{ evo.level }} levels</span>
                     <span *ngIf="!evo.level || evo.level === 0">Base</span>
                   </p>
-                  
+
                   <!-- Fall: Spezielle Evolution -->
                   <p *ngIf="evo.type === 'special'">
                     <span *ngIf="evo.description">{{ evo.description }}</span>
@@ -72,8 +48,8 @@
               </div>
               <div class="no-evo-tree" *ngIf="!temtem.evolution?.evolutionTree">No EvoTree</div>
             </div>
-            
-            
+
+
           </div>
 
         </div>
@@ -99,16 +75,16 @@
       </div>
       <div class="midlane">
 
-      <h2>Locations</h2>
-      <div *ngIf="hasLocations(); else noLocation" class="location-wrapper">
-        <div *ngFor="let group of getGroupedLocations()">
-          <h4>{{ group.island }}</h4>
-          <ul>
-            <li *ngFor="let location of group.locations">-> {{ location }}</li>
-          </ul>
+        <h2>Locations</h2>
+        <div *ngIf="hasLocations(); else noLocation" class="location-wrapper">
+          <div class="border">
+            <div *ngFor="let group of getGroupedLocations()" class="location-entry">
+              <h4>{{ group.island }}</h4>
+              <div *ngFor="let location of group.locations" class="location-text">{{ location }}</div>
+            </div>
+          </div>
         </div>
-      </div>
-      <ng-template #noLocation>No location</ng-template>
+        <ng-template #noLocation>No location</ng-template>
       </div>
 
 

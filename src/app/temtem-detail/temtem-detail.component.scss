@@ -1,3 +1,6 @@
+@import '../../styles.scss';
+
+
 p,
 h1,
 div,
@@ -9,7 +12,7 @@ h3 {
 .content-wrapper {
     display: flex;
     background-color: lightgrey;
-    max-width: 1440px;
+    max-width: 1080px;
     min-width: 900px;
     height: max-content;
     border-radius: 30px;
@@ -98,8 +101,7 @@ h3 {
                         display: flex;
                         position: relative;
                         padding: 4px;
-                        border-radius: 12px;
-                        border: 4px solid rgb(242,112,0);
+                        @include orange-border;
                         flex-direction: column;
                         align-items: start;
                         height: fit-content;
@@ -116,16 +118,16 @@ h3 {
                     >.evo-tree {
                         display: flex;
                         >.evo-tree-details {
-                            grid-template-columns: repeat(4, 1fr);
                             display: grid;
+                            grid-template-columns: repeat(4, 1fr);
                             justify-content: center;
                             align-items: center;
-                            gap: 20px;
+                            gap: 40px;
                             >.evo-wrapper {
                                 display: flex;
                                 flex-direction: column;
                                 align-items: center;
-                                gap: 20px;
+                                gap: 10px;
                                 height: fit-content;
                                 // background-color: aqua;
                                 max-width: 96.41px;
@@ -225,7 +227,7 @@ h3 {
         >.midlane {
             display: flex;
             width: 100%;
-            background-color: lightcoral;
+            // background-color: lightcoral;
             height: 200px;
             flex-direction: column;
             padding: 50px 0 50px 0;
@@ -233,12 +235,50 @@ h3 {
                 display: flex;
             }
             >h2 {
-                margin: 0;
+                margin: 0 0 30px 0;
                 padding-left: 12px;
             }
             >.location-wrapper {
+                // display: grid;
+                // grid-template-columns: repeat(6, 1fr);
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 position: relative;
-                padding: 12px;
+                width: 100%;
+                // padding: 12px 0 12px 0;
+                >.border {
+                    display: flex;
+                    padding: 12px 0 12px 0;
+                    width: fit-content;
+                    @include orange-border;
+                    >.location-entry {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        min-width: 175px;
+                        cursor: pointer;
+                        &:hover {
+                            transition: 0.3s;
+                            transform: scale(1.2);
+                            >h4 {
+                               color: #9c4c05;
+                            }
+                            >.location-text {
+                                color: #f27000 !important;
+                            }
+                        }
+                        &:not(:hover){
+                            transition: 0.3s;
+    
+                        }
+                        >h4 {
+                            margin-top: 0;
+                        }
+                    }
+                }
+
+
             }
         }
 

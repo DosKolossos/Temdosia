@@ -110,7 +110,6 @@ export class TemtemDetailComponent implements OnInit {
 
     getGroupedLocations(): { island: string; locations: string[] }[] {
       if (!this.temtem?.locations) return [];
-      console.log(this.data[129].evolution);
       const grouped = this.temtem.locations.reduce((acc, loc) => {
         const islandGroup = acc.find(group => group.island === loc.island);
         if (islandGroup) {
