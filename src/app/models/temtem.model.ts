@@ -7,15 +7,15 @@ export interface EvolutionTreeEntry {
   trading: boolean;
   traits: string[];
   traitMapping: Record<string, string>;
-  to?: string; // Portrait hinzufügen, falls es in der API-Datenstruktur fehlt
-  from?: string;
-  
+  description?: string; // Beschreibung für spezielle Evolutionen
 }
+
 
 export interface Evolution {
   evolves?: boolean;
   stage?: number;
   evolutionTree?: EvolutionTreeEntry[];
+  to?: string[];
 }
 
 export interface Temtem {

@@ -25,6 +25,7 @@ export class TemtemDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
     this.fetchService.fetchData().subscribe({
       next: (temtems) => {
         this.data = temtems;
@@ -33,24 +34,32 @@ export class TemtemDetailComponent implements OnInit {
         console.error('Fehler beim Laden der Temtems:', err);
       },
     });
-  
+
+
     this.route.paramMap.subscribe((params) => {
       const param = params.get('name'); // Hole den Namen aus der URL
       if (param) {
         this.fetchTemtem(param);
+
       } else {
         this.handleError('Invalid parameter.');
       }
     });
+    
   }
   
     // Methode zur Suche des Portrait-URLs basierend auf der Nummer
+    // getPortraitUrl(number: number): string {
+
+    //   const temtem = this.data.find((t) => Number(t.number) === Number(number));
+
+    //   return temtem ? temtem.icon : 'assets/default-placeholder.png'; // Fallback auf Standardbild
+    // }
     getPortraitUrl(number: number): string {
-    
-      const temtem = this.data.find((t) => Number(t.number) === Number(number));
-    
-      return temtem ? temtem.icon : 'assets/default-placeholder.png'; // Fallback auf Standardbild
+      const temtem = this.data.find((t) => t.number === number);
+      return temtem ? temtem.portraitWikiUrl : 'assets/default-placeholder.png';
     }
+    
     
     hasLocations(): boolean {
       return !!this.temtem?.locations && this.temtem.locations.length > 0;
@@ -95,38 +104,13 @@ export class TemtemDetailComponent implements OnInit {
         statValue: Number(statValue),
       }));
     }
-    // getTechniques(): Technique[] {
-    //   return this.temtem?.techniques || [];
-    // }
+    getTechniques(): Technique[] {
+      return this.temtem?.techniques || [];
+    }
 
-    // getTrivia(): string[] {
-    //   return this.temtem?.trivia || [];
-    // }
-
-    // getTempediaEntry(): string[] {
-    //   return this.temtem?.gameDescription;
-    // }
-
-    // getGroupedLocations(): { island: string; locations: string[] }[] {
-    //   if (!this.temtem?.locations) return [];
-    
-    //   const grouped = this.temtem.locations.reduce((acc, loc) => {
-    //     const islandGroup = acc.find(group => group.island === loc.island);
-    //     if (islandGroup) {
-    //       islandGroup.locations.push(loc.location);
-    //     } else {
-    //       acc.push({ island: loc.island, locations: [loc.location] });
-    //     }
-    //     return acc;
-    //   }, [] as { island: string; locations: string[] }[]);
-    
-    //   return grouped;
-    // }
     getGroupedLocations(): { island: string; locations: string[] }[] {
       if (!this.temtem?.locations) return [];
-      
-      console.log('Locations:', this.temtem.locations);
-    
+      console.log(this.data[129].evolution);
       const grouped = this.temtem.locations.reduce((acc, loc) => {
         const islandGroup = acc.find(group => group.island === loc.island);
         if (islandGroup) {
@@ -137,7 +121,6 @@ export class TemtemDetailComponent implements OnInit {
         return acc;
       }, [] as { island: string; locations: string[] }[]);
     
-      console.log('Grouped Locations:', grouped);
       return grouped;
     }
     
@@ -190,5 +173,6 @@ export class TemtemDetailComponent implements OnInit {
       }
       return 'x 1'; // Standardwert, falls kein Match gefunden wird
     }
-    
+
+
 }
