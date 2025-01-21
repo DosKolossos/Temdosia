@@ -1,5 +1,5 @@
 @import '../../styles.scss';
-
+@import '../shared/shared.scss';
 
 p,
 h1,
@@ -253,7 +253,7 @@ h3 {
             }
 
             >h2 {
-                margin: 0 0 30px 0;
+                margin: 30px 0 30px 0;
                 padding-left: 12px;
             }
 
@@ -304,7 +304,7 @@ h3 {
 
             }
 
-            .matchup-wrapper {
+            >.matchup-wrapper {
                 padding-left: 12px;
                 display: flex;
                 flex-direction: column;
@@ -354,6 +354,90 @@ h3 {
 
                 }
 
+            }
+            >.border-stats {
+                display: flex;
+                left: 12px;
+
+                position: relative;
+                width: max-content;
+                >.gapper-stats {
+                    display: flex;
+                    align-items: flex-start;
+                    padding: 8px 40px 0 4px;
+                    justify-content: flex-start;
+                    position: relative;
+                    gap: 4px;
+                    width: fit-content;
+                    @include orange-border;
+                    >.stat {
+                        display: flex;
+                        position: relative;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: flex-start;
+                        width: 30px;
+    
+                        >.totalcircle {
+                            display: flex;
+                            z-index: 10;
+                            position: relative;
+                            left: 20px;
+                            bottom: 4px;
+                            height: 45px;
+                            width: 45px;
+                            display: inline-block;
+    
+                            h5 {
+                                display: flex;
+                                height: 30px;
+                                position: relative;
+                                justify-content: center;
+                                margin: 0;
+                                font-size: 32px;
+                                bottom: 4px;
+                            }
+    
+                            h6 {
+                                display: flex;
+                                justify-content: center;
+                                position: relative;
+                                margin: 0;
+                                font-size: 12px;
+                                color: black;
+                            }
+                        }
+    
+                        >.totalheight {
+                            height: 300px;
+                        }
+    
+                        >.hpcircle,
+                        .stacircle,
+                        .spdcircle,
+                        .atkcircle,
+                        .defcircle,
+                        .spatkcircle,
+                        .spdefcircle {
+                            display: flex;
+                            align-items: center;
+                            flex-direction: column;
+    
+    
+                            h5 {
+                                margin: 0;
+                                font-size: x-large;
+    
+                            }
+    
+                            h6 {
+                                margin: 0;
+                                font-size: 10px;
+                            }
+                        }
+    
+                    }
+                }
             }
         }
 

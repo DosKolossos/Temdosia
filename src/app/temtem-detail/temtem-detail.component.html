@@ -105,6 +105,37 @@
             </tbody>
           </table>
         </div>
+        <h2>Stats</h2>
+
+        <!-- <div class="border-stats">
+          <div class="gapper-stats">
+            <div *ngFor="let stat of getStats()" class="stat">
+              <div ngClass="{{stat.statName}}circle">
+                <h6 ngClass={{stat.statName}}>{{ stat.statName | titlecase }}</h6>
+                <h5 ngClass="stat{{stat.statValue}} total{{stat.statValue}}">{{ stat.statValue }}</h5>
+              </div>
+            </div>
+            
+            <div *ngFor="let tv of getTvs()">
+              <span>{{ tv.statValue }}</span>
+            </div>
+          </div>
+        </div> -->
+        <div class="border-stats">
+          <div class="gapper-stats">
+            <div *ngFor="let stat of getStatsAndTvs()" class="stat">
+              <div [ngClass]="stat.statName + 'circle'">
+                <h6 [ngClass]="stat.statName">{{ stat.statName | titlecase }}</h6>
+                <h5 [ngClass]="'stat' + stat.statValue + ' total' + stat.statValue">{{ stat.statValue }}</h5>
+                <span class="tv-value">TV: {{ stat.tvValue }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+
+
       </div>
 
 
@@ -113,14 +144,7 @@
 
 
 
-      <!-- Stats:
-      <div *ngFor="let stat of getStats()">
-        <span>{{ stat.statName | titlecase }}: {{ stat.statValue }}</span>
-      </div>
-      TVs:
-      <div *ngFor="let tv of getTvs()">
-        <span>{{ tv.statValue }}</span>
-      </div> -->
+
 
     </div><!--  div für Zeile 8 -->
 

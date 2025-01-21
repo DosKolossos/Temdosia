@@ -88,25 +88,32 @@ export class TemtemDetailComponent implements OnInit {
       }, 3000);
     }
   
-    getStats(): { statName: string; statValue: number }[] {
-      if (!this.temtem?.stats) return [];
+    // getStats(): { statName: string; statValue: number }[] {
+    //   if (!this.temtem?.stats) return [];
+    
+    //   return Object.entries(this.temtem.stats).map(([statName, statValue]) => ({
+    //     statName,
+    //     statValue: Number(statValue),
+    //   }));
+    // }
+    // getTvs(): { statName: string; statValue: number }[] {
+    //   if (!this.temtem?.stats) return [];
+    
+    //   return Object.entries(this.temtem.tvYields).map(([statName, statValue]) => ({
+    //     statName,
+    //     statValue: Number(statValue),
+    //   }));
+    // }
+    getStatsAndTvs(): { statName: string; statValue: number; tvValue: number }[] {
+      if (!this.temtem?.stats || !this.temtem?.tvYields) return [];
     
       return Object.entries(this.temtem.stats).map(([statName, statValue]) => ({
         statName,
         statValue: Number(statValue),
+        tvValue: Number(this.temtem?.tvYields[statName as keyof typeof this.temtem.tvYields] || 0), // Typischer Zugriff
       }));
     }
-    getTvs(): { statName: string; statValue: number }[] {
-      if (!this.temtem?.stats) return [];
     
-      return Object.entries(this.temtem.tvYields).map(([statName, statValue]) => ({
-        statName,
-        statValue: Number(statValue),
-      }));
-    }
-    getTechniques(): Technique[] {
-      return this.temtem?.techniques || [];
-    }
 
     getGroupedLocations(): { island: string; locations: string[] }[] {
       if (!this.temtem?.locations) return [];
