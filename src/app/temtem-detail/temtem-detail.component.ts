@@ -88,22 +88,7 @@ export class TemtemDetailComponent implements OnInit {
       }, 3000);
     }
   
-    // getStats(): { statName: string; statValue: number }[] {
-    //   if (!this.temtem?.stats) return [];
-    
-    //   return Object.entries(this.temtem.stats).map(([statName, statValue]) => ({
-    //     statName,
-    //     statValue: Number(statValue),
-    //   }));
-    // }
-    // getTvs(): { statName: string; statValue: number }[] {
-    //   if (!this.temtem?.stats) return [];
-    
-    //   return Object.entries(this.temtem.tvYields).map(([statName, statValue]) => ({
-    //     statName,
-    //     statValue: Number(statValue),
-    //   }));
-    // }
+
     getStatsAndTvs(): { statName: string; statValue: number; tvValue: number }[] {
       if (!this.temtem?.stats || !this.temtem?.tvYields) return [];
     
@@ -180,5 +165,9 @@ export class TemtemDetailComponent implements OnInit {
       return 'x 1'; // Standardwert, falls kein Match gefunden wird
     }
 
-
+    getTechniques(): Technique[] {
+      if (!this.temtem?.techniques) return [];
+      return this.temtem.techniques;
+    }
+    
 }

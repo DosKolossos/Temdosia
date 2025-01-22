@@ -106,36 +106,45 @@
           </table>
         </div>
         <h2>Stats</h2>
-
-        <!-- <div class="border-stats">
-          <div class="gapper-stats">
-            <div *ngFor="let stat of getStats()" class="stat">
-              <div ngClass="{{stat.statName}}circle">
-                <h6 ngClass={{stat.statName}}>{{ stat.statName | titlecase }}</h6>
-                <h5 ngClass="stat{{stat.statValue}} total{{stat.statValue}}">{{ stat.statValue }}</h5>
-              </div>
-            </div>
-            
-            <div *ngFor="let tv of getTvs()">
-              <span>{{ tv.statValue }}</span>
-            </div>
-          </div>
-        </div> -->
         <div class="border-stats">
           <div class="gapper-stats">
             <div *ngFor="let stat of getStatsAndTvs()" class="stat">
               <div [ngClass]="stat.statName + 'circle'">
                 <h6 [ngClass]="stat.statName">{{ stat.statName | titlecase }}</h6>
                 <h5 [ngClass]="'stat' + stat.statValue + ' total' + stat.statValue">{{ stat.statValue }}</h5>
-                <span class="tv-value">TV: {{ stat.tvValue }}</span>
+                <span class="tv-value" *ngIf="stat.tvValue > 0">{{ stat.tvValue }} tv</span>
               </div>
             </div>
           </div>
         </div>
-        
 
 
 
+
+      </div>
+      <div class="botlane">
+        <h2>Techniques:</h2>
+        <div *ngIf="getTechniques().length > 0; else noTechniques">
+          <ul>
+            <li *ngFor="let technique of getTechniques()">
+              <strong>{{ technique.name }}</strong>
+              <br>
+              <span>Type: {{ technique.type }}</span> |
+              <span>Class: {{ technique.class }}</span> |
+              <span>Damage: {{ technique.damage }}</span> |
+              <span>Stamina Cost: {{ technique.staminaCost }}</span> |
+              <span>Hold: {{ technique.hold }}</span> |
+              <span>Priority: {{ technique.priority }}</span>
+              <br>
+              <span *ngIf="technique.synergy && technique.synergy !== 'None'">Synergy: {{ technique.synergy }}</span>
+              <p>Description: {{ technique.description }}</p>
+              <p>Effect: {{ technique.effectText }}</p>
+            </li>
+          </ul>
+        </div>
+        <ng-template #noTechniques>
+          <p>No techniques available.</p>
+        </ng-template>
       </div>
 
 
@@ -148,28 +157,7 @@
 
     </div><!--  div für Zeile 8 -->
 
-    <!-- <h3>Techniques:</h3> -->
-    <!-- <div *ngIf="getTechniques().length > 0; else noTechniques">
-    <ul>
-      <li *ngFor="let technique of getTechniques()">
-        <strong>{{ technique.name }}</strong> 
-        <br>
-        <span>Type: {{ technique.type }}</span> |
-        <span>Class: {{ technique.class }}</span> |
-        <span>Damage: {{ technique.damage }}</span> |
-        <span>Stamina Cost: {{ technique.staminaCost }}</span> |
-        <span>Hold: {{ technique.hold }}</span> |
-        <span>Priority: {{ technique.priority }}</span> 
-        <br>
-        <span *ngIf="technique.synergy && technique.synergy !== 'None'">Synergy: {{ technique.synergy }}</span>
-        <p>Description: {{ technique.description }}</p>
-        <p>Effect: {{ technique.effectText }}</p>
-      </li>
-    </ul>
-  </div> -->
-    <!-- <ng-template #noTechniques>
-    <p>No techniques available.</p>
-  </ng-template> -->
+
     <!-- <div class="trivia-wrapper" *ngFor="let text of getTrivia()">
     <h3>{{temtem?.trivia}}</h3>
   </div> 

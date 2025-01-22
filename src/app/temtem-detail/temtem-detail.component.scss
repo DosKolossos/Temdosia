@@ -441,6 +441,13 @@ h3 {
             }
         }
 
+        >.botlane {
+            display: flex;
+            height: fit-content;
+            background-color: aquamarine;
+            flex-direction: column;
+            width: 100%;
+        }
     }
 
 }
