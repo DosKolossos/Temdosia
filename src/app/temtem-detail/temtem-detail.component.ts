@@ -167,7 +167,13 @@ export class TemtemDetailComponent implements OnInit {
 
     getTechniques(): Technique[] {
       if (!this.temtem?.techniques) return [];
-      return this.temtem.techniques;
+    
+      // Ergänze ein Fallback für `classIcon`, falls es fehlt
+      return this.temtem.techniques.map(technique => ({
+        ...technique,
+        classIcon: technique.classIcon || `/images/icons/technique/${technique.class}.png`, // Dynamischer Fallback
+      }));
     }
+    
     
 }

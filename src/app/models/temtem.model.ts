@@ -52,10 +52,13 @@ export interface Technique {
   number: number;
   type: string;
   class: string;
+  classIcon: string;
   damage: number;
   staminaCost: number;
   hold: number;
   priority: string;
+  priorityIcon: string;
+  targets: string;
   synergy: string;
   description: string;
   effectText: string;

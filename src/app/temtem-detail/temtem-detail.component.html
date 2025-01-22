@@ -125,22 +125,19 @@
       <div class="botlane">
         <h2>Techniques:</h2>
         <div *ngIf="getTechniques().length > 0; else noTechniques" class="technique-entry">
-          <ul>
-            <li *ngFor="let technique of getTechniques()">
-              <strong>{{ technique.name }}</strong>
-              <br>
-              <span>Type: {{ technique.type }}</span> |
-              <span>Class: {{ technique.class }}</span> |
-              <span>Damage: {{ technique.damage }}</span> |
-              <span>Stamina Cost: {{ technique.staminaCost }}</span> |
-              <span>Hold: {{ technique.hold }}</span> |
-              <span>Priority: {{ technique.priority }}</span>
-              <br>
-              <span *ngIf="technique.synergy && technique.synergy !== 'None'">Synergy: {{ technique.synergy }}</span>
-              <p>Description: {{ technique.description }}</p>
-              <p>Effect: {{ technique.effectText }}</p>
-            </li>
-          </ul>
+
+          <div *ngFor="let technique of getTechniques()" class="technique-line">
+            <div class="technique-border">
+              <span><strong>{{ technique.name }}</strong>Type:<img src="https://temtem-api.mael.tech/images/icons/types/{{ technique.type }}.png" class="technique-type-icon" alt="">
+                Class:      <img [src]="'https://temtem-api.mael.tech' + technique.classIcon" class="technique-class-icon" alt="" />
+                Damage: {{ technique.damage }}Stamina Cost: {{ technique.staminaCost }}Hold: {{ technique.hold }}Priority: {{ technique.priority }}
+              <span *ngIf="technique.synergy && technique.synergy !== 'None'"> | Synergy: {{ technique.synergy }}</span>
+              <!-- Description: {{ technique.description }} -->
+              
+              <!-- Effect: {{ technique.effectText }} -->
+            </span>
+            </div>
+          </div>
         </div>
         <ng-template #noTechniques>
           <p>No techniques available.</p>

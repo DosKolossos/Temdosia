@@ -452,6 +452,32 @@ h3 {
             }
             >.technique-entry {
                 display: flex;
+                // background-color: #f27000;
+                flex-direction: column;
+                >.technique-line {
+                    display: flex;
+                    flex-direction: row;
+                    padding-top: 4px;
+                    >.technique-border {
+                        @include orange-border;
+
+                        background-color: azure;
+                        span {
+                            display: flex;
+                            gap: 8px;
+                            align-items: center;
+                            >strong {
+                                width: 180px;
+                            }
+                            >.technique-type-icon {
+                                width: 16px;
+                                height: 16px;
+                            }
+                        }
+
+                    }
+                }
+
             }
         }
     }
