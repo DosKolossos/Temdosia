@@ -447,6 +447,12 @@ h3 {
             background-color: aquamarine;
             flex-direction: column;
             width: 100%;
+            h2 {
+                padding-left: 12px;
+            }
+            >.technique-entry {
+                display: flex;
+            }
         }
     }
 

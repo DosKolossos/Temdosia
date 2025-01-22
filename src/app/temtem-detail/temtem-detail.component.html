@@ -124,7 +124,7 @@
       </div>
       <div class="botlane">
         <h2>Techniques:</h2>
-        <div *ngIf="getTechniques().length > 0; else noTechniques">
+        <div *ngIf="getTechniques().length > 0; else noTechniques" class="technique-entry">
           <ul>
             <li *ngFor="let technique of getTechniques()">
               <strong>{{ technique.name }}</strong>
