@@ -49,6 +49,7 @@ export interface getImage {
 export interface Technique {
   name: string;
   source: string;
+  levels: number;
   number: number;
   type: string;
   class: string;
