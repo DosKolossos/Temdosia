@@ -123,19 +123,31 @@
 
       </div>
       <div class="botlane">
-        <h2>Techniques:</h2>
+        <h2>Techniques</h2>
         <div *ngIf="getTechniques().length > 0; else noTechniques" class="technique-entry">
 
           <div *ngFor="let technique of getTechniques()" class="technique-line">
             <div class="technique-border">
-              <span><strong>{{ technique.name }}</strong>Type:<img src="https://temtem-api.mael.tech/images/icons/types/{{ technique.type }}.png" class="technique-type-icon" alt="">
-                Class:      <img [src]="'https://temtem-api.mael.tech' + technique.classIcon" class="technique-class-icon" alt="" />
-                Damage: {{ technique.damage }}Stamina Cost: {{ technique.staminaCost }}Hold: {{ technique.hold }}Priority: {{ technique.priority }}
-              <span *ngIf="technique.synergy && technique.synergy !== 'None'"> | Synergy: {{ technique.synergy }}</span>
-              <!-- Description: {{ technique.description }} -->
-              
-              <!-- Effect: {{ technique.effectText }} -->
-            </span>
+              <span>
+                <div class="prio-part"><img
+                    [src]="'https://temtem-api.mael.tech/images/icons/priority/' + technique.priority + '.png'" alt=""
+                    class="technique-prio-icon"></div>
+                <div class="name-part"><img src="https://temtem-api.mael.tech/images/icons/types/{{ technique.type }}.png" class="technique-type-icon"><strong>{{ technique.name }}</strong></div>
+                
+                 
+                <div class="damage-part">DMG: {{ technique.damage }} <img
+                    [src]="'https://temtem-api.mael.tech' + technique.classIcon" class="technique-type-icon"
+                    alt="{{ technique.class }}" /></div>
+
+                <div class="stamina-part">STA: {{ technique.staminaCost }} </div>
+                <div class="hold-part">CD: {{ technique.hold }} </div>
+                <div class="targets-part">Targets: (noch leer){{ technique.targets }} </div>
+                <span *ngIf="technique.synergy && technique.synergy !== 'None'"> | Synergy: {{ technique.synergy
+                  }}</span>
+                <!-- Description: {{ technique.description }} -->
+
+                <!-- Effect: {{ technique.effectText }} -->
+              </span>
             </div>
           </div>
         </div>
