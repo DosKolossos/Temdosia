@@ -29,7 +29,7 @@
               <a href="/">Matchups</a>
             </div>
             <div class="evo-tree">
-              <div *ngIf="temtem.evolution?.evolutionTree as evoTree" class="evo-tree-details">
+              <div *ngIf="temtem.evolution?.evolutionTree as evoTree" class="evo-tree-details class-{{temtem.name}}">
                 <div *ngFor="let evo of evoTree" class="evo-wrapper">
                   <img [src]="getPortraitUrl(evo.number)" alt="{{ evo.name }}" class="temtem-evo-image" />
                   <strong>{{ evo.name }}</strong>
