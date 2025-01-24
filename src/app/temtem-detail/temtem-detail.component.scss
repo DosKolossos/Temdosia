@@ -486,21 +486,18 @@ h3 {
                                 display: flex;
                                 position: relative;
                                 top: 0;
-                                height: max-content;
+                                height: auto;
+                                }
+                        }
+                        // &:not(:hover) {
+                        //     > .technique-border {
+                        //         > .effect-text {
+                        //             max-height: 0px;
+                        //             overflow: hidden;
 
-                                transition: all 5.5s ease; /* Übergangseffekt */
-                                // animation-delay: 1s; /* Verzögerung des Hover-Effekts */
-                                }
-                        }
-                        &:not(:hover) {
-                            > .technique-border {
-                                > .effect-text {
-                                    max-height: 0px;
-                                    overflow: hidden;
-                                    transition: all 0.5s ease; /* Übergangseffekt */
-                                }
-                            }
-                        }
+                        //         }
+                        //     }
+                        // }
                     }
                     >.technique-border {
                         @include orange-border;
@@ -512,13 +509,14 @@ h3 {
                         >.effect-text {
                             display: none;
                             justify-content: center;
-                            height: max-content;
                             font-size: 12px;
                             margin-top: 4px;
                             margin-bottom: 4px;
                             >p {
-                                width: 70%;
-                            }
+                                width: 600px;          /* Feste Breite, anpassen nach Wunsch */
+                                white-space: normal;   /* Erlaubt Zeilenumbrüche */
+                                word-wrap: break-word; /* Falls du wirklich lange Worte/URLs hast */
+                              }
                         }
 
                         span {
