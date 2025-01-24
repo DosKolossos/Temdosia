@@ -122,11 +122,12 @@
 
 
       </div>
-      <div class="botlane">
+      <!-- <div class="botlane">
         <h2>Techniques</h2>
         <div *ngIf="getTechniques().length > 0; else noTechniques" class="technique-entry">
 
-          <div *ngFor="let technique of getTechniques()" class="technique-line">
+          <div *ngFor="let technique of getTechniques()" class="technique-line" (mouseenter)="hoveredTechnique = technique"
+          (mouseleave)="hoveredTechnique = null">
             <div class="technique-border">
               <span>
                 @if (technique.source == "Levelling") {
@@ -135,17 +136,23 @@
                 <div class="level-part"><img src="../../assets/img/egg-icon.png" alt="Egg move" class="egg-icon"></div>
                 }
                 @else if (technique.source == "TechniqueCourses") {
-                <div class="level-part"><img src="../../assets/img/tc-icon.png" alt="tech course move" class="techmov-icon"></div>
+                <div class="level-part"><img src="../../assets/img/tc-icon.png" alt="tech course move"
+                    class="techmov-icon"></div>
                 }
                 <div class="prio-part"><img
                     [src]="'https://temtem-api.mael.tech/images/icons/priority/' + technique.priority + '.png'" alt=""
                     class="technique-prio-icon"></div>
-                <div class="name-part"><img
-                    src="https://temtem-api.mael.tech/images/icons/types/{{ technique.type }}.png"
-                    class="technique-type-icon">
-                    <div *ngIf="technique.synergy && technique.synergy !== 'None'" class="synergy-part"> <img src="../../assets/img/plus-icon.png" class="plus-icon" alt=""><img src="https://temtem-api.mael.tech/images/icons/types/{{ technique.synergy }}.png" class="synergy-icon" alt="{{ technique.synergy }}"> </div>
-
-                    <strong>{{ technique.name }}</strong></div>
+                <div class="name-part">
+                  <div class="type-wrapper">
+                    <img src="https://temtem-api.mael.tech/images/icons/types/{{ technique.type }}.png"
+                      class="technique-type-icon">
+                    <div *ngIf="technique.synergy && technique.synergy !== 'None'" class="synergy-part"> <img
+                        src="../../assets/img/plus-icon.png" class="plus-icon" alt=""><img
+                        src="https://temtem-api.mael.tech/images/icons/types/{{ technique.synergy }}.png"
+                        class="synergy-icon" alt="{{ technique.synergy }}"> </div>
+                  </div>
+                  <strong>{{ technique.name }}</strong>
+                </div>
 
 
                 <div class="damage-part">DMG: {{ technique.damage }} <img
@@ -158,19 +165,74 @@
 
 
 
-                <!-- Description: {{ technique.description }} -->
 
-                <!-- Effect: {{ technique.effectText }} -->
               </span>
+            </div>
+
+            <div class="effect-row" *ngIf="hoveredTechnique === technique">
+              <p>{{ technique.effectText }}</p>
             </div>
           </div>
         </div>
         <ng-template #noTechniques>
           <p>No techniques available.</p>
         </ng-template>
+      </div> -->
+      <div class="botlane">
+        <h2>Techniques</h2>
+        <div *ngIf="getTechniques().length > 0; else noTechniques" class="technique-entry">
+      
+          <div *ngFor="let technique of getTechniques()" class="technique-line">
+            <div class="technique-border">
+              <span>
+                <div *ngIf="technique.source == 'Levelling'" class="level-part">Lv {{technique.levels}}</div>
+                <div *ngIf="technique.source == 'Breeding'" class="level-part">
+                  <img src="../../assets/img/egg-icon.png" alt="Egg move" class="egg-icon">
+                </div>
+                <div *ngIf="technique.source == 'TechniqueCourses'" class="level-part">
+                  <img src="../../assets/img/tc-icon.png" alt="tech course move" class="techmov-icon">
+                </div>
+                <div class="prio-part">
+                  <img [src]="'https://temtem-api.mael.tech/images/icons/priority/' + technique.priority + '.png'"
+                       alt=""
+                       class="technique-prio-icon">
+                </div>
+                <div class="name-part">
+                  <div class="type-wrapper">
+                    <img src="https://temtem-api.mael.tech/images/icons/types/{{ technique.type }}.png"
+                         class="technique-type-icon">
+                    <div *ngIf="technique.synergy && technique.synergy !== 'None'" class="synergy-part">
+                      <img src="../../assets/img/plus-icon.png" class="plus-icon" alt="">
+                      <img src="https://temtem-api.mael.tech/images/icons/types/{{ technique.synergy }}.png"
+                           class="synergy-icon" alt="{{ technique.synergy }}">
+                    </div>
+                  </div>
+                  <strong>{{ technique.name }}</strong>
+                </div>
+                <div class="damage-part">DMG: {{ technique.damage }}
+                  <img [src]="'https://temtem-api.mael.tech' + technique.classIcon"
+                       class="technique-type-icon"
+                       alt="{{ technique.class }}" />
+                </div>
+                <div class="stamina-part">STA: {{ technique.staminaCost }}</div>
+                <div class="hold-part">CD: {{ technique.hold }}</div>
+                <div class="targets-part">Targets: {{ technique.targets }}</div>
+              </span>
+              <div class="effect-text"><p>{{ technique.effectText }}</p></div>
+            </div>
+      
+            <!-- Effektanzeige -->
+          </div>
+        </div>
+        <ng-template #noTechniques>
+          <p>No techniques available.</p>
+        </ng-template>
       </div>
+      
 
+                <!-- Description: {{ technique.description }} -->
 
+                <!-- Effect: {{ technique.effectText }} -->
 
 
 

@@ -125,10 +125,12 @@ h3 {
 
                     >.evo-tree {
                         display: flex;
-                        >.class-Tuwai{
+
+                        >.class-Tuwai {
                             display: grid !important;
                             grid-template-columns: repeat(4, 1fr) !important;
                         }
+
                         >.evo-tree-details {
                             display: flex;
                             justify-content: center;
@@ -476,14 +478,53 @@ h3 {
                     padding-top: 4px;
                     width: 100%;
 
+                    cursor: pointer;
+                    &:hover {
+                        height: max-content;
+                        >.technique-border {
+                            >.effect-text {
+                                display: flex;
+                                position: relative;
+                                top: 0;
+                                height: max-content;
+
+                                transition: all 5.5s ease; /* Übergangseffekt */
+                                // animation-delay: 1s; /* Verzögerung des Hover-Effekts */
+                                }
+                        }
+                        &:not(:hover) {
+                            > .technique-border {
+                                > .effect-text {
+                                    max-height: 0px;
+                                    overflow: hidden;
+                                    transition: all 0.5s ease; /* Übergangseffekt */
+                                }
+                            }
+                        }
+                    }
                     >.technique-border {
                         @include orange-border;
                         width: 95%;
                         background-color: azure;
+                        height: 100%;
+
+
+                        >.effect-text {
+                            display: none;
+                            justify-content: center;
+                            height: max-content;
+                            font-size: 12px;
+                            margin-top: 4px;
+                            margin-bottom: 4px;
+                            >p {
+                                width: 70%;
+                            }
+                        }
 
                         span {
                             display: flex;
                             gap: 16px;
+                            height: 40px;
                             align-items: center;
 
                             >.level-part {
@@ -524,28 +565,34 @@ h3 {
                                 width: 200px;
                                 justify-content: space-between;
 
-                                >.technique-type-icon {
-                                    width: 34px;
-                                    height: 34px;
-                                }
-
-                                >.synergy-part {
+                                >.type-wrapper {
                                     display: flex;
+                                    align-items: center;
 
-                                    >.plus-icon {
-                                        width: 12px;
-                                        height: 12px;
-                                        z-index: 1;
+                                    >.technique-type-icon {
+                                        width: 34px;
+                                        height: 34px;
                                     }
 
-                                    >.synergy-icon {
-                                        width: 24px;
-                                        height: 24px;
-                                        position: relative;
-                                        right: 14px;
-                                    }
+                                    >.synergy-part {
+                                        display: flex;
 
+                                        >.plus-icon {
+                                            width: 12px;
+                                            height: 12px;
+                                            z-index: 1;
+                                        }
+
+                                        >.synergy-icon {
+                                            width: 24px;
+                                            height: 24px;
+                                            position: relative;
+                                            right: 14px;
+                                        }
+
+                                    }
                                 }
+
                             }
 
                             >strong {

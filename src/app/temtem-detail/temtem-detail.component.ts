@@ -17,6 +17,7 @@ export class TemtemDetailComponent implements OnInit {
   data: Temtem[] = []; // Alle Temtems
   errorMessage: string | null = null;
 
+
   constructor(
     private route: ActivatedRoute,
     private fetchService: FetchService,
