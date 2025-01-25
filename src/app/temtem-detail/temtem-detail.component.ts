@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Temtem, Technique, Locations } from '../models/temtem.model';
 import { FetchService } from '../fetch.service'; 
 import { CommonModule } from '@angular/common';
@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './temtem-detail.component.html',
   styleUrls: ['./temtem-detail.component.scss'],
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
 })
 export class TemtemDetailComponent implements OnInit {
   temtem: Temtem | null = null;
@@ -25,30 +25,27 @@ export class TemtemDetailComponent implements OnInit {
 
   ) {}
 
-  ngOnInit(): void {
 
+  ngOnInit(): void {
     this.fetchService.fetchData().subscribe({
       next: (temtems) => {
         this.data = temtems;
+        this.data.sort((a, b) => a.number - b.number);
       },
       error: (err) => {
         console.error('Fehler beim Laden der Temtems:', err);
       },
     });
-
-
+  
     this.route.paramMap.subscribe((params) => {
       const param = params.get('name'); // Hole den Namen aus der URL
       if (param) {
         this.fetchTemtem(param);
-
       } else {
         this.handleError('Invalid parameter.');
       }
     });
-    
   }
-  
     // Methode zur Suche des Portrait-URLs basierend auf der Nummer
     // getPortraitUrl(number: number): string {
 
@@ -175,6 +172,36 @@ export class TemtemDetailComponent implements OnInit {
         classIcon: technique.classIcon || `/images/icons/technique/${technique.class}.png`, // Dynamischer Fallback
       }));
     }
+
+    private getTemtemIndexInternal(name: string): number {
+      return this.data.findIndex(t => t.name.toLowerCase() === name.toLowerCase());
+    }
     
+    public getTemtemIndex(name: string): number {
+      return this.getTemtemIndexInternal(name);
+    }
+    
+    
+    goPrevious(): void {
+      if (!this.temtem) return;
+    
+      const index = this.getTemtemIndex(this.temtem.name);
+      // Nur navigieren, falls wir nicht am Anfang der Liste sind
+      if (index > 0) {
+        const prevName = this.data[index - 1].name;
+        this.router.navigate(['/', prevName]);
+      }
+    }
+    
+    goNext(): void {
+      if (!this.temtem) return;
+    
+      const index = this.getTemtemIndex(this.temtem.name);
+      // Nur navigieren, falls wir nicht am Ende der Liste sind
+      if (index < this.data.length - 1) {
+        const nextName = this.data[index + 1].name;
+        this.router.navigate(['/', nextName]);
+      }
+    }
     
 }

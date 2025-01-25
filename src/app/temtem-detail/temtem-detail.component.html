@@ -1,4 +1,22 @@
 <div class="content-wrapper">
+
+  <div class="temtem-navigation">
+    <div class="nav-box">
+      <div class="nav-line">
+        <!-- Zurück-Button -->
+        <div *ngIf="temtem?.name !== 'Mimit'" class="nav-element" (click)="goPrevious()">
+          ← back
+        </div>
+
+        <!-- Weiter-Button -->
+        <div class="nav-element" (click)="goNext()" *ngIf="temtem?.name !== 'Galios'">
+          next →
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <div *ngIf="errorMessage; else temtemContent">
     <h1>{{ errorMessage }}</h1>
     <p>Redirecting to Temtem list...</p>
@@ -32,7 +50,7 @@
               <div *ngIf="temtem.evolution?.evolutionTree as evoTree" class="evo-tree-details class-{{temtem.name}}">
                 <div *ngFor="let evo of evoTree" class="evo-wrapper">
                   <img [src]="getPortraitUrl(evo.number)" alt="{{ evo.name }}" class="temtem-evo-image" />
-                  <strong>{{ evo.name }}</strong>
+                  <strong><a [routerLink]="['/',evo.name]">{{ evo.name }}</a></strong>
 
                   <!-- Fall: Level-basierte Evolution -->
                   <p *ngIf="evo.type === 'levels'">
@@ -181,7 +199,7 @@
       <div class="botlane">
         <h2>Techniques</h2>
         <div *ngIf="getTechniques().length > 0; else noTechniques" class="technique-entry">
-      
+
           <div *ngFor="let technique of getTechniques()" class="technique-line">
             <div class="technique-border">
               <span>
@@ -194,33 +212,33 @@
                 </div>
                 <div class="prio-part">
                   <img [src]="'https://temtem-api.mael.tech/images/icons/priority/' + technique.priority + '.png'"
-                       alt=""
-                       class="technique-prio-icon">
+                    alt="" class="technique-prio-icon">
                 </div>
                 <div class="name-part">
                   <div class="type-wrapper">
                     <img src="https://temtem-api.mael.tech/images/icons/types/{{ technique.type }}.png"
-                         class="technique-type-icon">
+                      class="technique-type-icon">
                     <div *ngIf="technique.synergy && technique.synergy !== 'None'" class="synergy-part">
                       <img src="../../assets/img/plus-icon.png" class="plus-icon" alt="">
                       <img src="https://temtem-api.mael.tech/images/icons/types/{{ technique.synergy }}.png"
-                           class="synergy-icon" alt="{{ technique.synergy }}">
+                        class="synergy-icon" alt="{{ technique.synergy }}">
                     </div>
                   </div>
                   <strong>{{ technique.name }}</strong>
                 </div>
                 <div class="damage-part">DMG: {{ technique.damage }}
-                  <img [src]="'https://temtem-api.mael.tech' + technique.classIcon"
-                       class="technique-type-icon"
-                       alt="{{ technique.class }}" />
+                  <img [src]="'https://temtem-api.mael.tech' + technique.classIcon" class="technique-type-icon"
+                    alt="{{ technique.class }}" />
                 </div>
                 <div class="stamina-part">STA: {{ technique.staminaCost }}</div>
                 <div class="hold-part">CD: {{ technique.hold }}</div>
                 <div class="targets-part">Targets: {{ technique.targets }}</div>
               </span>
-              <div class="effect-text"><p>{{ technique.effectText }}</p></div>
+              <div class="effect-text">
+                <p>{{ technique.effectText }}</p>
+              </div>
             </div>
-      
+
             <!-- Effektanzeige -->
           </div>
         </div>
@@ -228,11 +246,11 @@
           <p>No techniques available.</p>
         </ng-template>
       </div>
-      
 
-                <!-- Description: {{ technique.description }} -->
 
-                <!-- Effect: {{ technique.effectText }} -->
+      <!-- Description: {{ technique.description }} -->
+
+      <!-- Effect: {{ technique.effectText }} -->
 
 
 
