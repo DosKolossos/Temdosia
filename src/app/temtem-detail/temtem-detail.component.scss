@@ -146,33 +146,41 @@ h3 {
                     flex-direction: row;
                     align-items: unset;
                     width: 100%;
-                    justify-content: space-around;
+                    justify-content: center;
                     padding: 30px 0 30px 0;
 
                     >.navi {
                         display: flex;
-                        position: relative;
+                        position: absolute;
+                        left: 12px;
                         padding: 4px;
                         @include orange-border;
                         flex-direction: column;
                         align-items: start;
                         height: fit-content;
                         z-index: 1;
-
+                        
                         >h3 {
                             margin-top: 0px;
+                        
                         }
 
                         >a {
                             text-decoration: none;
                             margin: 4px;
                             color: black;
+                            cursor: pointer;
+                            &:hover {
+                                color: #f27000;
+                                text-decoration: underline;
+                            }
                         }
                     }
 
                     >.evo-tree {
                         display: flex;
-
+                        position: relative;
+                        left: 30px;
                         >.class-Tuwai {
                             display: grid !important;
                             grid-template-columns: repeat(4, 1fr) !important;
@@ -309,9 +317,21 @@ h3 {
             height: fit-content;
             flex-direction: column;
             padding: 50px 0 20px 0;
-
-            #noLocation {
+            #locations {
+                position: relative;
+                top: -100px;
+            }
+            #matchups {
+                position: relative;
+                top: -100px;
+            }
+            #stats {
+                position: relative;
+                top: -100px;
+            }
+            #noLocationText {
                 display: flex;
+                margin-left: 35px;
             }
 
             >h2 {
@@ -325,7 +345,6 @@ h3 {
                 align-items: center;
                 position: relative;
                 width: 100%;
-
                 >.border {
                     display: flex;
                     padding: 12px 0 12px 0;
@@ -515,7 +534,14 @@ h3 {
             // background-color: aquamarine;
             flex-direction: column;
             width: 100%;
-
+            #techniques {
+                position: relative;
+                top: -100px;
+            }
+            #trivia {
+                position: relative;
+                top: -100px;
+            }
             h2 {
                 padding-left: 12px;
             }

@@ -16,7 +16,7 @@ export class TemtemDetailComponent implements OnInit {
   temtem: Temtem | null = null;
   data: Temtem[] = []; // Alle Temtems
   errorMessage: string | null = null;
-
+  loading = false;   // Eigenschaft anlegen
 
   constructor(
     private route: ActivatedRoute,
@@ -71,6 +71,7 @@ export class TemtemDetailComponent implements OnInit {
           this.errorMessage = null;
           if (this.temtem?.evolution?.evolutionTree) {
           }
+
         },
         error: (err) => {
           console.error('Fehler beim Abrufen des Temtems:', err);
@@ -224,5 +225,15 @@ export class TemtemDetailComponent implements OnInit {
       return null;
     }
     
-    
+    scrollToElement(elementId: string): void {
+      const element = document.getElementById(elementId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    public hasTrivia(): boolean {
+      // Prüft, ob es ein Array gibt UND ob es nicht leer ist
+      return !!(this.temtem?.trivia && this.temtem.trivia.length > 0);
+    }
 }

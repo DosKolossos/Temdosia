@@ -44,11 +44,11 @@
           <div class="nav-evo-tree">
             <div class="navi">
               <h3>Navigation</h3>
-              <a href="/">Locations</a>
-              <a href="/">Matchups</a>
-              <a href="/">Stats</a>
-              <a href="/">Techniques</a>
-              <a href="/">Trivia</a>
+              <a (click)="scrollToElement('locations')">Locations</a>
+              <a (click)="scrollToElement('matchups')">Matchups</a>
+              <a (click)="scrollToElement('stats')">Stats</a>
+              <a (click)="scrollToElement('techniques')">Techniques</a>
+              <a (click)="scrollToElement('trivia')">Trivia</a>
             </div>
             <div class="evo-tree">
               <div *ngIf="temtem.evolution?.evolutionTree as evoTree" class="evo-tree-details class-{{temtem.name}}">
@@ -97,8 +97,8 @@
 
       </div>
       <div class="midlane">
-
-        <h2>Locations</h2>
+        <div id="locations"></div>
+        <h2> Locations</h2>
         <div *ngIf="hasLocations(); else noLocation" class="location-wrapper">
           <div class="border">
             <div *ngFor="let group of getGroupedLocations()" class="location-entry">
@@ -107,7 +107,10 @@
             </div>
           </div>
         </div>
-        <ng-template #noLocation>No location</ng-template>
+        <ng-template #noLocation>
+          <div id="noLocationText">No location</div>
+        </ng-template>
+        <div id="matchups"></div>
         <div class="matchup-wrapper" *ngIf="temtem?.matchUps">
           <h2>Type Matchups</h2>
           <table>
@@ -128,6 +131,7 @@
             </tbody>
           </table>
         </div>
+        <div id="stats"></div>
         <h2>Stats</h2>
         <div class="border-stats">
           <div class="gapper-stats">
@@ -145,8 +149,10 @@
 
 
       </div>
-   
+
       <div class="botlane">
+        <div id="techniques"></div>
+
         <h2>Techniques</h2>
         <div *ngIf="getTechniques().length > 0; else noTechniques" class="technique-entry">
 
@@ -195,11 +201,12 @@
         <ng-template #noTechniques>
           <p>No techniques available.</p>
         </ng-template>
-        <div class="trivia">
-          <h2>Trivia</h2>
-          <span *ngFor="let trivia of temtem.trivia" class="trivia-entry">- {{trivia}}</span>
-        </div>
+        <div id="trivia"></div>
 
+        <div class="trivia" *ngIf="hasTrivia()">
+          <h2>Trivia</h2>
+          <span *ngFor="let t of temtem.trivia" class="trivia-entry">- {{ t }}</span>
+        </div>
       </div>
 
 
