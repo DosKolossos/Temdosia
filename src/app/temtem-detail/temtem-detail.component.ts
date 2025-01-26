@@ -203,5 +203,26 @@ export class TemtemDetailComponent implements OnInit {
         this.router.navigate(['/', nextName]);
       }
     }
+
+    public getNextTemtem(): Temtem | null {
+      if (!this.temtem) return null;
+      const currentIndex = this.getTemtemIndex(this.temtem.name);
+      // Nur wenn nicht am Ende der Liste
+      if (currentIndex < this.data.length - 1) {
+        return this.data[currentIndex + 1];
+      }
+      return null;
+    }
+    
+    public getPrevTemtem(): Temtem | null {
+      if (!this.temtem) return null;
+      const currentIndex = this.getTemtemIndex(this.temtem.name);
+      // Nur wenn nicht am Anfang der Liste
+      if (currentIndex > 0) {
+        return this.data[currentIndex - 1];
+      }
+      return null;
+    }
+    
     
 }

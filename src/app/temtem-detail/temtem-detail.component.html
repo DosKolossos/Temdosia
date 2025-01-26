@@ -4,17 +4,21 @@
     <div class="nav-box">
       <div class="nav-line">
         <!-- Zurück-Button -->
-        <div *ngIf="temtem?.name !== 'Mimit'" class="nav-element" (click)="goPrevious()">
-          ← back
+        <div class="nav-element" *ngIf="getPrevTemtem() as prevTem" (click)="goPrevious()">
+          <img [src]="prevTem.portraitWikiUrl" alt="{{ prevTem.name }}" class="nav-icon" />
+          <span>← {{ prevTem.name }}</span>
         </div>
 
         <!-- Weiter-Button -->
-        <div class="nav-element" (click)="goNext()" *ngIf="temtem?.name !== 'Galios'">
-          next →
+        <div class="nav-element" *ngIf="getNextTemtem() as nextTem" (click)="goNext()">
+          <span>{{ nextTem.name }} →</span>
+
+          <img [src]="nextTem.portraitWikiUrl" alt="{{ nextTem.name }}" class="nav-icon" />
         </div>
       </div>
     </div>
   </div>
+
 
 
   <div *ngIf="errorMessage; else temtemContent">
@@ -35,22 +39,23 @@
           </p>
 
 
-          <span *ngFor="let trivia of temtem.trivia">- {{trivia}}</span>
+
 
           <div class="nav-evo-tree">
             <div class="navi">
               <h3>Navigation</h3>
-              <a href="/">EvoTree</a>
               <a href="/">Locations</a>
+              <a href="/">Matchups</a>
               <a href="/">Stats</a>
               <a href="/">Techniques</a>
-              <a href="/">Matchups</a>
+              <a href="/">Trivia</a>
             </div>
             <div class="evo-tree">
               <div *ngIf="temtem.evolution?.evolutionTree as evoTree" class="evo-tree-details class-{{temtem.name}}">
                 <div *ngFor="let evo of evoTree" class="evo-wrapper">
-                  <img [src]="getPortraitUrl(evo.number)" alt="{{ evo.name }}" class="temtem-evo-image" />
-                  <strong><a [routerLink]="['/',evo.name]">{{ evo.name }}</a></strong>
+                  <a [routerLink]="['/',evo.name]">
+                    <img [src]="getPortraitUrl(evo.number)" alt="{{ evo.name }}" class="temtem-evo-image" />
+                    <strong>{{ evo.name }}</strong></a>
 
                   <!-- Fall: Level-basierte Evolution -->
                   <p *ngIf="evo.type === 'levels'">
@@ -140,62 +145,7 @@
 
 
       </div>
-      <!-- <div class="botlane">
-        <h2>Techniques</h2>
-        <div *ngIf="getTechniques().length > 0; else noTechniques" class="technique-entry">
-
-          <div *ngFor="let technique of getTechniques()" class="technique-line" (mouseenter)="hoveredTechnique = technique"
-          (mouseleave)="hoveredTechnique = null">
-            <div class="technique-border">
-              <span>
-                @if (technique.source == "Levelling") {
-                <div class="level-part">Lv {{technique.levels}}</div>
-                } @else if (technique.source == "Breeding") {
-                <div class="level-part"><img src="../../assets/img/egg-icon.png" alt="Egg move" class="egg-icon"></div>
-                }
-                @else if (technique.source == "TechniqueCourses") {
-                <div class="level-part"><img src="../../assets/img/tc-icon.png" alt="tech course move"
-                    class="techmov-icon"></div>
-                }
-                <div class="prio-part"><img
-                    [src]="'https://temtem-api.mael.tech/images/icons/priority/' + technique.priority + '.png'" alt=""
-                    class="technique-prio-icon"></div>
-                <div class="name-part">
-                  <div class="type-wrapper">
-                    <img src="https://temtem-api.mael.tech/images/icons/types/{{ technique.type }}.png"
-                      class="technique-type-icon">
-                    <div *ngIf="technique.synergy && technique.synergy !== 'None'" class="synergy-part"> <img
-                        src="../../assets/img/plus-icon.png" class="plus-icon" alt=""><img
-                        src="https://temtem-api.mael.tech/images/icons/types/{{ technique.synergy }}.png"
-                        class="synergy-icon" alt="{{ technique.synergy }}"> </div>
-                  </div>
-                  <strong>{{ technique.name }}</strong>
-                </div>
-
-
-                <div class="damage-part">DMG: {{ technique.damage }} <img
-                    [src]="'https://temtem-api.mael.tech' + technique.classIcon" class="technique-type-icon"
-                    alt="{{ technique.class }}" /></div>
-
-                <div class="stamina-part">STA: {{ technique.staminaCost }} </div>
-                <div class="hold-part">CD: {{ technique.hold }} </div>
-                <div class="targets-part">Targets: {{ technique.targets }} </div>
-
-
-
-
-              </span>
-            </div>
-
-            <div class="effect-row" *ngIf="hoveredTechnique === technique">
-              <p>{{ technique.effectText }}</p>
-            </div>
-          </div>
-        </div>
-        <ng-template #noTechniques>
-          <p>No techniques available.</p>
-        </ng-template>
-      </div> -->
+   
       <div class="botlane">
         <h2>Techniques</h2>
         <div *ngIf="getTechniques().length > 0; else noTechniques" class="technique-entry">
@@ -245,6 +195,11 @@
         <ng-template #noTechniques>
           <p>No techniques available.</p>
         </ng-template>
+        <div class="trivia">
+          <h2>Trivia</h2>
+          <span *ngFor="let trivia of temtem.trivia" class="trivia-entry">- {{trivia}}</span>
+        </div>
+
       </div>
 
 
@@ -257,23 +212,7 @@
 
 
 
-
-    </div><!--  div für Zeile 8 -->
-
-
-    <!-- <div class="trivia-wrapper" *ngFor="let text of getTrivia()">
-    <h3>{{temtem?.trivia}}</h3>
-  </div> 
-
-  <div class="tempedia-entry">
-    <h3>{{temtem?.gameDescription}}</h3>
-  </div> -->
-
-
-
-
-
-
+    </div><!--  div für Zeile 7 -->
     <ng-template #loading>
       <p>Loading...</p>
     </ng-template>
