@@ -8,9 +8,11 @@
     position: relative;
     flex-direction: column;
     align-items: center;
-    height: 700px;
+    height: 100vh;
     width: 1080px;
     background-color: #d3d3d3;
+    margin-bottom: 150px;
+
     >.top-box {
         position: relative;
         display: flex;
@@ -23,6 +25,7 @@
         height: 300px;
         width: 1046px;
         cursor: default;
+
         >.bg-oree {
             position: relative;
             width: 100%;
@@ -32,18 +35,21 @@
             background-repeat: no-repeat;
             background-position: right;
             border-radius: 11px;
+
             >h1 {
                 color: black;
                 padding-left: 12px;
                 font-size: 72px;
                 margin-bottom: 0;
             }
+
             >.subtitle {
                 background-color: #f27000;
                 width: fit-content;
                 border-top-right-radius: 30px;
                 border-bottom-right-radius: 30px;
                 padding-right: 8px;
+
                 >h3 {
                     padding-left: 12px;
                     margin-top: 0;
@@ -51,6 +57,52 @@
                 }
             }
 
+            >a {
+                position: relative;
+                display: flex;
+                background-color: #f27000;
+                text-decoration: none;
+                color: black;
+                top: 30px;
+                left: 60px;
+                padding: 8px 20px 8px 20px;
+                border-radius: 16px;
+                width: fit-content;
+
+                &:hover {
+                    transition: 0.4s;
+                    background-color: white;
+                }
+
+                &:not(:hover) {
+                    transition: 0.2s;
+                }
+            }
+        }
+
+    }
+
+    >.middle-box {
+        position: relative;
+        padding-top: 16px;
+        width: 1046px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+
+            >.home-card-wrapper {
+                display: flex;
+                justify-content: center;
+                >a {
+                    text-decoration: none;
+                    color: black;
+                >.home-card {
+                    height: 150px;
+                    width: 480px;
+                    // background-color: #f27000;
+                    @include orange-border;
+                }
+            }
         }
     }
 }

@@ -46,13 +46,7 @@ export class TemtemDetailComponent implements OnInit {
       }
     });
   }
-    // Methode zur Suche des Portrait-URLs basierend auf der Nummer
-    // getPortraitUrl(number: number): string {
 
-    //   const temtem = this.data.find((t) => Number(t.number) === Number(number));
-
-    //   return temtem ? temtem.icon : 'assets/default-placeholder.png'; // Fallback auf Standardbild
-    // }
     getPortraitUrl(number: number): string {
       const temtem = this.data.find((t) => t.number === number);
       return temtem ? temtem.portraitWikiUrl : 'assets/default-placeholder.png';
