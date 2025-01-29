@@ -15,9 +15,34 @@
     >.ranks-content {
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: violet;
+        width: 90%;
         >.ranks-entry {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            text-align: left;
+            >.ranks-name {
+                display: flex;
+                min-width: 100px;
+                background-color: aqua;
+            }
+            >.ranks-types {
+                display: flex;
+                min-width: 150px;
+                background-color: yellowgreen;
+            }
+            >.ranks-stats {
+                display: flex;
+                gap: 4px;
+                min-width: 250px;
+                background-color: yellow;
+                >.ranks-stats-column {
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
         }
     }
 }
