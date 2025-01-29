@@ -1,22 +1,35 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* Höhe des sichtbaren Fensters */
+}
+
 app-header {
     position: fixed;
     display: flex;
     justify-content: center;
     height: 100px;
+    width: 100%;
     background-image: url(../assets/img/oree-header-bg.jpg);
     background-size: cover;
     background-position: center;
     border: black solid 2px;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-    margin: 0;
+    z-index: 999;
 }
 
-// app-data-display {
-//     display: flex;
-//     position: relative;
-//     justify-content: center;
-//     top: 110px;
-//     margin-left: 4px;
-// }
+.content {
+    flex: 1;
+    /* Dynamische Höhe, die den Platz zwischen Header und Footer füllt */
+    display: flex;
+    flex-direction: column;
+}
+
+app-footer {
+    height: 150px;
+    background-color: #292929;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}

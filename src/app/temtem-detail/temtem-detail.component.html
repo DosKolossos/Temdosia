@@ -78,7 +78,8 @@
         </div>
         <div class="topright">
           <h2>{{ temtem.name }}</h2>
-          <img src="https://temtem-api.mael.tech/{{temtem.icon}}" alt="{{ temtem.name }}" class="profile-pic">
+          <img *ngIf="temtem.number !== 165" src="https://temtem-api.mael.tech/{{temtem.icon}}" alt="{{ temtem.name }}" class="profile-pic">
+          <img *ngIf="temtem.number == 165" src="https:temdosia.de/assets/img/Galios.png" alt="{{ temtem.name }}" class="profile-pic">
           <p>Types:</p>
           <div>
             <img *ngIf="temtem.type1icon" [src]="temtem.type1icon" alt="Type Icon 1" class="type-icon-top">

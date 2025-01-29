@@ -1,0 +1,18 @@
+.locations-wrapper {
+    display: flex;
+    position: relative;
+    gap: 4px;
+    color: black;
+    background-color: #d3d3d3;
+    border: solid 10px black;
+    border-radius: 30px;
+    height: max-content;
+    width: 1080px;
+    height: 500px;
+    justify-content: center;
+    align-items: center;
+    >.locations-content {
+        display: flex;
+        flex-direction: column;
+    }
+}

@@ -7,6 +7,7 @@ interface Entry {
   subtext: string;
   url: string;
   target: string;
+  img: string;
 }
 
 @Component({
@@ -19,28 +20,32 @@ interface Entry {
 export class HomeComponent {
   entries: { [key: string]: Entry } = {
     "Location": {
-      name: "Location",
-      subtext: "Locations are funny.",
+      name: "Locations",
+      subtext: "Explore locations.",
       url: "/locations",
-      target: "_self"
+      target: "_self",
+      img:"",
     },
     "Ranks": {
       name: "Ranks",
-      subtext: "Locations are funny.",
+      subtext: "See the high-tier Temtems.",
       url: "/ranks",
-      target: "_self"
+      target: "_self",
+      img:"",
     },
     "Teambuilder": {
       name: "Teambuilder",
-      subtext: "Locations are funny.",
+      subtext: "Create your squad.",
       url: "/teambuilder",
-      target: "_self"
+      target: "_self",
+      img:"",
     },
     "Developer": {
       name: "Developer",
       subtext: "David hates advertising on wikis.",
       url: "https://www.david-kolosza.de",
-      target: "_blank"
+      target: "_blank",
+      img:"",
     }
   };
 

@@ -3,7 +3,8 @@
     <div *ngFor="let post of data; let i = index; trackBy: trackById" class="dataCollector">
       <div class="top-row" (mouseenter)="scroll300px(i)">
 
-        <img src="https://temtem-api.mael.tech/{{post.icon}}" alt="{{ post.name }}" class="portrait">
+        <img *ngIf="post.number !== 165" src="https://temtem-api.mael.tech{{post.icon}}" alt="{{ post.name }}" class="portrait">
+        <img *ngIf="post.number == 165" src="https:temdosia.de/assets/img/Galios.png" alt="{{ post.name }}" class="portrait">
 
         <div class="gapper-number">
           <h3>#{{ post.number }}</h3>
@@ -86,7 +87,8 @@
           } @else if (!post.evolution?.evolutionTree) {
           <div class="evolution-wrapper">
             <div class="column">
-              <img src="https://temtem-api.mael.tech/{{post.icon}}" alt="{{ post.name }}" srcset="">
+              <img *ngIf="post.number !== 165" src="https://temtem-api.mael.tech{{post.icon}}" alt="{{ post.name }}" class="portrait">
+              <img *ngIf="post.number == 165" src="https:temdosia.de/assets/img/Galios.png" alt="{{ post.name }}" class="portrait">
               <h3>{{post.name}}</h3>
               <h4>Base</h4>
             </div>

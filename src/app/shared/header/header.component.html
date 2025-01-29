@@ -14,7 +14,9 @@
       <a (click)="goTo(result.name)">
         <div class="single-entry">
           <div class="single-element">
-            <img [src]="result.icon" alt="{{ result.name }}" class="result-icon">{{ result.name }}
+            <img *ngIf="result.number !== 165" [src]="result.icon" alt="{{ result.name }}" class="result-icon">
+            <img *ngIf="result.number == 165" src="https:temdosia.de/assets/img/Galios.png" alt="{{ result.name }}" class="result-icon">
+            {{ result.name }}
           </div>
           <div class="single-element">
             <span *ngFor="let type of result.types" class="type">

@@ -1,30 +1,27 @@
-<div class="home-content">
+<div class="home-whole-screen">
+    <div class="home-content">
 
-    <div class="top-box">
-        <div class="bg-oree">
-            <h1>Welcome to Temdosia!</h1>
-            <div class="subtitle">
-                <h3>The Temtem-Wiki without advertising</h3>
-            </div>
-
-            <a [routerLink]="['/temtem']">Explore the Tempedia</a>
-        </div>
-    </div>
-    <div class="middle-box">
-        <div class="home-card-wrapper" *ngFor="let entry of getEntriesArray()">
-
-            <a [href]="entry.url" target="{{entry.target}}">
-                <div class="home-card">
-                    <h3>{{ entry.name }}</h3>
-                    <p>{{ entry.subtext }}</p>
+        <div class="top-box">
+            <div class="bg-oree">
+                <h1>Welcome to Temdosia!</h1>
+                <div class="subtitle">
+                    <h3>The Temtem-Wiki without advertising</h3>
                 </div>
-            </a>
-
+    
+                <a [routerLink]="['/temtem']">Explore the Tempedia</a>
+            </div>
+        </div>
+        <div class="middle-box">
+            <div class="home-card-wrapper" *ngFor="let entry of getEntriesArray()">
+    
+                <a [href]="entry.url" target="{{entry.target}}">
+                    <div class="home-card bg-{{entry.name}}">
+                        <h3>{{ entry.name }}</h3>
+                        <p>{{ entry.subtext }}</p>
+                    </div>
+                </a>
+    
+            </div>
         </div>
     </div>
-
-
-
-
-
 </div>

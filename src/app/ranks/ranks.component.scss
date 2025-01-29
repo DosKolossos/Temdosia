@@ -1,0 +1,23 @@
+.ranks-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 4px;
+    color: black;
+    background-color: #d3d3d3;
+    border: solid 10px black;
+    border-radius: 30px;
+    height: max-content;
+    width: 1080px;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+    >.ranks-content {
+        display: flex;
+        flex-direction: column;
+        >.ranks-entry {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}

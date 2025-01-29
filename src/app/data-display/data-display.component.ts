@@ -48,10 +48,11 @@ export class DataDisplayComponent implements OnInit {
   }
 
   // Methode zur Suche des Portrait-URLs basierend auf der Nummer
-  getPortraitUrl(number: number): string {
+  getPortraitUrl(number: number): string {  
     const temtem = this.data.find((t) => t.number === number);
-    return temtem ? temtem.icon : '';
+    return temtem ? temtem.icon : 'https://temdosia.de/assets/img/missing.png';
   }
+  
 
   scroll300px(index: number): void {
     const totalItems = this.data.length; // Anzahl der Temtems

@@ -1,0 +1,17 @@
+<div class="ranks-wrapper">
+    <div *ngFor="let post of temtem; track: post" class="ranks-content">
+      <div class="ranks-entry">
+        {{ post.name }}
+        {{ post.types.join(', ') }}
+        <div *ngIf="post.stats">
+
+          
+            <div *ngFor="let stat of getStats(post)">
+              {{ stat.statName }}: {{ stat.statValue }}
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
