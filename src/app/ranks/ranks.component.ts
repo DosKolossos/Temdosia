@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FetchService } from '../fetch.service'; // Importiere den Service
 import { Temtem } from '../models/temtem.model'; // Importiere das Interface
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-ranks',
   templateUrl: './ranks.component.html',
   styleUrls: ['./ranks.component.scss'],
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   standalone: true,
 })
 export class RanksComponent implements OnInit {

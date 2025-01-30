@@ -7,7 +7,7 @@
 
     <div class="ranks-entry overline">
       <div class="ranks-profile-img"></div>
-      <div class="ranks-name">Name</div>
+      <div class="ranks-name cursor-default">Name</div>
       <div class="ranks-types">Types</div>
       <div class="ranks-stats">
         <div class="ranks-stats-column-top" (click)="sortByStat(0)">Hp</div>
@@ -24,17 +24,17 @@
 
   <div *ngFor="let post of filteredTemtem" class="ranks-content">
     <div class="ranks-entry">
-      <div class="ranks-profile-img">
+      <div class="ranks-profile-img" routerLink="/{{post.name}}">
         <img *ngIf="post.number !== 165" src='https://temtem-api.mael.tech{{post.icon}}' alt="{{post.name}}">
         <img *ngIf="post.number == 165" src="https:temdosia.de/assets/img/Galios.png" alt="{{post.name}}">
       </div>
-      <div class="ranks-name">{{ post.name }}</div>
+      <div class="ranks-name" routerLink="/{{post.name}}">{{ post.name }}</div>
       <div class="ranks-types">
         <img src="{{post.type1icon}}" alt="">
         <img *ngIf="post.type2icon" src="{{post.type2icon}}" alt="">
       </div>
       <div *ngIf="post.stats" class="ranks-stats">
-        <div *ngFor="let stat of getStats(post)" class="ranks-stats-column">
+        <div *ngFor="let stat of getStats(post)" class="ranks-stats-column stat{{stat.statValue}} total{{stat.statValue}}">
           {{ stat.statValue }}
         </div>
 

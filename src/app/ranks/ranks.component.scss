@@ -20,10 +20,10 @@
     >.ranks-type-row {
         display: flex;
         >div {
+            cursor: pointer;
             >img {
                 width: 50px;
                 height: 50px;
-                // filter: brightness(0);
             }
         }
     }
@@ -37,7 +37,7 @@
 
         >.overline {
             height: 40px;
-            width: 587px;
+            width: 610px;
 
         }
 
@@ -46,33 +46,40 @@
             flex-direction: row;
             text-align: left;
             align-items: center;
-
+            gap: 6px;
             @include orange-border;
-
+            width: 620px;
             >.ranks-profile-img {
                 width: 50px;
+                height: 50px;
+                cursor: pointer;
 
                 >img {
-
+                    border: 2px solid black;
+                    border-radius: 16px;
+                    background-color: #45cbff;
                     width: 50px;
                     height: 50px;
+                    
                 }
             }
 
             >.ranks-name {
                 display: flex;
                 min-width: 120px;
-                // justify-content: center;
-                background-color: aqua;
                 font-size: 24px;
+                cursor: pointer;
+
+            }
+            >.cursor-default {
+                cursor: default !important;
             }
 
             >.ranks-types {
                 display: flex;
                 min-width: 85px;
                 justify-content: center;
-                background-color: yellowgreen;
-
+                cursor: default;
                 >img {
                     width: 40px;
                     height: 40px;
@@ -83,9 +90,8 @@
                 display: flex;
                 gap: 4px;
                 min-width: 250px;
-                background-color: yellow;
-                font-size: 20px;
-
+                font-size: 24px;
+                cursor: default;
                 >.ranks-stats-column {
                     display: flex;
                     flex-direction: column;
@@ -97,7 +103,8 @@
                     display: flex;
                     justify-content: center;
                     min-width: 38px;
-                    font-size: 14px;
+                    font-size: 16px;
+                    cursor: pointer;
                 }
             }
         }
