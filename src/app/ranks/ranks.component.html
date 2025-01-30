@@ -1,15 +1,44 @@
 <div class="ranks-wrapper">
-    <div *ngFor="let post of temtem; track: post" class="ranks-content">
-      <div class="ranks-entry">
-       <div class="ranks-name">{{ post.name }}</div> 
-       <div class="ranks-types"> {{ post.types.join(', ') }}</div>
-        <div *ngIf="post.stats" class="ranks-stats">
-            <div *ngFor="let stat of getStats(post)" class="ranks-stats-column">
-             {{ stat.statValue }}
-            </div>
-          
-        </div>
+  <div class="ranks-type-row">
+    <div *ngFor="let type of types" (click)="filterByType(type)"><img src="//temtem-api.mael.tech/images/icons/types/{{type}}.png" alt="{{type}}"></div>
+  </div>
+  <div class="ranks-content">
+
+
+    <div class="ranks-entry overline">
+      <div class="ranks-profile-img"></div>
+      <div class="ranks-name">Name</div>
+      <div class="ranks-types">Types</div>
+      <div class="ranks-stats">
+        <div class="ranks-stats-column-top" (click)="sortByStat(0)">Hp</div>
+        <div class="ranks-stats-column-top" (click)="sortByStat(1)">Sta</div>
+        <div class="ranks-stats-column-top" (click)="sortByStat(2)">Spd</div>
+        <div class="ranks-stats-column-top" (click)="sortByStat(3)">Atk</div>
+        <div class="ranks-stats-column-top" (click)="sortByStat(4)">Def</div>
+        <div class="ranks-stats-column-top" (click)="sortByStat(5)">SpA</div>
+        <div class="ranks-stats-column-top" (click)="sortByStat(6)">SpD</div>
+        <div class="ranks-stats-column-top" (click)="sortByStat(7)">TOTAL</div>
       </div>
     </div>
   </div>
-  
+
+  <div *ngFor="let post of filteredTemtem" class="ranks-content">
+    <div class="ranks-entry">
+      <div class="ranks-profile-img">
+        <img *ngIf="post.number !== 165" src='https://temtem-api.mael.tech{{post.icon}}' alt="{{post.name}}">
+        <img *ngIf="post.number == 165" src="https:temdosia.de/assets/img/Galios.png" alt="{{post.name}}">
+      </div>
+      <div class="ranks-name">{{ post.name }}</div>
+      <div class="ranks-types">
+        <img src="{{post.type1icon}}" alt="">
+        <img *ngIf="post.type2icon" src="{{post.type2icon}}" alt="">
+      </div>
+      <div *ngIf="post.stats" class="ranks-stats">
+        <div *ngFor="let stat of getStats(post)" class="ranks-stats-column">
+          {{ stat.statValue }}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
