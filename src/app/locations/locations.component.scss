@@ -8,9 +8,64 @@
     border-radius: 30px;
     height: max-content;
     width: 1080px;
-    height: 500px;
+    height: max-content;
     justify-content: center;
     align-items: center;
+
+    >.map-wrapper {
+        display: flex;
+        width: 1080px;
+        height: 607.5px;
+        border-radius: 16px;
+        background-color: aqua;
+        background-image: url('../../assets/img/locations/map.jpg');
+        background-position: center;
+        background-size: contain;
+
+        >#Arbury {
+            left: 564px;
+            top: 215px;
+        }
+
+        >#Cipanku {
+            left: 202px;
+            top: 364px;
+        }
+
+        >#Deniz {
+            left: 555px;
+            top: 39px;
+        }
+        >#Kisiwa {
+            left: 12px;
+            top: 179px;
+        }
+        >#Omninesia {
+            left: 369px;
+            top: -51px;
+        }
+        >#Tucma {
+            left: 18px;
+            top: 19px;
+        }
+        >img {
+            // filter: brightness(2);
+            position: absolute;
+            transform: scale(0.56);
+            z-index: 1;
+
+            &:hover {
+                transition: 0.4s ease-in-out;
+                transform: scale(0.6);
+                filter: contrast(1.2);
+            }
+
+            &:not(:hover) {
+                transition: 0.2s;
+            }
+        }
+    }
+
     >.locations-content {
         display: flex;
         flex-direction: column;

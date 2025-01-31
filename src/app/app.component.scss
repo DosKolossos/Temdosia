@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    height: max-content;
     /* Höhe des sichtbaren Fensters */
 }
 
@@ -23,6 +24,7 @@ app-header {
     /* Dynamische Höhe, die den Platz zwischen Header und Footer füllt */
     display: flex;
     flex-direction: column;
+    height: max-content;
 }
 
 app-footer {
@@ -32,4 +34,6 @@ app-footer {
     justify-content: center;
     align-items: center;
     z-index: 10;
+    position: relative;
+    bottom: 0;
 }
