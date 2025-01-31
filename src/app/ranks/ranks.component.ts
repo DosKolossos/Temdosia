@@ -62,6 +62,7 @@ export class RanksComponent implements OnInit {
       // Falls derselbe Typ nochmal angeklickt wird, Filter zurücksetzen
       this.filteredTemtem = [...this.temtem];
       this.selectedType = null;
+      this.sortByStat(7);
     } else {
       // Filter auf ausgewählten Typ setzen
       this.filteredTemtem = this.temtem.filter(t => t.types.includes(type));

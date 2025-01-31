@@ -73,8 +73,8 @@
           @for (evo of post.evolution?.evolutionTree; track evo.name ){
           <div class="evolution-wrapper {{post.name | lowercase}}stage-{{evo.stage}}">
             <div class="column">
-              <img src="https://temtem-api.mael.tech/{{getPortraitUrl(evo.number)}}" alt="{{ evo.name }}" class="{{post.name}}{{evo.stage}}">
-              <h3 class="name{{post.name}}{{post.number}}">{{evo.name}}</h3>
+              <img routerLink="/{{evo.name}}" src="https://temtem-api.mael.tech/{{getPortraitUrl(evo.number)}}" alt="{{ evo.name }}" class="{{post.name}}{{evo.stage}}">
+              <h3 routerLink="/{{evo.name}}" class="name{{post.name}}{{post.number}}">{{evo.name}}</h3>
               @if (evo.level){
               <h4>+{{evo.level}} @if (evo.level == 1000) {TV} @else {Lv}</h4>
               } @else if (!evo.level){

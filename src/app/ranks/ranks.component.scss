@@ -40,7 +40,10 @@
             width: 610px;
 
         }
-
+        >.ranks-entry:has(.ranks-name:hover) .ranks-profile-img img {
+            transition: 0.3s;
+            background-color: #94dcf8;
+        }
         >.ranks-entry {
             display: flex;
             flex-direction: row;
@@ -49,6 +52,8 @@
             gap: 6px;
             @include orange-border;
             width: 620px;
+
+            
             >.ranks-profile-img {
                 width: 50px;
                 height: 50px;
@@ -60,8 +65,15 @@
                     background-color: #45cbff;
                     width: 50px;
                     height: 50px;
-                    
+                    &:hover {
+                        transition: 0.3s;
+                        background-color: #94dcf8;
+                    }
+                    &:not(:hover) {
+                        transition: 0.3s;
+                    }
                 }
+
             }
 
             >.ranks-name {
@@ -69,6 +81,14 @@
                 min-width: 120px;
                 font-size: 24px;
                 cursor: pointer;
+                &:hover {
+                    >.ranks-profile-img {
+                        >img {
+                            transition: 0.3s;
+                            background-color: #94dcf8;
+                        }
+                    }
+                }
 
             }
             >.cursor-default {
