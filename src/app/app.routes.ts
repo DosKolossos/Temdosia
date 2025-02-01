@@ -16,9 +16,9 @@ export const routes: Routes = [
   { path: 'temtem', component: DataDisplayComponent },
   { path: 'ranks', component: RanksComponent },
   { path: 'locations', component: LocationsComponent },
+  { path: 'locations/:island', component: LocationsIslandsComponent },
   { path: ':name', component: TemtemDetailComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
-  { path: 'locations/:island', component: LocationsIslandsComponent },
 
 ];
