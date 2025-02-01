@@ -1,4 +1,14 @@
 <div class="island-container">
     <h1>{{ islandName }}</h1>
-    <p>Here are all the locations for {{ islandName }}.</p>
+    <p>Here are all the locations for {{ islandName }}:</p>
+  
+    <ul class="locations-list">
+        <li *ngFor="let location of uniqueLocations">
+          <a [routerLink]="['/locations', islandName, location]">
+            {{ location }}
+        </a>
+        </li>
+      </ul>
+      
   </div>
+  

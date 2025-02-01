@@ -8,6 +8,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { RanksComponent } from './ranks/ranks.component';
 import { LocationsComponent } from './locations/locations.component';
 import { LocationsIslandsComponent } from './locations-islands/locations-islands.component';
+import { LocationsDetailComponent } from './locations-detail/locations-detail.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -17,6 +18,7 @@ export const routes: Routes = [
   { path: 'ranks', component: RanksComponent },
   { path: 'locations', component: LocationsComponent },
   { path: 'locations/:island', component: LocationsIslandsComponent },
+  { path: 'locations/:island/:location', component: LocationsDetailComponent },
   { path: ':name', component: TemtemDetailComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
