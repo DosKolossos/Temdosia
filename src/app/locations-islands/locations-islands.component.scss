@@ -1,0 +1,33 @@
+.island-container {
+    display: flex;
+    position: relative;
+    gap: 4px;
+    color: black;
+    background-color: #d3d3d3;
+    border: solid 10px black;
+    border-radius: 30px;
+    height: max-content;
+    width: 1080px;
+    height: max-content;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 32px;
+    >.locations-list {
+
+        >.location-entry {
+
+            >a {
+                text-decoration: none;
+                color: black;
+                &:hover {
+                    transition: 0.3s;
+                    color: #f27000;
+                }
+                &:not(:hover) {
+                    transition: 0.3s;
+                }
+            }
+        }
+    }
+}
