@@ -1,13 +1,23 @@
-<div class="island-container">
-  <h1>{{ islandName }}</h1>
-  <p>Here are all the locations for {{ islandName }}:</p>
-
-  <div class="locations-list">
+<div class="island-content">
+  <div class="island-container">
+    <h1>{{ islandName }}</h1>
+    <p>Here are all the locations for {{ islandName }}:</p>
+  
+    <div class="locations-list">
+      <div *ngFor="let location of uniqueLocations" class="location-entry">
+        <a [routerLink]="['/locations', islandName, getNameWithoutSpaces(location)]" [attr.id]="'list' + getNameWithoutSpaces(location)">
+          {{ location }}
+        </a>
+      </div>
+    </div>
+  
+  </div>
+  <div class="island-image">
+    <img src="../../assets/img/locations/maps/{{islandName}}.jpg" alt="">
     <div *ngFor="let location of uniqueLocations" class="location-entry">
-      <a [routerLink]="['/locations', islandName, location]">
+      <a [routerLink]="['/locations', islandName, getNameWithoutSpaces(location)]" [attr.id]="getNameWithoutSpaces(location)">
         {{ location }}
       </a>
     </div>
   </div>
-
 </div>

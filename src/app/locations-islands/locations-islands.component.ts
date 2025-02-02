@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './locations-islands.component.html',
-  styleUrls: ['./locations-islands.component.scss']
+  styleUrls: ['./locations-islands.component.scss', './locations-islands-map-points.scss']
 })
 export class LocationsIslandsComponent implements OnInit {
   islandName: string | null = null;
@@ -33,4 +33,12 @@ export class LocationsIslandsComponent implements OnInit {
       }
     });
   }
+
+  getNameWithoutSpaces(name: string): string {
+    return name
+      .replace(/\s+/g, '') // Entfernt alle Leerzeichen
+      .replace(/\?/g, '')  // Ersetzt Fragezeichen durch "Q" (oder anderes Zeichen)
+      .replace(/[-']/g, ''); // Entfernt Bindestriche (-) und Apostrophe (')
+  }
+  
 }

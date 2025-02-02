@@ -1,0 +1,328 @@
+@import '../../styles.scss';
+@import '../shared/shared.scss';
+
+@mixin location-on-map {
+    position: relative;
+    color: whitesmoke;
+    text-decoration: none;
+    display: flex;
+    font-size: larger;
+
+    &:hover {
+        background-color: rgba($color: #f27000, $alpha: 1.4);
+    }
+}
+.island-image {
+    >.location-entry {
+        position: absolute;
+        >#TheCanopath {
+            left: 200px;
+            bottom: 450px;
+            @include location-on-map;
+        }
+        
+        >#TheFlywalk {
+            left: 110px;
+            bottom: 310px;
+            @include location-on-map;
+        }
+        
+        >#TheHangroad {
+            left: 110px;
+            bottom: 180px;
+            @include location-on-map;
+        }
+        
+        >#TheGlassyway {
+            left: 130px;
+            bottom: 130px;
+            @include location-on-map;
+        }
+        
+        >#GiantBanyan {
+            left: 330px;
+            bottom: 270px;
+            @include location-on-map;
+        }
+        
+        >#AnakVolcano {
+            left: 320px;
+            bottom: 150px;
+            @include location-on-map;
+        }
+        
+        >#AnakCaldera {
+            left: 100px;
+            bottom: 85px;
+            @include location-on-map;
+        }
+        
+        >#AltaroftheInnerFlame {
+            left: 250px;
+            bottom: 195px;
+            @include location-on-map;
+        }
+        
+        >#NangaDojo {
+            display: none !important;
+        }
+        
+        >#GiftedBridges {
+            left: 100px;
+            bottom: 420px;
+            @include location-on-map;
+        }
+        
+        >#Saipark {
+            left: 50px;
+            bottom: 170px;
+            @include location-on-map;
+        }
+        
+        >#SillaroRiver {
+            left: 190px;
+            bottom: 170px;
+            @include location-on-map;
+        }
+        
+        >#SeaQueensAquarium {
+            left: 190px;
+            bottom: 320px;
+            @include location-on-map;
+        }
+        
+        >#DabmisRest {
+            left: 340px;
+            bottom: 160px;
+            @include location-on-map;
+        }
+        
+        >#PrasineCoast {
+            left: 100px;
+            bottom: 200px;
+            @include location-on-map;
+        }
+        
+        >#ThalassianCliffs {
+            left: 80px;
+            bottom: 280px;
+            @include location-on-map;
+        }
+        
+        >#WindwardFort {
+            left: 90px;
+            bottom: 380px;
+            @include location-on-map;
+        }
+        
+        >#AguamarinaCaves {
+            left: 310px;
+            bottom: 120px;
+            @include location-on-map;
+        }
+        
+        >#ArissolaDojo {
+            display: none;
+        }
+        
+        >#Zadar {
+            left: 90px;
+            bottom: 80px;
+            @include location-on-map;
+        }
+        
+        >#SewersofProperton {
+            left: 90px;
+            bottom: 170px;
+            @include location-on-map;
+        }
+        
+        >#MacAedsCrags {
+            left: 40px;
+            bottom: 395px;
+            @include location-on-map;
+        }
+        
+        >#GreenglenForest {
+            left: 200px;
+            bottom: 300px;
+            @include location-on-map;
+        }
+        
+        >#LochAduar {
+            left: 250px;
+            bottom: 400px;
+            @include location-on-map;
+        }
+        
+        >#BraesideCastle {
+            left: 350px;
+            bottom: 100px;
+            @include location-on-map;
+        }
+        
+        >#ChieftainsBarrow {
+            left: 50px;
+            bottom: 450px;
+            @include location-on-map;
+        }
+        
+        >#Meadowdale {
+            left: 130px;
+            bottom: 420px;
+            @include location-on-map;
+        }
+        
+        >#CorruptedBadlands {
+            left: 300px;
+            bottom: 400px;
+            @include location-on-map;
+        }
+        
+        >#XolotReservoir {
+            left: 200px;
+            bottom: 370px;
+            @include location-on-map;
+        }
+        
+        >#MinesofMictlan {
+            left: 50px;
+            bottom: 100px;
+            @include location-on-map;
+        }
+        
+        >#GardensofAztlan {
+            left: 310px;
+            bottom: 100px;
+            @include location-on-map;
+        }
+        
+        >#KakamaCenote {
+            left: 150px;
+            bottom: 70px;
+            @include location-on-map;
+        }
+        
+        >#SonsofCrystal {
+            left: 360px;
+            bottom: 430px;
+            @include location-on-map;
+        }
+        
+        >#Kupeleleza {
+            left: 100px;
+            bottom: 390px;
+            @include location-on-map;
+        }
+        
+        >#JinoGap {
+            left: 160px;
+            bottom: 60px;
+            @include location-on-map;
+        }
+        
+        >#KilimaPeaks {
+            left: 360px;
+            bottom: 280px;
+            @include location-on-map;
+        }
+        
+        >#KweaUplands {
+            left: 10px;
+            bottom: 130px;
+            @include location-on-map;
+        }
+        
+        >#BarafuGlacier {
+            left: 360px;
+            bottom: 430px;
+            @include location-on-map;
+        }
+        
+        >#MawinguIslets {
+            left: 200px;
+            bottom: 160px;
+            @include location-on-map;
+        }
+        
+        >#ChiniGrotto {
+            left: 20px;
+            bottom: 230px;
+            @include location-on-map;
+        }
+        
+        >#MatopeRoad {
+            left: 230px;
+            bottom: 480px;
+            @include location-on-map;
+        }
+        
+        >#TasaDesert {
+            left: 20px;
+            bottom: 450px;
+            @include location-on-map;
+        }
+        
+        >#AishasHearth {
+            left: 70px;
+            bottom: 290px;
+            @include location-on-map;
+        }
+        
+        >#JuuTunnel {
+            left: 210px;
+            bottom: 280px;
+            @include location-on-map;
+        }
+        
+        #KweaUpland {
+            display: none;
+        }
+        >#MoyoLake {
+            left: 145px;
+            bottom: 375px;
+            @include location-on-map;
+        }
+        >#NuruLodge {
+            left: 130px;
+            bottom: 100px;
+            @include location-on-map;
+        }
+        >#Iwaba {
+            left: 95px;
+            bottom: 210px;
+            @include location-on-map;
+        }
+        >#RiceFields {
+            left: 160px;
+            bottom: 270px;
+            @include location-on-map;
+        }
+        >#PillarsofHighabove {
+            left: 300px;
+            bottom: 320px;
+            @include location-on-map;
+        }
+        >#TheHighbelow {
+            left: 300px;
+            bottom: 160px;
+            @include location-on-map;
+        }
+        >#DigitalKamiShrine {
+            left: 25px;
+            bottom: 360px;
+            @include location-on-map;
+        }
+        >#Neoedo {
+            left: 80px;
+            bottom: 290px;
+            @include location-on-map;
+        }
+        >#SacredLake {
+            left: 210px;
+            bottom: 420px;
+            @include location-on-map;
+        }
+
+    }
+}

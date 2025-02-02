@@ -1,33 +1,67 @@
-.island-container {
+@import '../../styles.scss';
+@import '../shared/shared.scss';
+
+
+
+.island-content {
     display: flex;
-    position: relative;
-    gap: 4px;
-    color: black;
     background-color: #d3d3d3;
+    justify-content: space-around;
     border: solid 10px black;
     border-radius: 30px;
     height: max-content;
     width: 1080px;
-    height: max-content;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding-bottom: 32px;
-    >.locations-list {
+    padding-bottom: 150px;
 
-        >.location-entry {
+    .island-container {
+        display: flex;
+        position: relative;
+        gap: 4px;
+        color: black;
 
-            >a {
-                text-decoration: none;
-                color: black;
-                &:hover {
-                    transition: 0.3s;
-                    color: #f27000;
+        height: max-content;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding-bottom: 32px;
+
+        >.locations-list {
+
+            >.location-entry {
+
+                >a {
+                    text-decoration: none;
+                    color: black;
+
+                    &:hover {
+                        transition: 0.3s;
+                        color: #f27000;
+                    }
+
+                    &:not(:hover) {
+                        transition: 0.3s;
+                    }
                 }
-                &:not(:hover) {
-                    transition: 0.3s;
+
+                #listNangaDojo {
+                    display: none !important;
+                }
+
+                >#listArissolaDojo {
+                    display: none;
+                }
+
+                #listKweaUpland {
+                    display: none;
                 }
             }
         }
+    }
+
+
+
+    .island-image img {
+        width: 500px;
+        @include orange-border;
     }
 }
