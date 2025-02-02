@@ -230,4 +230,8 @@ export class TemtemDetailComponent implements OnInit {
       // Prüft, ob es ein Array gibt UND ob es nicht leer ist
       return !!(this.temtem?.trivia && this.temtem.trivia.length > 0);
     }
+
+    getNameWithoutSpaces(name: string): string {
+      return name.replace(/\s+/g, '').replace(/[-'?!]/g, '');
+    }
 }

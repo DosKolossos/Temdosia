@@ -369,9 +369,14 @@ h3 {
 
                         &:hover {
                             >h4 {
-                                color: #9c4c05;
-                                transition: 0.3s;
                                 transform: scale(1.2);
+                                transition: 0.3s;
+
+                                >a {
+                                    color: #9c4c05;
+                                    transition: 0.3s;
+                                    transform: scale(1.2);
+                                }
                             }
 
                         }
@@ -379,14 +384,25 @@ h3 {
                         &:not(:hover) {
                             >h4 {
                                 transition: 0.3s;
+                                >a {
+                                    transition: 0.3s;
+                                }
                             }
 
                         }
 
                         >h4 {
                             margin-top: 0;
+                            >a {
+                                color: black;
+                                text-decoration: none;
+                            }
                         }
                         >.location-text {
+                            >a {
+                                color: black;
+                                text-decoration: none;
+                            }
                             &:hover {
                                 color: #f27000 !important;
                                 transition: 0.3s;

@@ -1,1 +1,25 @@
-<p>locations-detail works!</p>
+<div class="location-content">
+    <div class="location-detail-wrapper">
+        <h1>{{ formatLocationName(locationName || '') }}</h1>
+        <h2>Island:
+            <a [routerLink]="['/locations/', islandName]">{{ islandName }}</a>
+        </h2>
+
+        <div *ngIf="temtemsAtLocation.length > 0; else noTemtems">
+            <h3>Temtems found here:</h3>
+            <div class="temtem-list">
+                <div *ngFor="let temtem of temtemsAtLocation" class="temtem-entry">
+                    <a [routerLink]="['/', temtem.name]"><img [src]="temtem.portraitWikiUrl" [alt]="temtem.name">
+                        {{ temtem.name }}</a>
+                </div>
+            </div>
+        </div>
+
+        <ng-template #noTemtems>
+            <p>No Temtems found at this location.</p>
+        </ng-template>
+    </div>
+    <div class="location-map">
+        Ich weiß noch nicht, ob ich echt für jede Location ein Bild mache...
+    </div>
+</div>
