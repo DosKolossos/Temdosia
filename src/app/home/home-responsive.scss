@@ -54,15 +54,6 @@
                         padding: 8px 20px 8px 20px;
                         border-radius: 16px;
                         width: fit-content;
-
-                        &:hover {
-                            transition: 0.4s;
-                            background-color: white;
-                        }
-
-                        &:not(:hover) {
-                            transition: 0.2s;
-                        }
                     }
                 }
 
@@ -102,14 +93,6 @@
                             background-repeat: no-repeat;
                             background-size: cover;
                             background-position: right;
-                            &:hover {
-                                transition: 0.4s;
-                                background-color: white;
-                            }
-
-                            &:not(:hover) {
-                                transition: 0.3s;
-                            }
                         }
 
                         >.bg-Ranks {
@@ -117,14 +100,6 @@
                             background-repeat: no-repeat;
                             background-size: cover;
                             background-position: right;
-                            &:hover {
-                                transition: 0.4s;
-                                background-color: white;
-                            }
-
-                            &:not(:hover) {
-                                transition: 0.3s;
-                            }
                         }
 
                         >.bg-Teambuilder {
@@ -132,14 +107,6 @@
                             background-repeat: no-repeat;
                             background-size: cover;
                             background-position: right;
-                            &:hover {
-                                transition: 0.4s;
-                                background-color: white;
-                            }
-
-                            &:not(:hover) {
-                                transition: 0.3s;
-                            }
                         }
 
                         >.bg-Developer {
@@ -147,14 +114,6 @@
                             background-repeat: no-repeat;
                             background-size: cover;
                             background-position: right;
-                            &:hover {
-                                transition: 0.4s;
-                                background-color: white;
-                            }
-
-                            &:not(:hover) {
-                                transition: 0.3s;
-                            }
                         }
                     }
                 }
@@ -300,6 +259,8 @@
                 }
             }
             >.middle-box {
+                padding-top: 4px;
+                padding-bottom: 60px;
                 >.home-card-wrapper {
                     >a {
                         .bg-Locations, .bg-Developer, .bg-Ranks {

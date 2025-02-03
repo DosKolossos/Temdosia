@@ -52,3 +52,15 @@ app-footer {
         width: 100%;
     }
 }
+
+@media only screen and (max-width: 390px) {
+    app-header {
+        height: 50px;
+    }
+
+    app-footer {
+        height: 50px;
+        bottom: -4px;
+        position: relative;
+    }
+}
