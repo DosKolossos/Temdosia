@@ -73,6 +73,12 @@ app-home {
   margin-left: 4px;
 }
 
+@media only screen and (max-width: 390px) {
+  app-home {
+    top: 104px;
+  }
+}
+
 app-temtem-detail {
   display: flex;
   position: relative;

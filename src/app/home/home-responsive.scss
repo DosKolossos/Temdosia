@@ -143,14 +143,13 @@
                         }
 
                         >.bg-Developer {
-                            background-image: url('../../assets/img/developer-bg.png');
+                            background-image: url('../../assets/img/developer-active-bg.png');
                             background-repeat: no-repeat;
                             background-size: cover;
 
                             &:hover {
                                 transition: 0.4s;
                                 background-color: white;
-                                background-image: url('../../assets/img/developer-active-bg.png');
                             }
 
                             &:not(:hover) {
@@ -259,12 +258,22 @@
                     }
                 }
             }
+            >.middle-box {
+                >.home-card-wrapper {
+                    >a {
+                        .bg-Locations, .bg-Developer, .bg-Ranks {
+                            background-size: contain !important;
+                        }
+                    }
+                }
+            }
         }
     }
 }
 
 @media only screen and (max-width: 390px) {
     .home-whole-screen {
+        height: fit-content;
         >.home-content {
             >.top-box {
                 width: 100%;
@@ -280,12 +289,34 @@
                         padding-right: 4px;
                     }
                     >a {
-                        top: 110px;
+                        top: 168px;
                         left: 15px;
                     }
                     >.subtitle {
                         >h3 {
                             font-size: smaller;
+                        }
+                    }
+                }
+            }
+            >.middle-box {
+                >.home-card-wrapper {
+                    >a {
+                        .bg-Locations, .bg-Developer, .bg-Ranks {
+                            background-size: contain;
+                            background-position-y: bottom;
+                            filter: none;
+                        }
+                        >.home-card {
+                            height: 97.1px !important;
+                            >h3 {
+                                margin-top: 6px;
+                            }
+                            >p {
+                                max-width: 65%;
+                                text-wrap: wrap;
+                                margin: 0;
+                            }
                         }
                     }
                 }
