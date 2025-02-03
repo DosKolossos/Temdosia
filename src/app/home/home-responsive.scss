@@ -9,7 +9,6 @@
         >.home-content {
             height: 100%; // bearbeitet
             width: 95%; // bearbeitet        
-
             >.top-box {
                 width: calc(100% - 25px); // bearbeitet        
 
@@ -94,6 +93,7 @@
                             }
                             >.bg-Locations {
                                 background-size: auto;
+                                background-position: right;
                             }
                         }
 
@@ -101,7 +101,7 @@
                             background-image: url('../../assets/img/locations-bg.png');
                             background-repeat: no-repeat;
                             background-size: cover;
-
+                            background-position: right;
                             &:hover {
                                 transition: 0.4s;
                                 background-color: white;
@@ -116,7 +116,7 @@
                             background-image: url('../../assets/img/ranks-bg.png');
                             background-repeat: no-repeat;
                             background-size: cover;
-
+                            background-position: right;
                             &:hover {
                                 transition: 0.4s;
                                 background-color: white;
@@ -131,7 +131,7 @@
                             background-image: url('../../assets/img/tempedia-bg.png');
                             background-repeat: no-repeat;
                             background-size: cover;
-
+                            background-position: right;
                             &:hover {
                                 transition: 0.4s;
                                 background-color: white;
@@ -146,7 +146,7 @@
                             background-image: url('../../assets/img/developer-active-bg.png');
                             background-repeat: no-repeat;
                             background-size: cover;
-
+                            background-position: right;
                             &:hover {
                                 transition: 0.4s;
                                 background-color: white;
