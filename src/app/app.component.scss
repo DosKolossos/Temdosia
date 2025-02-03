@@ -37,3 +37,18 @@ app-footer {
     position: relative;
     bottom: 0;
 }
+
+@media only screen and (max-width: 510px) {
+    app-header {
+        position: fixed;
+        display: flex;
+        background-image: unset;
+        border: black solid 2px;
+        background-color: #f27000;
+        z-index: 999;
+    }
+
+    app-footer {
+        width: 100%;
+    }
+}

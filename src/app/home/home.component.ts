@@ -14,7 +14,7 @@ interface Entry {
   selector: 'app-home',
   templateUrl: './home.component.html',
   imports: [RouterOutlet, CommonModule, RouterLink],
-  styleUrls: ['./home.component.scss'], // Wichtig: Pfad muss stimmen
+  styleUrls: ['./home.component.scss','./home-responsive.scss'], // Wichtig: Pfad muss stimmen
   standalone: true,
 })
 export class HomeComponent {
@@ -33,13 +33,13 @@ export class HomeComponent {
       target: "_self",
       img:"",
     },
-    "Teambuilder": {
-      name: "Teambuilder",
-      subtext: "Create your squad.",
-      url: "/teambuilder",
-      target: "_self",
-      img:"",
-    },
+    // "Teambuilder": {
+    //   name: "Teambuilder",
+    //   subtext: "Create your squad.",
+    //   url: "/teambuilder",
+    //   target: "_self",
+    //   img:"",
+    // },
     "Developer": {
       name: "Developer",
       subtext: "David hates advertising on wikis.",

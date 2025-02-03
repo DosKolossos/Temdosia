@@ -298,12 +298,13 @@ h3 {
 
                     >p {
                         font-size: larger;
+                        cursor: default;
                         margin: 8px;
                     }
 
                     >.trait-wrapper {
                         display: flex;
-
+                        cursor: default;
                         justify-content: start;
                         flex-direction: column;
 

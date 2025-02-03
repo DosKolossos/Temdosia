@@ -88,8 +88,8 @@
           <div class="top-right-traits">
             <p>Traits:</p>
             <div class="trait-wrapper">
-              <a *ngIf="temtem.traits" href="/">{{ temtem.traits[0]}}</a>
-              <a *ngIf="temtem.traits" href="/">{{ temtem.traits[1]}}</a>
+              <div *ngIf="temtem.traits">{{ temtem.traits[0]}}</div>
+              <div *ngIf="temtem.traits">{{ temtem.traits[1]}}</div>
             </div>
 
           </div>

@@ -1,0 +1,159 @@
+@import '../../styles.scss';
+@import '../shared/shared.scss';
+
+@media only screen and (max-width: 1120px) {
+    .home-whole-screen {
+        height: 100vh;
+        >.home-content {
+            height: 100%;// bearbeitet
+            width: 95%;// bearbeitet        
+            >.top-box {
+                width: calc(100% - 25px); // bearbeitet        
+                >.bg-oree {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    background-image: url('../../assets/img/Oree-home.png');
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: right;
+                    border-radius: 11px;
+        
+                    >h1 {
+                        color: black;
+                        padding-left: 12px;
+                        font-size: 72px;
+                        margin-bottom: 0;
+                    }
+        
+                    >.subtitle {
+                        background-color: #f27000;
+                        width: fit-content;
+                        border-top-right-radius: 30px;
+                        border-bottom-right-radius: 30px;
+                        padding-right: 8px;
+        
+                        >h3 {
+                            padding-left: 12px;
+                            margin-top: 0;
+        
+                        }
+                    }
+        
+                    >a {
+                        position: relative;
+                        display: flex;
+                        background-color: #f27000;
+                        text-decoration: none;
+                        color: black;
+                        top: 30px;
+                        left: 60px;
+                        padding: 8px 20px 8px 20px;
+                        border-radius: 16px;
+                        width: fit-content;
+        
+                        &:hover {
+                            transition: 0.4s;
+                            background-color: white;
+                        }
+        
+                        &:not(:hover) {
+                            transition: 0.2s;
+                        }
+                    }
+                }
+        
+            }
+        
+            >.middle-box {
+                width: calc(100% - 25px);
+                display: flex;
+                flex-direction: column;
+
+                >.home-card-wrapper {
+                    display: flex;
+                    width: 100%;
+                    >a {        
+                        >.home-card {
+                            height: 150px;
+                            min-width: 100%;
+                            // background-color: #f27000;
+                            @include orange-border;
+                            display: flex;
+                            position: relative;
+                            flex-direction: column;
+                            >h3, p {
+                                position: relative;
+                                left: 12px;
+                            }
+                        }
+        
+                        >.bg-Locations {
+                            background-image: url('../../assets/img/locations-bg.png');
+                            background-repeat: no-repeat;
+                            background-size: cover;
+        
+                            &:hover {
+                                transition: 0.4s;
+                                background-color: white;
+                            }
+        
+                            &:not(:hover) {
+                                transition: 0.3s;
+                            }
+                        }
+        
+                        >.bg-Ranks {
+                            background-image: url('../../assets/img/ranks-bg.png');
+                            background-repeat: no-repeat;
+                            background-size: cover;
+        
+                            &:hover {
+                                transition: 0.4s;
+                                background-color: white;
+                            }
+        
+                            &:not(:hover) {
+                                transition: 0.3s;
+                            }
+                        }
+        
+                        >.bg-Teambuilder {
+                            background-image: url('../../assets/img/tempedia-bg.png');
+                            background-repeat: no-repeat;
+                            background-size: cover;
+        
+                            &:hover {
+                                transition: 0.4s;
+                                background-color: white;
+                            }
+        
+                            &:not(:hover) {
+                                transition: 0.3s;
+                            }
+                        }
+        
+                        >.bg-Developer {
+                            background-image: url('../../assets/img/developer-bg.png');
+                            background-repeat: no-repeat;
+                            background-size: cover;
+        
+                            &:hover {
+                                transition: 0.4s;
+                                background-color: white;
+                                background-image: url('../../assets/img/developer-active-bg.png');
+                            }
+        
+                            &:not(:hover) {
+                                transition: 0.3s;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+  }
+
+
+
