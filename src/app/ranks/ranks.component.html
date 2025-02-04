@@ -10,13 +10,13 @@
       <div class="ranks-name cursor-default">Name</div>
       <div class="ranks-types">Types</div>
       <div class="ranks-stats">
-        <div class="ranks-stats-column-top" (click)="sortByStat(0)">Hp</div>
-        <div class="ranks-stats-column-top" (click)="sortByStat(1)">Sta</div>
-        <div class="ranks-stats-column-top" (click)="sortByStat(2)">Spd</div>
-        <div class="ranks-stats-column-top" (click)="sortByStat(3)">Atk</div>
-        <div class="ranks-stats-column-top" (click)="sortByStat(4)">Def</div>
-        <div class="ranks-stats-column-top" (click)="sortByStat(5)">SpA</div>
-        <div class="ranks-stats-column-top" (click)="sortByStat(6)">SpD</div>
+        <div class="ranks-stats-column-top disable-at-545" (click)="sortByStat(0)">Hp</div>
+        <div class="ranks-stats-column-top disable-at-545" (click)="sortByStat(1)">Sta</div>
+        <div class="ranks-stats-column-top disable-at-545" (click)="sortByStat(2)">Spd</div>
+        <div class="ranks-stats-column-top disable-at-545" (click)="sortByStat(3)">Atk</div>
+        <div class="ranks-stats-column-top disable-at-545" (click)="sortByStat(4)">Def</div>
+        <div class="ranks-stats-column-top disable-at-545" (click)="sortByStat(5)">SpA</div>
+        <div class="ranks-stats-column-top disable-at-545" (click)="sortByStat(6)">SpD</div>
         <div class="ranks-stats-column-top" (click)="sortByStat(7)">TOTAL</div>
       </div>
     </div>
@@ -34,7 +34,7 @@
         <img *ngIf="post.type2icon" src="{{post.type2icon}}" alt="">
       </div>
       <div *ngIf="post.stats" class="ranks-stats">
-        <div *ngFor="let stat of getStats(post)" class="ranks-stats-column stat{{stat.statValue}} total{{stat.statValue}}">
+        <div *ngFor="let stat of getStats(post); let i = index" class="ranks-stats-column stat{{stat.statValue}} total{{stat.statValue}}" [ngClass]="{'disable-at-545': i < 7}">
           {{ stat.statValue }}
         </div>
 

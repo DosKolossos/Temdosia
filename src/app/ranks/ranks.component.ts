@@ -7,7 +7,7 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-ranks',
   templateUrl: './ranks.component.html',
-  styleUrls: ['./ranks.component.scss'],
+  styleUrls: ['./ranks.component.scss', './ranks-responsive.scss'],
   imports: [CommonModule, RouterLink],
   standalone: true,
 })
