@@ -38,40 +38,40 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-
   onSearch(event: Event): void {
-    const input = (event.target as HTMLInputElement).value.toLowerCase(); // Eingabe als String
-
-    // Starte die Suche nur, wenn die Eingabe mehr als 2 Zeichen hat
+    const inputElement = event.target as HTMLInputElement;
+    if (!inputElement) return;
+    
+    const input = inputElement.value.toLowerCase();
+  
     if (input.length > 2) {
       const filteredResults = this.data
         .filter((temtem) =>
-          temtem.name.toLowerCase().includes(input) || // Name durchsuchen
-          temtem.types.some((type) => type.toLowerCase().includes(input)) || // Typen durchsuchen
-          temtem.traits.some((trait) => trait.toLowerCase().includes(input)) || // Traits durchsuchen
-          temtem.locations?.some((loc) => loc.location.toLowerCase().includes(input))// Locations durchsuchen
+          temtem.name.toLowerCase().includes(input) ||
+          temtem.types.some((type) => type.toLowerCase().includes(input)) ||
+          temtem.traits?.some((trait) => trait.name.toLowerCase().includes(input)) || // Fix: Greift auf 'name' zu!
+          temtem.locations?.some((loc) => loc.location.toLowerCase().includes(input))
         )
         .map((temtem) => ({
           name: temtem.name,
           types: [
             { name: temtem.types[0], icon: temtem.type1icon },
             temtem.types[1] ? { name: temtem.types[1], icon: temtem.type2icon } : null
-          ].filter((type) => type !== null), // Nur existierende Typen beibehalten
+          ].filter((type) => type !== null),
           location: temtem.locations?.map((loc) => loc.location).join(', '),
-          trait: temtem.traits.join(', '),
-          icon: "https://temtem-api.mael.tech/"+temtem.icon, // Icon-URL hinzufügen
+          trait: temtem.traits?.map((trait) => trait.name).join(', '), // Fix: Zeigt jetzt korrekt die Trait-Namen an
+          icon: "https://temtem-api.mael.tech/"+temtem.icon,
           number: temtem.number,
         }));
-
-      this.sharedService.updateSearchResults(filteredResults); // Ergebnisse an SharedService weitergeben
+  
+      this.sharedService.updateSearchResults(filteredResults);
     } else {
-      // Wenn weniger als 3 Zeichen eingegeben wurden, leere die Suchergebnisse
       this.sharedService.clearSearchResults();
     }
   }
+  
 
   onTemtemClick(name: string): void {
-    console.log(name);
 
     this.fetchService.getTemtemByName(name).subscribe({
       next: (temtem) => {
@@ -88,10 +88,14 @@ export class HeaderComponent implements OnInit {
   }
 
 
-  goTo(name: string): void {
-    console.log(name)
+  goTo(name: string, inputElement?: HTMLInputElement): void {
     this.sharedService.clearSearchResults();
     this.router.navigate(['/', name]);
+  
+    // Falls ein Input-Element übergeben wurde, das Feld leeren
+    if (inputElement) {
+      inputElement.value = '';
+    }
   }
 }
 

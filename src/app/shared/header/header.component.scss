@@ -12,36 +12,42 @@
         height: 100px;
         display: flex;
         flex-direction: row;
-        max-width: 50%;
         align-items: flex-end;
         justify-content: center;
-
+        border-top-left-radius: 16px;
+        >.border-top-left-radius {
+            border-top-left-radius: 16px;
+        }
         >a {
             display: flex;
             text-decoration: none;
             color: black;
-            padding: 4px;
             min-width: 80px;
             justify-content: center;
-            height: fit-content;
             background-color: #f27000;
-            // padding-right: 20px;
+            padding: 15px;            
             cursor: pointer;
 
             &:hover {
-                transition: 1s;
-                background-color: #f7b072;
+                transition: 0.3s;
+                background-color: #ffffff;
             }
             &:not(:hover) {
-                transition: 0.5s;
+                transition: 0.3s;
             }
         }
-        >input {
-            display: flex; 
-            position: relative;
-            width: 100px;
-            left: 10px;
+        >.input-wrapper {
+            border-top-right-radius: 16px;
+            background-color: #f27000;
+            padding: 14px;
+            >input {
+                width: 100px;
+                font-family: "Rubik";
+                border-radius: 8px;
+                color: black;
+            }
         }
+
 
     }
 }

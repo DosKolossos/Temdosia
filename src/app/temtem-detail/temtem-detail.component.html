@@ -33,9 +33,9 @@
           <h1>{{ temtem.name }}</h1>
           <p>
             {{ temtem.name }} is a
-            <a href="/">{{temtem.types[0]}} <img src="{{temtem.type1icon}}" class="p-icon" alt=""></a>
-            <a href="/" *ngIf="temtem.types[1]">{{temtem.types[1]}}<img src="{{temtem.type2icon}}" class="p-icon"
-                alt=""></a>-Temtem.
+            <span>{{temtem.types[0]}} <img src="{{temtem.type1icon}}" class="p-icon" alt=""></span>
+            <span *ngIf="temtem.types[1]">{{temtem.types[1]}}<img src="{{temtem.type2icon}}" class="p-icon"
+                alt=""></span>-Temtem.
           </p>
 
 
@@ -88,9 +88,11 @@
           <div class="top-right-traits">
             <p>Traits:</p>
             <div class="trait-wrapper">
-              <div *ngIf="temtem.traits">{{ temtem.traits[0]}}</div>
-              <div *ngIf="temtem.traits">{{ temtem.traits[1]}}</div>
+              <div *ngFor="let trait of temtem.traits" class="trait-entry">
+                <strong>{{ trait.name }}:</strong> {{ trait.effect }}
+              </div>
             </div>
+            
 
           </div>
 

@@ -16,7 +16,7 @@
           </a>
         </div>
 
-        <div class="gapper-types" [ngClass]="{ 'right30': post.types.length > 1, 'left20': post.types.length <= 1 }">
+        <div class="gapper-types">
           <img *ngIf="post.type1icon" [src]="post.type1icon" alt="{{ post.types[0] }} Icon" class="type-icon">
           <img *ngIf="post.type2icon" [src]="post.type2icon" alt="{{ post.types[1] }} Icon" class="type-icon">
         </div>
@@ -53,7 +53,7 @@
 
               <div *ngFor="let loc of post.locations?.slice(0, 3)" class="location-for">
 
-                {{ loc.location }}
+                <a routerLink="/locations/{{ loc.island }}/{{ getNameWithoutSpaces(loc.location) }}">{{ loc.location }}</a>
 
 
               </div>
@@ -79,7 +79,7 @@
               <h4>+{{evo.level}} @if (evo.level == 1000) {TV} @else {Lv}</h4>
               } @else if (!evo.level){
 
-              <h4 class="evolevel{{post.name}}{{post.number}}">Base</h4>
+              <h4 routerLink="/{{evo.name}}" class="evolevel{{post.name}}{{post.number}}">Base</h4>
               }
             </div>
           </div>
@@ -89,7 +89,7 @@
             <div class="column">
               <img *ngIf="post.number !== 165" src="https://temtem-api.mael.tech{{post.icon}}" alt="{{ post.name }}" class="portrait">
               <img *ngIf="post.number == 165" src="https:temdosia.de/assets/img/Galios.png" alt="{{ post.name }}" class="portrait">
-              <h3>{{post.name}}</h3>
+              <h3 routerLink="/{{post.name}}">{{post.name}}</h3>
               <h4>Base</h4>
             </div>
           </div>

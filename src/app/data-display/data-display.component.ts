@@ -11,7 +11,7 @@ import { Router, RouterLink } from '@angular/router';
 @Component({
   selector: 'app-data-display',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, NgIf, HeaderComponent, RouterLink],
+  imports: [CommonModule, HttpClientModule, NgIf, RouterLink],
   templateUrl: './data-display.component.html',
   styleUrls: ['./data-display.component.scss', './data-display-responsive.scss'],
 })
@@ -69,5 +69,19 @@ export class DataDisplayComponent implements OnInit {
     console.log(name)
     this.sharedService.clearSearchResults();
     this.router.navigate(['/', name]);
+  }
+
+  getNameWithoutSpaces(name: string): string {
+    return name.replace(/\s+/g, '').replace(/[-'?!]/g, '');
+  }
+
+  formatLocationName(name: string): string {
+    if (!name) return ''; // Falls null oder undefined, gib einen leeren String zurück
+  
+    return name
+      .replace(/([a-z])([A-Z])/g, '$1 $2') // Fügt Leerzeichen vor Großbuchstaben ein
+      .replace(/(of|the|and)/gi, ' $1') // Fügt Leerzeichen vor diesen Wörtern ein (aber doppelte vermeiden!)
+      .replace(/\s+/g, ' ') // Entfernt doppelte Leerzeichen
+      .trim(); // Entfernt überflüssige Leerzeichen
   }
 }

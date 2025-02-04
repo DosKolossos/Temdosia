@@ -26,7 +26,7 @@ export interface Temtem {
   portraitWikiUrl: string;
   type1icon: string[];
   type2icon: string[];
-  traits: string[];
+  traits: {name: string, effect: string}[];
   locations?: Locations[];
   hasLocation?: boolean;
   stats: { statName: string; statValue: number }[];

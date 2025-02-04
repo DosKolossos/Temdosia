@@ -42,6 +42,9 @@
                 >.gapper-name {
                     left: 16px;
                 }
+                >.gapper-types {
+                    left: -16px;
+                }
             }
 
             >.mid-row,
@@ -71,16 +74,6 @@
             width: 555px;
             height: 69px;
             bottom: 4px;
-
-            >.left20 {
-                position: relative;
-                left: 20px;
-            }
-
-            >.right20 {
-                position: relative;
-                right: 20px;
-            }
 
             .portrait {
                 position: relative;
@@ -302,11 +295,13 @@
 
 
 
-                        >h5 {
+                        >a {
                             cursor: pointer;
                             margin-top: 2px !important;
                             margin-bottom: 2px !important;
                             width: 150px;
+                            text-decoration: none;
+                            color: black;
                         }
                     }
                 }

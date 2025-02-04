@@ -1,17 +1,19 @@
 <div class="header-wrapper" (click)="closeSearchResults()">
   <div class="navbar">
-    <a [routerLink]="['/']">Home</a>
+    <a [routerLink]="['/']" class="border-top-left-radius">Home</a>
     <a [routerLink]="['/temtem']">Temtem</a>
     <a [routerLink]="['/ranks']">Ranks</a>
     <a [routerLink]="['/locations']">Locations</a>
-    <input type="text" placeholder="Search..." (input)="onSearch($event)" />
+    <div class="input-wrapper">
+      <input #searchInput type="text" placeholder="Search..." (input)="onSearch($event)" />
+    </div>
   </div>
 </div>
 <div class="search-results" *ngIf="searchResults.length > 0">
   <h3>Search Results:</h3>
   <div class="search-results-entrys">
     <div *ngFor="let result of searchResults | slice: 0:10">
-      <a (click)="goTo(result.name)">
+      <a (click)="goTo(result.name, searchInput)">
         <div class="single-entry">
           <div class="single-element">
             <img *ngIf="result.number !== 165" [src]="result.icon" alt="{{ result.name }}" class="result-icon">

@@ -102,7 +102,7 @@ h3 {
                     align-items: center;
                     gap: 4px;
 
-                    >a {
+                    >span {
                         display: flex;
                         flex-direction: row;
                         align-items: center;
@@ -124,13 +124,13 @@ h3 {
                     display: flex;
                     align-items: center;
                     gap: 2px;
-
-                    >a {
+                    cursor: default;
+                    >span {
                         display: flex;
                         flex-direction: row;
                         align-items: center;
                         text-decoration: none;
-                        cursor: pointer;
+                        cursor: default;
                         color: black;
 
                         >.p-icon {
