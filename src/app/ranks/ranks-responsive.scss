@@ -26,10 +26,6 @@
 
     
             }
-            >.ranks-entry:has(.ranks-name:hover) .ranks-profile-img img {
-                transition: 0.3s;
-                background-color: #94dcf8;
-            }
             >.ranks-entry {
                 width: 98%;
     
@@ -45,13 +41,6 @@
                         background-color: #45cbff;
                         width: 50px;
                         height: 50px;
-                        &:hover {
-                            transition: 0.3s;
-                            background-color: #94dcf8;
-                        }
-                        &:not(:hover) {
-                            transition: 0.3s;
-                        }
                     }
     
                 }
@@ -60,16 +49,7 @@
                     display: flex;
                     min-width: 120px;
                     font-size: 24px;
-                    cursor: pointer;
-                    &:hover {
-                        >.ranks-profile-img {
-                            >img {
-                                transition: 0.3s;
-                                background-color: #94dcf8;
-                            }
-                        }
-                    }
-    
+                    cursor: pointer;    
                 }
                 >.cursor-default {
                     cursor: default !important;
@@ -80,7 +60,10 @@
                 }
     
                 >.ranks-stats {
-
+                    justify-content: end;
+                    flex: 1;
+                    right: 20px;
+                    position: relative;
                     >.ranks-stats-column {
 
                     }
@@ -103,24 +86,15 @@
             grid-template-columns: repeat(6, 1fr);
             >div {
                 justify-content: center;
-                >img {
 
-                }
             }
         }
     
         >.ranks-content {
-            >.overline {
 
-    
-            }
-            >.ranks-entry:has(.ranks-name:hover) .ranks-profile-img img {
-                transition: 0.3s;
-                background-color: #94dcf8;
-            }
+
             >.ranks-entry {
-                width: 98%;
-    
+                width: calc(100% - 20px);    
                 
                 >.ranks-profile-img {
                     width: 50px;
@@ -133,13 +107,7 @@
                         background-color: #45cbff;
                         width: 50px;
                         height: 50px;
-                        &:hover {
-                            transition: 0.3s;
-                            background-color: #94dcf8;
-                        }
-                        &:not(:hover) {
-                            transition: 0.3s;
-                        }
+
                     }
     
                 }
@@ -148,15 +116,7 @@
                     display: flex;
                     min-width: 120px;
                     font-size: 24px;
-                    cursor: pointer;
-                    &:hover {
-                        >.ranks-profile-img {
-                            >img {
-                                transition: 0.3s;
-                                background-color: #94dcf8;
-                            }
-                        }
-                    }
+
     
                 }
                 >.cursor-default {
@@ -164,21 +124,71 @@
                 }
     
                 >.ranks-types {
-                    display: none;
+                    display: flex;
+
                 }
     
                 >.ranks-stats {
-
-                    >.ranks-stats-column {
-
-                    }
-    
-                    >.ranks-stats-column-top {
-
-                    }
+                    justify-content: end;
+                    flex: 1;
+                    min-width: unset;
+                    right: 20px;
+                    position: relative;
                     >.disable-at-545 {
                         display: none;
                     }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 360px){
+    .ranks-wrapper {  
+        >.ranks-content {
+            >.ranks-entry {                
+                >.ranks-profile-img {
+                    width: 50px;
+                    height: 50px;
+                    cursor: pointer;
+    
+                    >img {
+                        border: 2px solid black;
+                        border-radius: 16px;
+                        background-color: #45cbff;
+                        width: 50px;
+                        height: 50px;
+                    }
+    
+                }
+    
+                >.ranks-name {
+                    display: flex;
+                    min-width: 120px;
+                    font-size: 20px;
+                    cursor: pointer;   
+                }
+                >.cursor-default {
+                    cursor: default !important;
+                }
+    
+                >.ranks-types {
+                    position: relative;
+                    display: flex;
+                    right: 20px;
+                    >img {
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+    
+                >.ranks-stats {
+                    justify-content: end;
+                    flex: 1;
+                    min-width: unset;
+                    right: 30px;
+                    position: relative;                    
+
                 }
             }
         }
