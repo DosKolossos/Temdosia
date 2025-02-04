@@ -1,0 +1,271 @@
+
+@media only screen and (max-width: 595px) {
+    .wrapper {
+        >.dataCollector {
+            &:hover {
+                height: 55px;
+                >.top-row {
+                    >.portrait {
+                        transition: 0.2s ease-out;
+                        height: 46px;
+                        width: 46px;
+                        left: 0px;
+                        top: -3px;
+
+                    }
+    
+                    >.gapper-number {
+                        left: 5px;
+    
+                    }
+    
+                    >.gapper-name {
+                        left: 0px;
+                    }
+
+                    >.right30 {
+                        right: 0 !important;
+                    }
+                    >.left20 {
+                        left: 0 !important;
+                    }
+                }
+    
+                >.mid-row,
+                .bot-row {
+                    opacity: 0;
+                    display: none;
+                    visibility: visible;
+                }
+            }
+            >.top-row {
+                width: 100%;    
+   
+                .portrait {
+                    right: 0px;
+                }
+                >.gapper-number {
+                    min-width: 77px;
+                    max-width: 120px;
+                }
+                >.gapper-name {
+                    display: flex;
+                    position: relative;
+                    justify-content: flex-start;
+                    align-items: center;
+                    height: 55px;
+                    min-width: 217.33px;
+                    max-width: fit-content;
+                    h2 {    
+                    }
+                }
+    
+                >.gapper-types {
+                    width: 130px;
+                    bottom: 3px;
+                    >img {
+                        border: none;
+                    }
+                }
+            }   
+            >.mid-row {
+                display: none;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 515px) {
+    .wrapper {
+        >.dataCollector {
+            &:hover {
+                height: 55px;
+                >.top-row {
+                    >.portrait {
+                        transition: 0.2s ease-out;
+                        height: 46px;
+                        width: 46px;
+                        left: 0px;
+                        top: -3px;
+
+                    }
+    
+                    >.gapper-number {
+                        left: 5px;
+    
+                    }
+    
+                    >.gapper-name {
+                        left: 0px;
+                    }
+
+                }
+    
+                >.mid-row,
+                .bot-row {
+                    opacity: 0;
+                    display: none;
+                    visibility: visible;
+                }
+            }
+            >.top-row {
+                width: calc(100% - 30px);    
+                left: -15px;
+
+                .portrait {
+                    right: 0px;
+                }
+                >.gapper-number {
+                    min-width: 77px;
+                    max-width: 120px;
+                    >h3 {
+                        font-size: x-large;
+                    }
+                }
+                >.gapper-name {
+                    display: flex;
+                    position: relative;
+                    justify-content: flex-start;
+                    align-items: center;
+                    height: 55px;
+                    min-width: 187.33px;
+                    max-width: fit-content;
+                    h2 {    
+                        font-size: 1.2em;
+                    }
+                }
+    
+                >.gapper-types {
+                    justify-content: flex-end;
+                    scale: 1;
+                    >img {
+                        border: none;
+                        width: 36px;
+                        height: 36px;
+                    }
+                }
+
+            }   
+            >.mid-row {
+                display: none;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 485px) {
+    .wrapper {
+        >.dataCollector {
+            &:hover {
+                height: 55px;
+                >.top-row {
+                    >.portrait {
+                    }
+    
+                    >.gapper-number {
+                        left: 5px;
+    
+                    }
+    
+                    >.gapper-name {
+                        left: 0px;
+                    }
+
+                }
+            }
+            >.top-row {
+                width: calc(100% - 30px);    
+   
+                .portrait {
+                    right: 0px;
+                }
+                >.gapper-number {
+                    min-width: 65px;
+                    max-width: 80px;
+                    >h3 {
+                        font-size: x-large;
+                    }
+                }
+                >.gapper-name {
+                    min-width: 98.33px;
+                    max-width: fit-content;
+                    h2 {    
+                        font-size: 1.2em;
+                    }
+                }
+    
+                >.gapper-types {
+                    >img {
+                        border: none;
+
+
+                    }
+                }
+
+            }   
+            >.mid-row {
+                display: none;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 390px) {
+    .wrapper {
+        width: 100%;
+        >.dataCollector {
+            width: 100%;
+            &:hover {
+                height: 55px;
+                >.top-row {
+                    >.portrait {
+                    }
+    
+                    >.gapper-number {
+                        left: 5px;
+    
+                    }
+    
+                    >.gapper-name {
+                        left: 0px;
+                    }
+
+                }
+            }
+            >.top-row {
+                width: calc(100% - 30px);    
+   
+                .portrait {
+                    right: 0px;
+                }
+                >.gapper-number {
+                    min-width: 65px;
+                    max-width: 80px;
+                    >h3 {
+                        font-size: x-large;
+                    }
+                }
+                >.gapper-name {
+                    min-width: 98.33px;
+                    max-width: fit-content;
+                    h2 {    
+                        font-size: 1.2em;
+                    }
+                }
+    
+                >.gapper-types {
+                    width: 36px;
+                    >img {
+                        border: none;
+
+
+                    }
+                }
+
+            }   
+            >.mid-row {
+                display: none;
+            }
+        }
+    }
+}

@@ -13,7 +13,7 @@ import { Router, RouterLink } from '@angular/router';
   standalone: true,
   imports: [CommonModule, HttpClientModule, NgIf, HeaderComponent, RouterLink],
   templateUrl: './data-display.component.html',
-  styleUrl: './data-display.component.scss',
+  styleUrls: ['./data-display.component.scss', './data-display-responsive.scss'],
 })
 
 export class DataDisplayComponent implements OnInit {
