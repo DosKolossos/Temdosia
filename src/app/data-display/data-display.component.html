@@ -25,7 +25,7 @@
       </div>
       <div class="mid-row fade-in-normal">
         <div class="gapper-traits">
-          <h5 *ngFor="let trait of post.traits">{{trait}}</h5>
+          <h5 *ngFor="let trait of post.traits">{{trait.name}}</h5>
         </div>
         <div class="gapper-stats">
           <div *ngFor="let stat of post.stats" class="stat">

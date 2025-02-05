@@ -69,7 +69,11 @@
                   </p>
                 </div>
               </div>
-              <div class="no-evo-tree" *ngIf="!temtem.evolution?.evolutionTree">No EvoTree</div>
+              <div class="no-evo-tree" *ngIf="!temtem.evolution?.evolutionTree">
+                <img [src]="getPortraitUrl(temtem.number)" alt="{{ temtem.name }}" class="temtem-evo-image" />
+                    <strong>{{ temtem.name }}</strong>
+                    <span>Base</span>
+              </div>
             </div>
 
 
@@ -78,8 +82,10 @@
         </div>
         <div class="topright">
           <h2>{{ temtem.name }}</h2>
-          <img *ngIf="temtem.number !== 165" src="https://temtem-api.mael.tech/{{temtem.icon}}" alt="{{ temtem.name }}" class="profile-pic">
-          <img *ngIf="temtem.number == 165" src="https:temdosia.de/assets/img/Galios.png" alt="{{ temtem.name }}" class="profile-pic">
+          <img *ngIf="temtem.number !== 165" src="https://temtem-api.mael.tech/{{temtem.icon}}" alt="{{ temtem.name }}"
+            class="profile-pic">
+          <img *ngIf="temtem.number == 165" src="https:temdosia.de/assets/img/Galios.png" alt="{{ temtem.name }}"
+            class="profile-pic">
           <p>Types:</p>
           <div>
             <img *ngIf="temtem.type1icon" [src]="temtem.type1icon" alt="Type Icon 1" class="type-icon-top">
@@ -88,10 +94,21 @@
           <div class="top-right-traits">
             <p>Traits:</p>
             <div class="trait-wrapper">
-              <div *ngFor="let trait of temtem.traits" class="trait-entry">
-                <strong>{{ trait.name }}:</strong> {{ trait.effect }}
+              <div *ngFor="let trait of temtem.traits"
+                   class="trait-entry"
+                   (mouseenter)="onMouseEnter($event, trait.name)"
+                   (mouseleave)="onMouseLeave()">
+                <strong>{{ trait.name }}</strong>
               </div>
             </div>
+            
+            <!-- Dynamisches Tooltip-Overlay -->
+            <div *ngIf="hoveredTrait" 
+                 class="trait-tooltip"
+                 [ngStyle]="{ 'top.px': tooltipY, 'left.px': tooltipX }">
+              {{ getHoveredTraitEffect() }}
+            </div>
+            
             
 
           </div>
@@ -107,7 +124,8 @@
             <div *ngFor="let group of getGroupedLocations()" class="location-entry">
               <h4><a routerLink="/locations/{{ group.island }}">{{ group.island }}</a></h4>
               <div *ngFor="let location of group.locations" class="location-text">
-                <a routerLink="/locations/{{ group.island }}/{{ getNameWithoutSpaces(location) }}">{{ location }}</a></div>
+                <a routerLink="/locations/{{ group.island }}/{{ getNameWithoutSpaces(location) }}">{{ location }}</a>
+              </div>
             </div>
           </div>
         </div>
