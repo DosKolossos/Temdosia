@@ -1,0 +1,196 @@
+@import '../../../styles.scss';
+@import '../../shared/shared.scss';
+
+.botlane {
+    display: flex;
+    height: fit-content;
+    flex-direction: column;
+    width: 100%;
+    #techniques {
+        position: relative;
+        top: -100px;
+    }
+    #trivia {
+        position: relative;
+        top: -100px;
+    }
+    h2 {
+        padding-left: 12px;
+    }
+
+    >.technique-entry {
+        display: flex;
+        // background-color: #f27000;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+
+        >.technique-line {
+            justify-content: center;
+            display: flex;
+            flex-direction: row;
+            padding-top: 4px;
+            width: 100%;
+
+            cursor: pointer;
+            &:hover {
+                height: max-content;
+                >.technique-border {
+                    >.effect-text {
+                        display: flex;
+                        position: relative;
+                        top: 0;
+                        height: auto;
+                        }
+                }
+            }
+            >.technique-border {
+                @include orange-border;
+                width: 95%;
+                background-color: azure;
+                height: 100%;
+
+
+                >.effect-text {
+                    display: none;
+                    justify-content: center;
+                    font-size: 12px;
+                    margin-top: 4px;
+                    margin-bottom: 4px;
+                    >p {
+                        width: 600px;          /* Feste Breite, anpassen nach Wunsch */
+                        white-space: normal;   /* Erlaubt Zeilenumbrüche */
+                        word-wrap: break-word; /* Falls du wirklich lange Worte/URLs hast */
+                      }
+                }
+
+                span {
+                    display: flex;
+                    gap: 16px;
+                    height: 40px;
+                    align-items: center;
+
+                    >.level-part {
+                        display: flex;
+                        justify-content: flex-start;
+                        margin-left: 4px;
+                        width: 54px;
+
+                        >.egg-icon {
+                            display: flex;
+                            margin-left: 4px;
+                            width: 30px;
+                            height: 30px;
+                        }
+
+                        >.techmov-icon {
+                            width: 40px;
+                            height: 40px;
+                        }
+                    }
+
+                    >.prio-part {
+                        display: flex;
+                        align-items: center;
+                        width: 30px;
+
+                        >.technique-prio-icon {
+                            position: relative;
+                            transform: scale(0.8);
+                            left: -20px;
+                            width: 60px;
+                        }
+                    }
+
+                    >.name-part {
+                        display: flex;
+                        align-items: center;
+                        width: 240px;
+                        justify-content: space-between;
+
+                        >.type-wrapper {
+                            display: flex;
+                            align-items: center;
+
+                            >.technique-type-icon {
+                                width: 34px;
+                                height: 34px;
+                            }
+
+                            >.synergy-part {
+                                display: flex;
+
+                                >.plus-icon {
+                                    width: 12px;
+                                    height: 12px;
+                                    z-index: 1;
+                                }
+
+                                >.synergy-icon {
+                                    width: 24px;
+                                    height: 24px;
+                                    position: relative;
+                                    right: 14px;
+                                }
+
+                            }
+                        }
+
+                    }
+
+                    >strong {
+                        width: 180px;
+                    }
+
+                    >.technique-type-icon {
+                        width: 34px;
+                        height: 34px;
+
+                    }
+
+                    >.damage-part {
+                        display: flex;
+                        align-items: center;
+                        width: 100px;
+                        justify-content: space-between;
+
+                        >.technique-type-icon {
+                            position: relative;
+                            right: 4px;
+                            width: 25px;
+                            height: 25px;
+                        }
+                    }
+
+                    >.stamina-part {
+                        width: 60px;
+                    }
+
+                    >.hold-part {
+                        width: 70px;
+                    }
+
+
+                    >.targets-part {
+                        display: flex;
+                        align-items: center;
+                        width: 250px;
+                    }
+
+                }
+
+            }
+        }
+
+    }
+    >.trivia {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 100px;
+        >.trivia-entry {
+            margin-left: 20px;
+            margin-bottom: 8px;
+        }
+
+    }
+}

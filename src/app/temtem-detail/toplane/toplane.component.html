@@ -1,0 +1,147 @@
+<div class="temtem-navigation">
+  <div class="nav-box">
+    <div class="nav-line">
+      <!-- Zurück-Button -->
+      <div class="nav-element" *ngIf="getPrevTemtem() as prevTem" (click)="goPrevious()">
+        <img [src]="prevTem.portraitWikiUrl" alt="{{ prevTem.name }}" class="nav-icon" />
+        <span>← {{ prevTem.name }}</span>
+      </div>
+
+      <!-- Weiter-Button -->
+      <div class="nav-element" *ngIf="getNextTemtem() as nextTem" (click)="goNext()">
+        <span>{{ nextTem.name }} →</span>
+
+        <img [src]="nextTem.portraitWikiUrl" alt="{{ nextTem.name }}" class="nav-icon" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toplane">
+  <div class="topleft">
+    <h1>{{ temtem?.name }}</h1>
+    <p>
+      {{ temtem?.name }} is a
+      <span *ngIf="temtem?.types?.length > 0">
+        {{ temtem.types[0] }} <img [src]="temtem?.type1icon" class="p-icon" alt="">
+      </span>
+
+      <span *ngIf="temtem?.types?.length > 1">
+        {{ temtem.types[1] }} <img [src]="temtem?.type2icon" class="p-icon" alt="">
+      </span>
+      -Temtem.
+
+    </p>
+
+
+
+    <div class="nav-evo-tree">
+      <div class="navi">
+        <h3>Navigation</h3>
+        <a (click)="scrollToElement('locations')">Locations</a>
+        <a (click)="scrollToElement('matchups')">Matchups</a>
+        <a (click)="scrollToElement('stats')">Stats</a>
+        <a (click)="scrollToElement('techniques')">Techniques</a>
+        <a (click)="scrollToElement('trivia')">Trivia</a>
+      </div>
+      <div class="evo-tree">
+        <div *ngIf="temtem?.evolution?.evolutionTree as evoTree" class="evo-tree-details class-{{temtem?.name}}">
+          <div *ngFor="let evo of evoTree" class="evo-wrapper">
+            <a [routerLink]="['/',evo.name]">
+              <img [src]="getPortraitUrl(evo.number)" alt="{{ evo.name }}" class="temtem-evo-image" />
+              <strong>{{ evo.name }}</strong></a>
+
+            <!-- Fall: Level-basierte Evolution -->
+            <p *ngIf="evo.type === 'levels'">
+              <span *ngIf="evo.level && evo.level > 0">+{{ evo.level }} levels</span>
+              <span *ngIf="!evo.level || evo.level === 0">Base</span>
+            </p>
+
+            <!-- Fall: Spezielle Evolution -->
+            <p *ngIf="evo.type === 'special'">
+              <span *ngIf="evo.description">{{ evo.description }}</span>
+            </p>
+          </div>
+        </div>
+        <div class="no-evo-tree" *ngIf="!temtem?.evolution?.evolutionTree?.length">
+          <img [src]="getPortraitUrl(temtem.number)" alt="{{ temtem?.name }}" class="temtem-evo-image">
+          <strong>{{ temtem?.name }}</strong>
+          <span>Base</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="topright">
+    <h2>{{ temtem?.name }}</h2>
+    <img *ngIf="temtem?.number !== 165" src="https://temtem-api.mael.tech/{{temtem?.icon}}" alt="{{ temtem?.name }}"
+      class="profile-pic">
+    <img *ngIf="temtem?.number == 165" src="https:temdosia.de/assets/img/Galios.png" alt="{{ temtem?.name }}"
+      class="profile-pic">
+    <p>Types:</p>
+    <div>
+      <img *ngIf="temtem?.type1icon" [src]="temtem?.type1icon" alt="Type Icon 1" class="type-icon-top">
+      <img *ngIf="temtem?.type2icon" [src]="temtem?.type2icon" alt="Type Icon 2" class="type-icon-top">
+    </div>
+    <div class="top-right-traits">
+      <p>Traits:</p>
+      <div class="trait-wrapper">
+        <div *ngFor="let trait of temtem?.traits" class="trait-entry" (mouseenter)="onMouseEnter($event, trait.name)"
+          (mouseleave)="onMouseLeave()">
+          <strong>{{ trait.name }}</strong>
+        </div>
+      </div>
+      <!-- Dynamisches Tooltip-Overlay -->
+      <div *ngIf="hoveredTrait" class="trait-tooltip" [ngStyle]="{ 'top.px': tooltipY, 'left.px': tooltipX }">
+        {{ getHoveredTraitEffect() }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mobile-toplane">
+  <img *ngIf="temtem?.number !== 165" src="https://temtem-api.mael.tech/{{temtem?.icon}}" alt="{{ temtem?.name }}"
+    class="profile-pic">
+  <img *ngIf="temtem?.number == 165" src="https:temdosia.de/assets/img/Galios.png" alt="{{ temtem?.name }}"
+    class="profile-pic">
+  <h1>{{ temtem?.name }}</h1>
+  <div class="short-description-mobile">
+    <p>
+      {{ temtem?.name }} is a
+      <span *ngIf="temtem?.types?.length > 0">
+        {{ temtem.types[0] }} <img [src]="temtem?.type1icon" class="p-icon" alt="">
+      </span>
+
+      <span *ngIf="temtem?.types?.length > 1">
+        {{ temtem.types[1] }} <img [src]="temtem?.type2icon" class="p-icon" alt="">
+      </span>
+      -Temtem.
+
+    </p>
+  </div>
+
+  <div class="evo-tree">
+    <div *ngIf="temtem?.evolution?.evolutionTree as evoTree" class="evo-tree-details class-{{temtem?.name}}">
+      <div *ngFor="let evo of evoTree" class="evo-wrapper">
+        <a [routerLink]="['/',evo.name]">
+          <img [src]="getPortraitUrl(evo.number)" alt="{{ evo.name }}" class="temtem-evo-image" />
+          <strong>{{ evo.name }}</strong></a>
+
+        <!-- Fall: Level-basierte Evolution -->
+        <p *ngIf="evo.type === 'levels'">
+          <span *ngIf="evo.level && evo.level > 0">+{{ evo.level }} levels</span>
+          <span *ngIf="!evo.level || evo.level === 0">Base</span>
+        </p>
+
+        <!-- Fall: Spezielle Evolution -->
+        <p *ngIf="evo.type === 'special'">
+          <span *ngIf="evo.description">{{ evo.description }}</span>
+        </p>
+      </div>
+    </div>
+    <div class="no-evo-tree" *ngIf="!temtem?.evolution?.evolutionTree?.length">
+      <img [src]="getPortraitUrl(temtem.number)" alt="{{ temtem?.name }}" class="temtem-evo-image">
+      <strong>{{ temtem?.name }}</strong>
+      <span>Base</span>
+    </div>
+  </div>
+</div>

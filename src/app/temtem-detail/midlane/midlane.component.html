@@ -1,0 +1,55 @@
+<div class="midlane">
+    <div id="locations"></div>
+    <h2> Locations</h2>
+    <div *ngIf="hasLocations(); else noLocation" class="location-wrapper">
+      <div class="border">
+        <div *ngFor="let group of getGroupedLocations()" class="location-entry">
+          <h4><a routerLink="/locations/{{ group.island }}">{{ group.island }}</a></h4>
+          <div *ngFor="let location of group.locations" class="location-text">
+            <a routerLink="/locations/{{ group.island }}/{{ getNameWithoutSpaces(location) }}">{{ location }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noLocation>
+      <div id="noLocationText">No location</div>
+    </ng-template>
+    <div id="matchups"></div>
+    <div class="matchup-wrapper" *ngIf="temtem?.matchUps">
+      <h2>Type Matchups</h2>
+      <table>
+        <thead>
+          <tr>
+            <th *ngFor="let type of getAllTypes()" class="type-row">
+              <img [src]="'//temtem-api.mael.tech/images/icons/types/' + type + '.png'" alt="{{ type }}"
+                class="type-icon" />
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td *ngFor="let type of getAllTypes()" [class]="getClassForMultiplier(getMultiplierForType(type))">
+              {{ getMultiplierForType(type) }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="stats"></div>
+    <h2>Stats</h2>
+    <div class="border-stats">
+      <div class="gapper-stats">
+        <div *ngFor="let stat of getStatsAndTvs()" class="stat">
+          <div [ngClass]="stat.statName + 'circle'">
+            <h6 [ngClass]="stat.statName">{{ stat.statName | titlecase }}</h6>
+            <h5 [ngClass]="'stat' + stat.statValue + ' total' + stat.statValue">{{ stat.statValue }}</h5>
+            <span class="tv-value" *ngIf="stat.tvValue > 0">{{ stat.tvValue }} tv</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </div>

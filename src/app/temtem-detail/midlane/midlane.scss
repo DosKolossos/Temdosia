@@ -1,0 +1,279 @@
+@import '../../../styles.scss';
+@import '../../shared/shared.scss';
+
+.midlane {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    flex-direction: column;
+    padding: 50px 0 20px 0;
+    #locations {
+        position: relative;
+        top: -100px;
+    }
+    #matchups {
+        position: relative;
+        top: -100px;
+    }
+    #stats {
+        position: relative;
+        top: -100px;
+    }
+    #noLocationText {
+        display: flex;
+        margin-left: 35px;
+    }
+
+    >h2 {
+        margin: 30px 0 30px 0;
+        padding-left: 12px;
+    }
+
+    >.location-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 100%;
+        >.border {
+            display: flex;
+            padding: 12px 0 12px 0;
+            width: fit-content;
+            @include orange-border;
+
+            >.location-entry {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                min-width: 175px;
+                cursor: pointer;
+
+                &:hover {
+                    >h4 {
+                        transform: scale(1.2);
+                        transition: 0.3s;
+
+                        >a {
+                            color: #9c4c05;
+                            transition: 0.3s;
+                            transform: scale(1.2);
+                        }
+                    }
+
+                }
+
+                &:not(:hover) {
+                    >h4 {
+                        transition: 0.3s;
+                        >a {
+                            transition: 0.3s;
+                        }
+                    }
+
+                }
+
+                >h4 {
+                    margin-top: 0;
+                    >a {
+                        color: black;
+                        text-decoration: none;
+                    }
+                }
+                >.location-text {
+                    >a {
+                        color: black;
+                        text-decoration: none;
+                    }
+                    &:hover {
+                        color: #f27000 !important;
+                        transition: 0.3s;
+                        transform: scale(1.2);
+                    }
+                    &:not(:hover){
+                        transition: 0.3s;
+                    }
+                }
+            }
+        }
+
+
+    }
+
+    >.matchup-wrapper {
+        padding-left: 12px;
+        display: flex;
+        flex-direction: column;
+
+        >h2 {
+            margin-top: 30px;
+        }
+
+        table {
+            // width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            text-align: center;
+            width: max-content;
+
+            thead {
+                tr {
+                    display: flex;
+                    border: 0.5px black solid;
+
+                    >.type-row {
+                        position: relative;
+                        background-color: rgba($color: rgb(242, 112, 0), $alpha: 0.5);
+                        width: 44px !important;
+                        height: 44px;
+                        border: 1px black solid;
+
+                        .type-icon {
+                            height: 44px;
+                            width: 44px;
+                        }
+                    }
+                }
+            }
+
+            tbody {
+                tr {
+                    display: flex;
+                    border: 0.5px black solid;
+
+                    td {
+                        display: flex;
+                        justify-content: center;
+                        border: 1px black solid;
+
+                        width: 44px;
+                    }
+                }
+            }
+
+        }
+
+    }
+
+    >.border-stats {
+        display: flex;
+        left: 12px;
+
+        position: relative;
+        width: max-content;
+
+        >.gapper-stats {
+            display: flex;
+            align-items: flex-start;
+            padding: 8px 40px 0 4px;
+            justify-content: flex-start;
+            position: relative;
+            gap: 4px;
+            width: fit-content;
+            @include orange-border;
+
+            >.stat {
+                display: flex;
+                position: relative;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                width: 50px;
+
+                >.totalcircle {
+                    display: flex;
+                    z-index: 10;
+                    position: relative;
+                    left: 20px;
+                    bottom: 4px;
+                    height: 45px;
+                    width: 45px;
+                    display: inline-block;
+
+                    h5 {
+                        display: flex;
+                        height: 30px;
+                        position: relative;
+                        justify-content: center;
+                        margin: 0;
+                        font-size: 40px;
+                        bottom: 4px;
+                    }
+
+                    h6 {
+                        display: flex;
+                        justify-content: center;
+                        position: relative;
+                        margin: 0;
+                        font-size: 16px;
+                        color: black;
+                    }
+                }
+
+                >.totalheight {
+                    height: 300px;
+                }
+
+                >.hpcircle,
+                .stacircle,
+                .spdcircle,
+                .atkcircle,
+                .defcircle,
+                .spatkcircle,
+                .spdefcircle {
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+
+
+                    h5 {
+                        margin: 0;
+                        font-size: x-large;
+                        font-size: 32px;
+                    }
+
+                    h6 {
+                        margin: 0;
+                        font-size: 16px;
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+
+@mixin boldblack {
+    color: black;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.x_1 {
+    background-color: silver;
+    @include boldblack();
+}
+
+.x_2 {
+    background-color: rgb(72, 214, 108);
+    @include boldblack();
+
+}
+
+.x_1_2 {
+    background-color: rgb(248, 94, 94);
+    @include boldblack();
+
+}
+
+.x_1_4 {
+    background-color: darkred;
+    @include boldblack();
+
+}
+
+.x_4 {
+    background-color: rgb(23, 212, 70);
+    @include boldblack();
+
+}
