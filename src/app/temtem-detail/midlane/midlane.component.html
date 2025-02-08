@@ -2,15 +2,7 @@
     <div id="locations"></div>
     <h2>Locations</h2>
     <div *ngIf="hasLocations(); else noLocation" class="location-wrapper">
-      <div class="border" *ngIf="singleIsland">
-        <div *ngFor="let group of getGroupedLocations()" class="location-entry">
-          <h4><a routerLink="/locations/{{ group.island }}">{{ group.island }}</a></h4>
-          <div *ngFor="let location of group.locations" class="location-text">
-            <a routerLink="/locations/{{ group.island }}/{{ getNameWithoutSpaces(location) }}">{{ location }}</a>
-          </div>
-        </div>
-      </div>
-      <div class="border grid" *ngIf="!singleIsland">
+      <div [ngClass]="{'border': true, 'grid': !singleIsland}">
         <div *ngFor="let group of getGroupedLocations()" class="location-entry">
           <h4><a routerLink="/locations/{{ group.island }}">{{ group.island }}</a></h4>
           <div *ngFor="let location of group.locations" class="location-text">

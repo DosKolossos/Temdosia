@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Temtem } from '../../models/temtem.model';
@@ -11,10 +11,25 @@ import { Temtem } from '../../models/temtem.model';
   templateUrl: './midlane.component.html',
   styleUrl: './midlane.scss'
 })
-export class MidlaneComponent {
+export class MidlaneComponent implements OnChanges {
+  @Input() temtem!: Temtem | null;
   singleIsland = false;
 
-  @Input() temtem: Temtem | null = null;  // <-- Daten von der Elternkomponente erhalten
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['temtem'] && this.temtem?.name) {
+      this.checkIfSingleIsland();
+    }
+  }
+
+  checkIfSingleIsland(): void {
+    if (this.temtem?.locations && this.temtem.locations.length === 1) {
+      this.singleIsland = true;
+    } else {
+      this.singleIsland = false;
+    }
+  }
+  
+  
   getNameWithoutSpaces(name: string): string {
     return name.replace(/\s+/g, '').replace(/[-'?!]/g, '');
   }
@@ -64,14 +79,12 @@ export class MidlaneComponent {
       const islandGroup = acc.find(group => group.island === loc.island);
       if (islandGroup) {
         islandGroup.locations.push(loc.location);
-        this.singleIsland = true;
       } else {
         acc.push({ island: loc.island, locations: [loc.location] });
-        console.log(this.singleIsland);
       }
       return acc;
     }, [] as { island: string; locations: string[] }[]);
-
+    
     return grouped;
   }
 
