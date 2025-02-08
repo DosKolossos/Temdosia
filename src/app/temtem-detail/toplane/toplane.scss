@@ -356,7 +356,7 @@
 
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 650px) {
     .toplane {
         display: none;
     }
@@ -412,8 +412,6 @@
                 >.evo-wrapper {
                     display: flex;
                     flex-direction: column;
-                    align-items: space-around;
-
                     a {
                         width: 75px;
                         display: flex;
@@ -432,6 +430,27 @@
                         display: flex;
                         justify-content: center;
 
+                    }
+                }
+            }
+            >.no-evo-tree {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                flex-direction: column;
+                width: 75px;
+                >.temtem-evo-image {
+                    border-radius: 30px;
+                    border: black 2px solid;
+                }
+            }
+        }
+        >.mobile-traits {
+            margin-left: 12px;
+            >.trait-wrapper {
+                >.trait-entry {
+                    h5 {
+                        font-weight: 400;
                     }
                 }
             }

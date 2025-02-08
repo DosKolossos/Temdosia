@@ -144,4 +144,14 @@
       <span>Base</span>
     </div>
   </div>
+  <div class="mobile-traits">
+    <h2>Traits</h2>
+    <div class="trait-wrapper">
+      <div *ngFor="let trait of temtem?.traits" class="trait-entry">
+        <strong>{{ trait.name }}</strong>
+        <h5>{{ trait.effect }}</h5>
+      </div>
+    </div>
+  </div>
+
 </div>

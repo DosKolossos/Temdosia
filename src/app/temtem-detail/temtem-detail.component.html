@@ -6,9 +6,9 @@
 
   <ng-template #temtemContent>
     <div *ngIf="temtem; else loading" id="content">
-      <app-toplane [temtem]="temtem" [data]="data"></app-toplane>
-      <!-- <app-midlane [temtem]="temtem"></app-midlane>
-      <app-botlane [temtem]="temtem"></app-botlane> -->
+      <!-- <app-toplane [temtem]="temtem" [data]="data"></app-toplane> -->
+      <app-midlane [temtem]="temtem"></app-midlane>
+      <!-- <app-botlane [temtem]="temtem"></app-botlane> -->
   <!-- Schließe den Haupt-Content korrekt -->
   </div> <!-- Schließt .content-wrapper -->
 

@@ -1,8 +1,16 @@
 <div class="midlane">
     <div id="locations"></div>
-    <h2> Locations</h2>
+    <h2>Locations</h2>
     <div *ngIf="hasLocations(); else noLocation" class="location-wrapper">
-      <div class="border">
+      <div class="border" *ngIf="singleIsland">
+        <div *ngFor="let group of getGroupedLocations()" class="location-entry">
+          <h4><a routerLink="/locations/{{ group.island }}">{{ group.island }}</a></h4>
+          <div *ngFor="let location of group.locations" class="location-text">
+            <a routerLink="/locations/{{ group.island }}/{{ getNameWithoutSpaces(location) }}">{{ location }}</a>
+          </div>
+        </div>
+      </div>
+      <div class="border grid" *ngIf="!singleIsland">
         <div *ngFor="let group of getGroupedLocations()" class="location-entry">
           <h4><a routerLink="/locations/{{ group.island }}">{{ group.island }}</a></h4>
           <div *ngFor="let location of group.locations" class="location-text">
@@ -20,7 +28,7 @@
       <table>
         <thead>
           <tr>
-            <th *ngFor="let type of getAllTypes()" class="type-row">
+            <th *ngFor="let type of getAllTypes();" class="type-row">
               <img [src]="'//temtem-api.mael.tech/images/icons/types/' + type + '.png'" alt="{{ type }}"
                 class="type-icon" />
             </th>

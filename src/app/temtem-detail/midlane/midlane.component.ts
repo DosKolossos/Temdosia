@@ -12,6 +12,8 @@ import { Temtem } from '../../models/temtem.model';
   styleUrl: './midlane.scss'
 })
 export class MidlaneComponent {
+  singleIsland = false;
+
   @Input() temtem: Temtem | null = null;  // <-- Daten von der Elternkomponente erhalten
   getNameWithoutSpaces(name: string): string {
     return name.replace(/\s+/g, '').replace(/[-'?!]/g, '');
@@ -62,8 +64,10 @@ export class MidlaneComponent {
       const islandGroup = acc.find(group => group.island === loc.island);
       if (islandGroup) {
         islandGroup.locations.push(loc.location);
+        this.singleIsland = true;
       } else {
         acc.push({ island: loc.island, locations: [loc.location] });
+        console.log(this.singleIsland);
       }
       return acc;
     }, [] as { island: string; locations: string[] }[]);
