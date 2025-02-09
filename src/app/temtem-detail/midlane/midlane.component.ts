@@ -22,12 +22,14 @@ export class MidlaneComponent implements OnChanges {
   }
 
   checkIfSingleIsland(): void {
-    if (this.temtem?.locations && this.temtem.locations.length === 1) {
-      this.singleIsland = true;
+    if (this.temtem?.locations) {
+      const uniqueIslands = new Set(this.temtem.locations.map(loc => loc.island));
+      this.singleIsland = uniqueIslands.size === 1;
     } else {
       this.singleIsland = false;
     }
   }
+  
   
   
   getNameWithoutSpaces(name: string): string {

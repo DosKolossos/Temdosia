@@ -13,7 +13,7 @@ export class FetchService {
   httpClient = inject(HttpClient);
   BASE_URL = 'https://api.temdosia.de';
   TYPES_URL = 'https://temtem-api.mael.tech';
-  private apiUrl = 'https://api.temdosia.de'; // Neue API-URL
+  private apiUrl = 'https://api.temdosia.de';
 
   constructor(private http: HttpClient) {}
 
@@ -21,24 +21,6 @@ export class FetchService {
     return this.http.get<Temtem>(`${this.BASE_URL}/?name=${name}`);
   }
    
-  // fetchData(): Observable<Temtem[]> {
-  //   return this.httpClient.get<{ [key: string]: Temtem }>(`${this.BASE_URL}/`).pipe(
-  //     map((temtemsData) => Object.values(temtemsData)), // Konvertiere Objekt in ein Array
-  //     map((temtemsArray) =>
-  //       temtemsArray.map((temtem) => ({
-  //         ...temtem,
-  //         typeIcons: temtem.types.map(
-  //           (typeName) => `${this.ICON_BASE_URL}/${typeName}.png`
-  //         ),
-  //         stats: Object.entries(temtem.stats || {}).map(([key, value]) => ({
-  //           statName: key,
-  //           statValue: Number(value),
-  //         })),
-  //         hasLocation: !!temtem.locations && temtem.locations.length > 0,
-  //       }))
-  //     )
-  //   );
-  // }
   fetchData(): Observable<Temtem[]> {
     return this.httpClient.get<{ [key: string]: Temtem }>(`${this.BASE_URL}/`).pipe(
       map((temtemsData) => Object.values(temtemsData)), // Konvertiere das Objekt in ein Array
