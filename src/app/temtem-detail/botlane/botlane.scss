@@ -6,14 +6,17 @@
     height: fit-content;
     flex-direction: column;
     width: 100%;
+
     #techniques {
         position: relative;
         top: -100px;
     }
+
     #trivia {
         position: relative;
         top: -100px;
     }
+
     h2 {
         padding-left: 12px;
     }
@@ -33,17 +36,20 @@
             width: 100%;
 
             cursor: pointer;
+
             &:hover {
                 height: max-content;
+
                 >.technique-border {
                     >.effect-text {
                         display: flex;
                         position: relative;
                         top: 0;
                         height: auto;
-                        }
+                    }
                 }
             }
+
             >.technique-border {
                 @include orange-border;
                 width: 95%;
@@ -57,11 +63,15 @@
                     font-size: 12px;
                     margin-top: 4px;
                     margin-bottom: 4px;
+
                     >p {
-                        width: 600px;          /* Feste Breite, anpassen nach Wunsch */
-                        white-space: normal;   /* Erlaubt Zeilenumbrüche */
-                        word-wrap: break-word; /* Falls du wirklich lange Worte/URLs hast */
-                      }
+                        width: 600px;
+                        /* Feste Breite, anpassen nach Wunsch */
+                        white-space: normal;
+                        /* Erlaubt Zeilenumbrüche */
+                        word-wrap: break-word;
+                        /* Falls du wirklich lange Worte/URLs hast */
+                    }
                 }
 
                 span {
@@ -183,14 +193,100 @@
         }
 
     }
+
     >.trivia {
         display: flex;
         flex-direction: column;
         padding-bottom: 100px;
+
         >.trivia-entry {
             margin-left: 20px;
             margin-bottom: 8px;
         }
 
+    }
+}
+
+@media only screen and (max-width: 950px) {
+    .botlane {
+        font-size: smaller;
+
+        >.technique-entry {
+            >.technique-line {
+                >.technique-border {
+                    >span {
+                        gap: 6px;
+
+                        >.name-part {
+                            width: 180px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .botlane {
+        font-size: smaller;
+
+        >.technique-entry {
+            >.technique-line {
+                >.technique-border {
+                    >span {
+
+                        >.stamina-part,
+                        .hold-part {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .botlane {
+        font-size: smaller;
+
+        >.technique-entry {
+            >.technique-line {
+                >.technique-border {
+                    >span {
+                        >.targets-part {
+                            display: none;
+                        }
+
+                        >.name-part {
+                            justify-content: unset;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .botlane {
+        font-size: smaller;
+
+        >.technique-entry {
+            >.technique-line {
+                >.technique-border {
+                    >span {
+                        >.targets-part {
+                            display: none;
+                        }
+
+                        >.level-part {
+                            width: 35px;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
