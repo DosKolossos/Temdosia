@@ -13,6 +13,10 @@
     width: 1080px;
     padding-bottom: 150px;
 
+    >.locations-list-mobile {
+        display: none;
+    }
+
     .island-container {
         display: flex;
         position: relative;
@@ -63,5 +67,45 @@
     .island-image img {
         width: 500px;
         @include orange-border;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .island-content {
+        border: none;
+        border-radius: 0;
+        top: -16px;
+        position: relative;
+        flex-direction: column;
+        align-items: center;
+
+        >.locations-list-mobile {
+            display: flex;
+            flex-direction: column;
+            top: 12px;
+            position: relative;
+            gap: 6px;
+
+            a {
+                color: black;
+                text-decoration: none;
+            }
+        }
+
+        >.island-container {
+            >.locations-list {
+                display: none;
+            }
+
+
+        }
+    }
+}
+
+@media only screen and (max-width: 520px) {
+    .island-content {
+        >.island-image {
+            display: none;
+        }
     }
 }

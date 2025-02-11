@@ -1,3 +1,6 @@
+.burger-menu {
+    display: none;
+}
 .header-wrapper {
     display: flex;
     position: sticky;
@@ -125,6 +128,16 @@
 }
 
 @media only screen and (max-width: 510px) {
+    .burger-menu {
+        display: flex;
+        position: absolute;
+        z-index: 999;
+        right: 8px;
+        top: 8px;
+        height: 80px;
+        width: 80px;
+        background-image: url('../../../assets/img/burgermenu-icon.png');
+    }
     .header-wrapper {
         height: 50px;
         >.navbar {
@@ -146,7 +159,7 @@
         position: absolute;
         top: 120px;
         justify-content: center;
-        width: 100%;
+        width: 90%;
         height: max-content;
         z-index: 999;
         background-color: #f27000;
@@ -174,13 +187,8 @@
                         cursor: pointer;
                         padding-left: 4px;
                         border-radius: 8px;
-                        &:hover {
-                            transition: 0.5s;
-                            background-color: #f7b072;
-                            transform: scale(1.1);
-                        }
-                        &:not(:hover){
-                            transition: 1s;
+                        >.trait {
+                            display: none !important;
                         }
                         >.single-element {
                                 display: flex;
@@ -210,5 +218,17 @@
             }
             
         }
+    }
+}
+
+@media only screen and (max-width: 390px) {
+    .search-results {
+        top: 55px;
+    }
+    .burger-menu {
+        top: 4px;
+        width: 40px;
+        height: 40px;
+        background-size: contain;
     }
 }

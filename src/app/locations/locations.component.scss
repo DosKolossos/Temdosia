@@ -1,3 +1,7 @@
+.locations-mobile {
+    display: none;
+}
+
 .locations-wrapper {
     display: flex;
     position: relative;
@@ -36,18 +40,22 @@
             left: 555px;
             top: 39px;
         }
+
         >#Kisiwa {
             left: 12px;
             top: 179px;
         }
+
         >#Omninesia {
             left: 369px;
             top: -51px;
         }
+
         >#Tucma {
             left: 18px;
             top: 19px;
         }
+
         >img {
             // filter: brightness(2);
             position: absolute;
@@ -69,5 +77,38 @@
     >.locations-content {
         display: flex;
         flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+
+    .locations-wrapper {
+        display: none;
+    }
+
+    .locations-mobile {
+        top: -15px;
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        background-color: #d3d3d3;
+        padding-bottom: 150px;
+        >.image-loc-wrapper {
+            display: flex;
+            justify-content: center;
+            top: 32px;
+            position: relative;
+            >img {
+                width: 250px;
+                height: auto;
+        }}
+    }
+}
+
+@media only screen and (max-width: 515px) {
+
+    .locations-mobile {
+        grid-template-columns: repeat(1, 1fr);
     }
 }

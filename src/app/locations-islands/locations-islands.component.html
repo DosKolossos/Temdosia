@@ -1,7 +1,6 @@
 <div class="island-content">
   <div class="island-container">
     <h1>{{ islandName }}</h1>
-    <p>Here are all the locations for {{ islandName }}:</p>
   
     <div class="locations-list">
       <div *ngFor="let location of uniqueLocations" class="location-entry">
@@ -16,6 +15,13 @@
     <img src="../../assets/img/locations/maps/{{islandName}}.jpg" alt="">
     <div *ngFor="let location of uniqueLocations" class="location-entry">
       <a [routerLink]="['/locations', islandName, getNameWithoutSpaces(location)]" [attr.id]="getNameWithoutSpaces(location)">
+        {{ location }}
+      </a>
+    </div>
+  </div>
+  <div class="locations-list-mobile">
+    <div *ngFor="let location of uniqueLocations" class="location-entry">
+      <a [routerLink]="['/locations', islandName, getNameWithoutSpaces(location)]" [attr.id]="'list' + getNameWithoutSpaces(location)">
         {{ location }}
       </a>
     </div>
