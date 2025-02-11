@@ -1,6 +1,3 @@
-.burger-menu {
-    display: none;
-}
 .header-wrapper {
     display: flex;
     position: sticky;
@@ -127,19 +124,55 @@
     }
 }
 
-@media only screen and (max-width: 510px) {
-    .burger-menu {
-        display: flex;
-        position: absolute;
-        z-index: 999;
-        right: 8px;
-        top: 8px;
-        height: 80px;
-        width: 80px;
-        background-image: url('../../../assets/img/burgermenu-icon.png');
+.burger-menu-content {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    background-color: #f27000;
+    z-index: 1000;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  
+    a {
+      text-decoration: none;
+      color: white;
+      margin-bottom: 15px;
+      font-size: 20px;
+  
+      &:hover {
+        color: black;
+        transition: 0.3s;
+      }
     }
+  
+    .close-icon {
+      background-image: url('../../../assets/img/escape-burger-menu-icon.png');
+      background-size: contain;
+      width: 40px;
+      height: 40px;
+      align-self: flex-end;
+      cursor: pointer;
+    }
+  }
+  
+  .burger-menu-content.show {
+    display: flex !important;
+  }
+  
+  .burger-menu {
+    display: none;
+  }
+
+
+@media only screen and (max-width: 510px) {
+
     .header-wrapper {
-        height: 50px;
+        height: 100%;
+        align-items: end;
         >.navbar {
             height: 50px;
             bottom: 4px;
@@ -151,6 +184,22 @@
             }
     
         }
+        .burger-menu {
+            display: flex;
+            position: absolute;
+            z-index: 999;
+            right: 8px;
+            top: 8px;
+            height: 40px;
+            width: 40px;
+            background-image: url('../../../assets/img/burgermenu-icon.png');
+            background-size: contain;
+            cursor: pointer;
+          }
+        
+          .navbar > a {
+            display: none;  // Verstecke die Links im Navbar bei kleineren Bildschirmen
+          }
     }
     
     .search-results {

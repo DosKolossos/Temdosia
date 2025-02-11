@@ -13,6 +13,7 @@ import { Router, RouterLink } from '@angular/router';
   imports: [CommonModule, RouterLink]
 })
 export class HeaderComponent implements OnInit {
+  isMenuOpen = false;
 
   constructor(private sharedService: SharedService, private router: Router) { }
   data: Temtem[] = []; // Hier sind alle Temtem-Daten
@@ -37,6 +38,12 @@ export class HeaderComponent implements OnInit {
       
     });
   }
+
+
+toggleBurgerMenu(): void {
+  this.isMenuOpen = !this.isMenuOpen;
+}
+
 
   onSearch(event: Event): void {
     const inputElement = event.target as HTMLInputElement;

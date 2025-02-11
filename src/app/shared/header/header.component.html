@@ -8,6 +8,15 @@
       <input #searchInput type="text" placeholder="Search..." (input)="onSearch($event)" />
     </div>
   </div>
+  <div class="burger-menu"></div>
+
+  <div class="burger-menu-content" [class.show]="isMenuOpen">
+    <div class="close-icon" (click)="toggleBurgerMenu()"></div>
+    <a [routerLink]="['/']" (click)="toggleBurgerMenu()">Home</a>
+    <a [routerLink]="['/temtem']" (click)="toggleBurgerMenu()">Temtem</a>
+    <a [routerLink]="['/ranks']" (click)="toggleBurgerMenu()">Ranks</a>
+    <a [routerLink]="['/locations']" (click)="toggleBurgerMenu()">Locations</a>
+  </div>
 </div>
 <div class="search-results" *ngIf="searchResults.length > 0">
   <h3>Search Results:</h3>
@@ -36,4 +45,3 @@
   </div>
 </div>
 
-<div class="burger-menu"></div>
