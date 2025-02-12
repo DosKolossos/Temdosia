@@ -129,14 +129,14 @@
     position: fixed;
     top: 0;
     right: 0;
-    height: 100vh;
-    width: 250px;
+    height: max-content;
+    width: 200px;
     background-color: #f27000;
     z-index: 1000;
     flex-direction: column;
     padding: 20px;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
-  
+    border-radius: 30px;
     a {
       text-decoration: none;
       color: white;

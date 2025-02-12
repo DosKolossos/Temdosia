@@ -8,7 +8,7 @@
       <input #searchInput type="text" placeholder="Search..." (input)="onSearch($event)" />
     </div>
   </div>
-  <div class="burger-menu"></div>
+  <div class="burger-menu" (click)="toggleBurgerMenu()"></div>
 
   <div class="burger-menu-content" [class.show]="isMenuOpen">
     <div class="close-icon" (click)="toggleBurgerMenu()"></div>
