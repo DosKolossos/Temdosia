@@ -65,3 +65,10 @@ app-footer {
         position: relative;
     }
 }
+
+@media only screen and (max-width: 350px) {
+
+    app-footer {
+        bottom: 58px;
+    }
+}

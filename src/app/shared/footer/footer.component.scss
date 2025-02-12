@@ -19,3 +19,11 @@
         }
     }
 }
+
+@media only screen and (max-width: 350px) {
+    .footer-wrapper {
+        flex-direction: column;
+        gap: 12px;
+
+    }
+}
