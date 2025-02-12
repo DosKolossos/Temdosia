@@ -8,14 +8,12 @@
     border-radius: 30px;
     height: max-content;
     width: 1080px;
-    height: 500px;
+    height: fit-content;
     justify-content: center;
     align-items: center;
     >.privacy-content {
         display: flex;
         flex-direction: column;
-        >span {
-            display: none;
-        }
+        padding-bottom: 150px;
     }
 }
